@@ -10,7 +10,9 @@
 
 ```
 com.fasterxml.jackson.databind.JsonNode activateInstance(@Nonnull String licenseSecret, @Nonnull String releaseDate) // Activate edge instance (activateInstance)
+com.fasterxml.jackson.databind.JsonNode activateInstanceV2(@Nonnull String licenseSecret, @Nonnull String releaseDate, @Nonnull String clusterId, @Nullable String protocolVersion) // Activate edge instance (activateInstance)
 com.fasterxml.jackson.databind.JsonNode checkInstance(@Nonnull Object body) // Check edge license (checkInstance)
+com.fasterxml.jackson.databind.JsonNode checkInstanceV2(@Nonnull Object body) // Check edge license (checkInstance)
 void deleteEdge(@Nonnull String edgeId) // Delete edge (deleteEdge)
 List<Edge> findEdgesByQuery(@Nonnull EdgeSearchQuery edgeSearchQuery) // Find related edges (findEdgesByQuery)
 String findMissingToRelatedRuleChains(@Nonnull String edgeId) // Find missing rule chains (findMissingToRelatedRuleChains)
@@ -24,10 +26,10 @@ List<Edge> getEdgeList(@Nonnull List<String> edgeIds) // Get Edges By Ids (getEd
 List<EntitySubtype> getEdgeTypes() // Get Edge Types (getEdgeTypes)
 EdgeInstructions getEdgeUpgradeInstructions(@Nonnull String edgeVersion, @Nonnull String method) // Get Edge Upgrade Instructions (getEdgeUpgradeInstructions)
 PageDataEdge getEdges(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Edges (getEdges)
-PageDataEdge getEdgesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get edges by Entity Group Id (getEdgesByEntityGroupId)
+PageDataEdge getEdgesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get edges by Entity Group Id (getEdgesByEntityGroupId)
 Edge getTenantEdgeByName(@Nonnull String edgeName) // Get Tenant Edge by name (getTenantEdgeByName)
 PageDataEdge getTenantEdges(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Edges (getTenantEdges)
-PageDataEdge getUserEdges(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edges (getUserEdges)
+PageDataEdge getUserEdges(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edges (getUserEdges)
 Boolean isEdgeUpgradeAvailable(@Nonnull String edgeId) // Is edge upgrade enabled (isEdgeUpgradeAvailable)
 Boolean isEdgesSupportEnabled() // Is edges support enabled (isEdgesSupportEnabled)
 BulkImportResultEdge processEdgesBulkImport(@Nonnull BulkImportRequest bulkImportRequest) // Import the bulk of edges (processEdgesBulkImport)
@@ -62,6 +64,33 @@ Activates edge license on license portal.
 **com.fasterxml.jackson.databind.JsonNode**
 
 
+## activateInstanceV2
+
+```
+com.fasterxml.jackson.databind.JsonNode activateInstanceV2(@Nonnull String licenseSecret, @Nonnull String releaseDate, @Nonnull String clusterId, @Nullable String protocolVersion)
+```
+
+**POST** `/api/v2/license/activateInstance`
+
+Activate edge instance (activateInstance)
+
+Activates edge license (V1/V2) on license portal.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **licenseSecret** | **String** |  | |
+| **releaseDate** | **String** |  | |
+| **clusterId** | **String** |  | |
+| **protocolVersion** | **String** |  | [optional] |
+
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
+
+
 ## checkInstance
 
 ```
@@ -73,6 +102,30 @@ com.fasterxml.jackson.databind.JsonNode checkInstance(@Nonnull Object body)
 Check edge license (checkInstance)
 
 Checks license request from edge service by forwarding request to license portal.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **body** | **Object** |  | |
+
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
+
+
+## checkInstanceV2
+
+```
+com.fasterxml.jackson.databind.JsonNode checkInstanceV2(@Nonnull Object body)
+```
+
+**POST** `/api/v2/license/checkInstance`
+
+Check edge license (checkInstance)
+
+Checks license request (V1/V2) from edge service by forwarding request to license portal.
 
 
 ### Parameters
@@ -419,7 +472,7 @@ Returns a page of edges owned by tenant. You can specify parameters to filter th
 ## getEdgesByEntityGroupId
 
 ```
-PageDataEdge getEdgesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataEdge getEdgesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/entityGroup/{entityGroupId}/edges`
@@ -434,8 +487,8 @@ Returns a page of Edge objects that belongs to specified Entity Group Id. You ca
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the edge name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -501,7 +554,7 @@ Returns a page of edges owned by tenant. You can specify parameters to filter th
 ## getUserEdges
 
 ```
-PageDataEdge getUserEdges(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataEdge getUserEdges(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/user/edges`
@@ -515,8 +568,8 @@ Returns a page of edges available for current user. You can specify parameters t
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **type** | **String** | A string value representing the edge type. For example, 'default' | [optional] |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the edge name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |

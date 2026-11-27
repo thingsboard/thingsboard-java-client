@@ -31,10 +31,10 @@
 |------|------|-------------|-------|
 | ruleChainId | RuleChainId | JSON object with Rule Chain Id. | [readonly] |
 | version | Long | Version of the Rule Chain | [optional] |
-| firstNodeIndex | Integer | Index of the first rule node in the 'nodes' list |  |
+| firstNodeIndex | Integer | Index of the first rule node in the 'nodes' list | [optional] |
 | nodes | List<RuleNode> | List of rule node JSON objects |  |
-| connections | List<NodeConnectionInfo> | List of JSON objects that represent connections between rule nodes |  |
-| ruleChainConnections | List<RuleChainConnectionInfo> | List of JSON objects that represent connections between rule nodes and other rule chains. |  |
+| connections | List<NodeConnectionInfo> | List of JSON objects that represent connections between rule nodes | [optional] |
+| ruleChainConnections | List<RuleChainConnectionInfo> | List of JSON objects that represent connections between rule nodes and other rule chains. | [optional] |
 | notes | List<RuleChainNote> | List of sticky notes placed on the rule chain canvas | [optional] |
 
 #### ExportableEntity

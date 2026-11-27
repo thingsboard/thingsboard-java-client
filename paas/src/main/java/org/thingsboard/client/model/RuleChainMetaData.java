@@ -64,7 +64,7 @@ public class RuleChainMetaData {
   private Long version;
 
   public static final String JSON_PROPERTY_FIRST_NODE_INDEX = "firstNodeIndex";
-  @Nonnull
+  @Nullable
   private Integer firstNodeIndex;
 
   public static final String JSON_PROPERTY_NODES = "nodes";
@@ -72,11 +72,11 @@ public class RuleChainMetaData {
   private List<RuleNode> nodes = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CONNECTIONS = "connections";
-  @Nonnull
+  @Nullable
   private List<NodeConnectionInfo> connections = new ArrayList<>();
 
   public static final String JSON_PROPERTY_RULE_CHAIN_CONNECTIONS = "ruleChainConnections";
-  @Nonnull
+  @Nullable
   private List<RuleChainConnectionInfo> ruleChainConnections = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NOTES = "notes";
@@ -132,7 +132,7 @@ public class RuleChainMetaData {
   }
 
 
-  public RuleChainMetaData firstNodeIndex(@Nonnull Integer firstNodeIndex) {
+  public RuleChainMetaData firstNodeIndex(@Nullable Integer firstNodeIndex) {
     this.firstNodeIndex = firstNodeIndex;
     return this;
   }
@@ -141,17 +141,17 @@ public class RuleChainMetaData {
    * Index of the first rule node in the &#39;nodes&#39; list
    * @return firstNodeIndex
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_FIRST_NODE_INDEX, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_FIRST_NODE_INDEX, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getFirstNodeIndex() {
     return firstNodeIndex;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_FIRST_NODE_INDEX, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFirstNodeIndex(@Nonnull Integer firstNodeIndex) {
+  @JsonProperty(value = JSON_PROPERTY_FIRST_NODE_INDEX, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFirstNodeIndex(@Nullable Integer firstNodeIndex) {
     this.firstNodeIndex = firstNodeIndex;
   }
 
@@ -188,7 +188,7 @@ public class RuleChainMetaData {
   }
 
 
-  public RuleChainMetaData connections(@Nonnull List<NodeConnectionInfo> connections) {
+  public RuleChainMetaData connections(@Nullable List<NodeConnectionInfo> connections) {
     this.connections = connections;
     return this;
   }
@@ -205,22 +205,22 @@ public class RuleChainMetaData {
    * List of JSON objects that represent connections between rule nodes
    * @return connections
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_CONNECTIONS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CONNECTIONS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<NodeConnectionInfo> getConnections() {
     return connections;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_CONNECTIONS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConnections(@Nonnull List<NodeConnectionInfo> connections) {
+  @JsonProperty(value = JSON_PROPERTY_CONNECTIONS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setConnections(@Nullable List<NodeConnectionInfo> connections) {
     this.connections = connections;
   }
 
 
-  public RuleChainMetaData ruleChainConnections(@Nonnull List<RuleChainConnectionInfo> ruleChainConnections) {
+  public RuleChainMetaData ruleChainConnections(@Nullable List<RuleChainConnectionInfo> ruleChainConnections) {
     this.ruleChainConnections = ruleChainConnections;
     return this;
   }
@@ -237,17 +237,17 @@ public class RuleChainMetaData {
    * List of JSON objects that represent connections between rule nodes and other rule chains.
    * @return ruleChainConnections
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_RULE_CHAIN_CONNECTIONS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_RULE_CHAIN_CONNECTIONS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<RuleChainConnectionInfo> getRuleChainConnections() {
     return ruleChainConnections;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_RULE_CHAIN_CONNECTIONS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRuleChainConnections(@Nonnull List<RuleChainConnectionInfo> ruleChainConnections) {
+  @JsonProperty(value = JSON_PROPERTY_RULE_CHAIN_CONNECTIONS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRuleChainConnections(@Nullable List<RuleChainConnectionInfo> ruleChainConnections) {
     this.ruleChainConnections = ruleChainConnections;
   }
 

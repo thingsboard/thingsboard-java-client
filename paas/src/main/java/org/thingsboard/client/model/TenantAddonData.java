@@ -58,6 +58,7 @@ import org.thingsboard.client.ApiClient;
   TenantAddonData.JSON_PROPERTY_MAX_AGENTS,
   TenantAddonData.JSON_PROPERTY_TRENDZ_ENABLED,
   TenantAddonData.JSON_PROPERTY_WHITE_LABELING_ENABLED,
+  TenantAddonData.JSON_PROPERTY_MAX_MOBILE_APPS,
   TenantAddonData.JSON_PROPERTY_DEFAULT
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -145,6 +146,10 @@ public class TenantAddonData {
   public static final String JSON_PROPERTY_WHITE_LABELING_ENABLED = "whiteLabelingEnabled";
   @Nullable
   private Boolean whiteLabelingEnabled;
+
+  public static final String JSON_PROPERTY_MAX_MOBILE_APPS = "maxMobileApps";
+  @Nullable
+  private Long maxMobileApps;
 
   public static final String JSON_PROPERTY_DEFAULT = "default";
   @Nullable
@@ -657,6 +662,30 @@ public class TenantAddonData {
   }
 
 
+  public TenantAddonData maxMobileApps(@Nullable Long maxMobileApps) {
+    this.maxMobileApps = maxMobileApps;
+    return this;
+  }
+
+  /**
+   * Get maxMobileApps
+   * @return maxMobileApps
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_MAX_MOBILE_APPS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getMaxMobileApps() {
+    return maxMobileApps;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MAX_MOBILE_APPS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMaxMobileApps(@Nullable Long maxMobileApps) {
+    this.maxMobileApps = maxMobileApps;
+  }
+
+
   public TenantAddonData _default(@Nullable Boolean _default) {
     this._default = _default;
     return this;
@@ -714,12 +743,13 @@ public class TenantAddonData {
         Objects.equals(this.maxAgents, tenantAddonData.maxAgents) &&
         Objects.equals(this.trendzEnabled, tenantAddonData.trendzEnabled) &&
         Objects.equals(this.whiteLabelingEnabled, tenantAddonData.whiteLabelingEnabled) &&
+        Objects.equals(this.maxMobileApps, tenantAddonData.maxMobileApps) &&
         Objects.equals(this._default, tenantAddonData._default);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(maxDevices, maxAssets, maxCustomers, maxUsers, maxIntegrations, maxConverters, maxCalculatedFieldsPerEntity, maxTransportMessages, maxTransportDataPoints, maxREExecutions, maxJSExecutions, maxDPStorageDays, maxCreatedAlarms, maxEmails, maxSms, maxAiCredits, edgeEnabled, maxEdges, maxAgents, trendzEnabled, whiteLabelingEnabled, _default);
+    return Objects.hash(maxDevices, maxAssets, maxCustomers, maxUsers, maxIntegrations, maxConverters, maxCalculatedFieldsPerEntity, maxTransportMessages, maxTransportDataPoints, maxREExecutions, maxJSExecutions, maxDPStorageDays, maxCreatedAlarms, maxEmails, maxSms, maxAiCredits, edgeEnabled, maxEdges, maxAgents, trendzEnabled, whiteLabelingEnabled, maxMobileApps, _default);
   }
 
   @Override
@@ -747,6 +777,7 @@ public class TenantAddonData {
     sb.append("    maxAgents: ").append(toIndentedString(maxAgents)).append("\n");
     sb.append("    trendzEnabled: ").append(toIndentedString(trendzEnabled)).append("\n");
     sb.append("    whiteLabelingEnabled: ").append(toIndentedString(whiteLabelingEnabled)).append("\n");
+    sb.append("    maxMobileApps: ").append(toIndentedString(maxMobileApps)).append("\n");
     sb.append("    _default: ").append(toIndentedString(_default)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -898,6 +929,11 @@ public class TenantAddonData {
     // add `whiteLabelingEnabled` to the URL query string
     if (getWhiteLabelingEnabled() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%swhiteLabelingEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getWhiteLabelingEnabled()))));
+    }
+
+    // add `maxMobileApps` to the URL query string
+    if (getMaxMobileApps() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smaxMobileApps%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaxMobileApps()))));
     }
 
     // add `default` to the URL query string

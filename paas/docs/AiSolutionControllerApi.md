@@ -16,6 +16,7 @@ void deleteSolution(@Nonnull UUID solutionId) // deleteSolution
 com.fasterxml.jackson.databind.JsonNode getSolution(@Nonnull UUID solutionId) // getSolution
 com.fasterxml.jackson.databind.JsonNode getSolutions() // getSolutions
 com.fasterxml.jackson.databind.JsonNode installSolution(@Nonnull UUID solutionId, @Nonnull String xAuthorization) // installSolution
+com.fasterxml.jackson.databind.JsonNode sendMessage(@Nonnull UUID solutionId, @Nonnull SolutionStep step, @Nonnull SolutionChatMessage solutionChatMessage) // sendMessage
 com.fasterxml.jackson.databind.JsonNode startNew() // startNew
 com.fasterxml.jackson.databind.JsonNode uninstallSolution(@Nonnull UUID solutionId, @Nonnull String xAuthorization) // uninstallSolution
 com.fasterxml.jackson.databind.JsonNode updateData(@Nonnull UUID solutionId, @Nonnull String dataKey, @Nonnull Object body) // updateData
@@ -167,6 +168,30 @@ installSolution
 |------------- | ------------- | ------------- | -------------|
 | **solutionId** | **UUID** |  | |
 | **xAuthorization** | **String** |  | |
+
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
+
+
+## sendMessage
+
+```
+com.fasterxml.jackson.databind.JsonNode sendMessage(@Nonnull UUID solutionId, @Nonnull SolutionStep step, @Nonnull SolutionChatMessage solutionChatMessage)
+```
+
+**POST** `/api/ai/solution/{solutionId}/{step}/messages`
+
+sendMessage
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **solutionId** | **UUID** |  | |
+| **step** | **SolutionStep** |  | [enum: INITIAL_CONFIGURATION, DASHBOARDS_CONFIGURATION] |
+| **solutionChatMessage** | **SolutionChatMessage** |  | |
 
 ### Return type
 

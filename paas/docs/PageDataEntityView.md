@@ -38,7 +38,7 @@
 #### TelemetryEntityView
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| timeseries | List<String> | List of time-series data keys to expose |  |
+| timeseries | List<String> | List of time-series data keys to expose | [optional] |
 | attributes | AttributesEntityView | JSON object with attributes to expose |  |
 
 #### EntityType (enum)
@@ -47,9 +47,9 @@
 #### AttributesEntityView
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| cs | List<String> | List of client-side attribute keys to expose |  |
-| ss | List<String> | List of server-side attribute keys to expose |  |
-| sh | List<String> | List of shared attribute keys to expose |  |
+| cs | List<String> | List of client-side attribute keys to expose | [optional] |
+| ss | List<String> | List of server-side attribute keys to expose | [optional] |
+| sh | List<String> | List of shared attribute keys to expose | [optional] |
 
 ---
 

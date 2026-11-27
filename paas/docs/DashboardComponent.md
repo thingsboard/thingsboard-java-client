@@ -30,7 +30,7 @@
 #### ReportComponent
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| subType | ReportComponentSubType |  |  |
+| subType | ReportComponentSubType |  | [optional] |
 | type | ReportComponentType |  |  |
 
 #### DataSource
@@ -67,10 +67,10 @@
 | timezone | String | Timezone in which target dashboard will be presented in dashboard report. |  |
 | useDashboardTimewindow | Boolean | If set, timewindow configured in the target dashboard will be used during dashboard report generation. | [optional] |
 | timewindow | com.fasterxml.jackson.databind.JsonNode | Specific dashboard timewindow that will be used during dashboard report generation. | [optional] |
-| namePattern | String | If set, timewindow configured in the target dashboard will be used during dashboard report generation. |  |
+| namePattern | String | Pattern of the generated report file name. '%d{<date format>}' is replaced with the report generation time formatted in the report timezone. If not set, 'report-%d{yyyy-MM-dd_HH:mm:ss}' is used. | [optional] |
 | type | String | Dashboard report file type, can be PDF | PNG |
 | useCurrentUserCredentials | Boolean | If set, credentials of user created this dashboard report configuration will be used to open dashboard UI during dashboard report generation. | [optional] |
-| userId | String | A string value representing the user id. |  |
+| userId | String | A string value representing the user id. | [optional] |
 
 #### ReportComponentSubType (enum)
 `DOUGHNUT_CHART` | `HORIZONTAL_DOUGHNUT_CHART` | `POINT_CHART` | `BAR_CHART` | `PIE_CHART` | `LINE_CHART` | `LATEST_BAR_CHART` | `RANGE_CHART` | `BAR_CHART_WITH_LABELS` | `STATE_CHART` | … (11 values total)
@@ -120,13 +120,12 @@
 |------|------|-------------|-------|
 | type | DataKeySettingsType | Data key settings type |  |
 
-#### ColumnSettings  *(type=`COLUMN`)*
+#### ColumnSettings  *(extends DataKeySettings, type=`COLUMN`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | columnWidth | String |  | [optional] |
 | header | CellSettings |  | [optional] |
 | cell | CellSettings |  | [optional] |
-| type | DataKeySettingsType | Data key settings type |  |
 
 #### DefaultDataKeySettings  *(extends DataKeySettings, type=`DEFAULT`)*
 *See DataKeySettings for properties.*
@@ -189,6 +188,9 @@
 | backgroundColor | String |  | [optional] |
 | textAlignment | TextAlignment |  | [optional] |
 | verticalAlignment | VerticalAlignment |  | [optional] |
+| borderType | BorderType |  | [optional] |
+| borderWidth | Integer |  | [optional] |
+| borderColor | String |  | [optional] |
 
 #### TimeSeriesChartSeriesType (enum)
 `LINE` | `BAR`
@@ -254,6 +256,9 @@
 
 #### VerticalAlignment (enum)
 `BOTTOM` | `TOP` | `MIDDLE`
+
+#### BorderType (enum)
+`SOLID` | `DASHED` | `DOTTED` | `DOUBLE`
 
 #### LineSeriesStepType (enum)
 `START` | `MIDDLE` | `END`

@@ -52,7 +52,8 @@ import org.thingsboard.client.ApiClient;
   SubscriptionItems.JSON_PROPERTY_EDGE_ENABLED,
   SubscriptionItems.JSON_PROPERTY_EXTRA_EDGE_COUNT,
   SubscriptionItems.JSON_PROPERTY_TRENDZ_ENABLED,
-  SubscriptionItems.JSON_PROPERTY_WHITE_LABELING_ADDON_ENABLED
+  SubscriptionItems.JSON_PROPERTY_WHITE_LABELING_ADDON_ENABLED,
+  SubscriptionItems.JSON_PROPERTY_MOBILE_APP_COUNT
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SubscriptionItems {
@@ -119,6 +120,10 @@ public class SubscriptionItems {
   public static final String JSON_PROPERTY_WHITE_LABELING_ADDON_ENABLED = "whiteLabelingAddonEnabled";
   @Nullable
   private Boolean whiteLabelingAddonEnabled;
+
+  public static final String JSON_PROPERTY_MOBILE_APP_COUNT = "mobileAppCount";
+  @Nullable
+  private Long mobileAppCount;
 
   public SubscriptionItems() { 
   }
@@ -507,6 +512,30 @@ public class SubscriptionItems {
   }
 
 
+  public SubscriptionItems mobileAppCount(@Nullable Long mobileAppCount) {
+    this.mobileAppCount = mobileAppCount;
+    return this;
+  }
+
+  /**
+   * Get mobileAppCount
+   * @return mobileAppCount
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_MOBILE_APP_COUNT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getMobileAppCount() {
+    return mobileAppCount;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MOBILE_APP_COUNT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMobileAppCount(@Nullable Long mobileAppCount) {
+    this.mobileAppCount = mobileAppCount;
+  }
+
+
   /**
    * Return true if this SubscriptionItems object is equal to o.
    */
@@ -534,12 +563,13 @@ public class SubscriptionItems {
         Objects.equals(this.edgeEnabled, subscriptionItems.edgeEnabled) &&
         Objects.equals(this.extraEdgeCount, subscriptionItems.extraEdgeCount) &&
         Objects.equals(this.trendzEnabled, subscriptionItems.trendzEnabled) &&
-        Objects.equals(this.whiteLabelingAddonEnabled, subscriptionItems.whiteLabelingAddonEnabled);
+        Objects.equals(this.whiteLabelingAddonEnabled, subscriptionItems.whiteLabelingAddonEnabled) &&
+        Objects.equals(this.mobileAppCount, subscriptionItems.mobileAppCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(extraDevicePackCount, extraCustomerPackCount, extraIntegrationPackCount, extraCalculatedFieldCount, extraAgentPackCount, trafficPackCount, computePackCount, storagePackCount, alarmPackCount, emailPackCount, smsPackCount, aiCreditsPackCount, edgeEnabled, extraEdgeCount, trendzEnabled, whiteLabelingAddonEnabled);
+    return Objects.hash(extraDevicePackCount, extraCustomerPackCount, extraIntegrationPackCount, extraCalculatedFieldCount, extraAgentPackCount, trafficPackCount, computePackCount, storagePackCount, alarmPackCount, emailPackCount, smsPackCount, aiCreditsPackCount, edgeEnabled, extraEdgeCount, trendzEnabled, whiteLabelingAddonEnabled, mobileAppCount);
   }
 
   @Override
@@ -562,6 +592,7 @@ public class SubscriptionItems {
     sb.append("    extraEdgeCount: ").append(toIndentedString(extraEdgeCount)).append("\n");
     sb.append("    trendzEnabled: ").append(toIndentedString(trendzEnabled)).append("\n");
     sb.append("    whiteLabelingAddonEnabled: ").append(toIndentedString(whiteLabelingAddonEnabled)).append("\n");
+    sb.append("    mobileAppCount: ").append(toIndentedString(mobileAppCount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -687,6 +718,11 @@ public class SubscriptionItems {
     // add `whiteLabelingAddonEnabled` to the URL query string
     if (getWhiteLabelingAddonEnabled() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%swhiteLabelingAddonEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getWhiteLabelingAddonEnabled()))));
+    }
+
+    // add `mobileAppCount` to the URL query string
+    if (getMobileAppCount() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smobileAppCount%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMobileAppCount()))));
     }
 
     return joiner.toString();

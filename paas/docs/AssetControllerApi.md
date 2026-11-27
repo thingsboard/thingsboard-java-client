@@ -15,13 +15,13 @@ PageDataAssetInfo getAllAssetInfos(@Nonnull Integer pageSize, @Nonnull Integer p
 Asset getAssetById(@Nonnull String assetId) // Get Asset (getAssetById)
 AssetInfo getAssetInfoById(@Nonnull String assetId) // Get Asset Info (getAssetInfoById)
 List<EntitySubtype> getAssetTypes() // Get Asset Types (getAssetTypes)
-PageDataAsset getAssetsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get assets by Entity Group Id (getAssetsByEntityGroupId)
+PageDataAsset getAssetsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get assets by Entity Group Id (getAssetsByEntityGroupId)
 List<Asset> getAssetsByIds(@Nonnull List<String> assetIds) // Get Assets By Ids (getAssetsByIds)
 PageDataAssetInfo getCustomerAssetInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Asset Infos (getCustomerAssetInfos)
 PageDataAsset getCustomerAssets(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Assets (getCustomerAssets)
 Asset getTenantAssetByName(@Nonnull String assetName) // Get Tenant Asset (getTenantAssetByName)
 PageDataAsset getTenantAssets(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Assets (getTenantAssets)
-PageDataAsset getUserAssets(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Assets (getUserAssets)
+PageDataAsset getUserAssets(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Assets (getUserAssets)
 BulkImportResultAsset processAssetBulkImport(@Nonnull BulkImportRequest bulkImportRequest) // Import the bulk of assets (processAssetsBulkImport)
 Asset saveAsset(@Nonnull Asset asset, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy) // Create Or Update Asset (saveAsset)
 ```
@@ -173,7 +173,7 @@ Deprecated. See 'getAssetProfileNames' API from Asset Profile Controller instead
 ## getAssetsByEntityGroupId
 
 ```
-PageDataAsset getAssetsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataAsset getAssetsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/entityGroup/{entityGroupId}/assets`
@@ -188,8 +188,8 @@ Returns a page of asset objects that belongs to specified Entity Group Id. You c
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the asset name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -340,7 +340,7 @@ Returns a page of assets owned by tenant. You can specify parameters to filter t
 ## getUserAssets
 
 ```
-PageDataAsset getUserAssets(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataAsset getUserAssets(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/user/assets`
@@ -354,8 +354,8 @@ Returns a page of assets objects available for the current user. You can specify
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **type** | **String** | Asset type | [optional] |
 | **assetProfileId** | **String** | A string value representing the asset profile id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the asset name. | [optional] |

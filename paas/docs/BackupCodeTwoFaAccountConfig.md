@@ -9,7 +9,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **codes** | **Set\<String\>** |  | |
+| **codes** | **Set\<String\>** |  | [optional] |
 | **codesLeft** | **Integer** |  | [optional] |
 
 

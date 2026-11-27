@@ -29,10 +29,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -46,13 +42,14 @@ import org.thingsboard.client.ApiClient;
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RefreshTokenRequest {
   public static final String JSON_PROPERTY_REFRESH_TOKEN = "refreshToken";
-  private JsonNullable<Object> refreshToken = JsonNullable.<Object>of(null);
+  @Nullable
+  private String refreshToken;
 
   public RefreshTokenRequest() { 
   }
 
-  public RefreshTokenRequest refreshToken(@Nullable Object refreshToken) {
-    this.refreshToken = JsonNullable.<Object>of(refreshToken);
+  public RefreshTokenRequest refreshToken(@Nullable String refreshToken) {
+    this.refreshToken = refreshToken;
     return this;
   }
 
@@ -61,25 +58,17 @@ public class RefreshTokenRequest {
    * @return refreshToken
    */
   @Nullable
-  @JsonIgnore
-  public Object getRefreshToken() {
-        return refreshToken.orElse(null);
+  @JsonProperty(value = JSON_PROPERTY_REFRESH_TOKEN, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getRefreshToken() {
+    return refreshToken;
   }
+
 
   @JsonProperty(value = JSON_PROPERTY_REFRESH_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public JsonNullable<Object> getRefreshToken_JsonNullable() {
-    return refreshToken;
-  }
-  
-  @JsonProperty(JSON_PROPERTY_REFRESH_TOKEN)
-  public void setRefreshToken_JsonNullable(JsonNullable<Object> refreshToken) {
+  public void setRefreshToken(@Nullable String refreshToken) {
     this.refreshToken = refreshToken;
-  }
-
-  public void setRefreshToken(@Nullable Object refreshToken) {
-    this.refreshToken = JsonNullable.<Object>of(refreshToken);
   }
 
 
@@ -95,23 +84,12 @@ public class RefreshTokenRequest {
       return false;
     }
     RefreshTokenRequest refreshTokenRequest = (RefreshTokenRequest) o;
-    return equalsNullable(this.refreshToken, refreshTokenRequest.refreshToken);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    return Objects.equals(this.refreshToken, refreshTokenRequest.refreshToken);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(refreshToken));
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(refreshToken);
   }
 
   @Override

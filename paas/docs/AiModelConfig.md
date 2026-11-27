@@ -9,7 +9,7 @@ Root configuration for AI models
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **provider** | **String** |  | |
+| **provider** | **AiProvider** | AI Provider | |
 
 
 
@@ -141,6 +141,9 @@ Root configuration for AI models
 | modelType | AiModelType |  | [optional] [readonly] |
 
 ## Referenced Types
+
+#### AiProvider (enum)
+`OPENAI` | `AZURE_OPENAI` | `GOOGLE_AI_GEMINI` | `GOOGLE_VERTEX_AI_GEMINI` | `MISTRAL_AI` | `ANTHROPIC` | `AMAZON_BEDROCK` | `GITHUB_MODELS` | `OLLAMA`
 
 #### AmazonBedrockProviderConfig
 | Name | Type | Description | Notes |

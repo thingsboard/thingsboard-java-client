@@ -16,6 +16,7 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -30,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.thingsboard.client.model.AiModelType;
+import org.thingsboard.client.model.AiProvider;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -38,7 +40,8 @@ import org.thingsboard.client.ApiClient;
  * AiChatModelConfig
  */
 @JsonPropertyOrder({
-  AiChatModelConfig.JSON_PROPERTY_MODEL_TYPE
+  AiChatModelConfig.JSON_PROPERTY_MODEL_TYPE,
+  AiChatModelConfig.JSON_PROPERTY_PROVIDER
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AiChatModelConfig {
@@ -46,12 +49,19 @@ public class AiChatModelConfig {
   @Nullable
   private AiModelType modelType;
 
+  public static final String JSON_PROPERTY_PROVIDER = "provider";
+  @Nonnull
+  private AiProvider provider;
+
   public AiChatModelConfig() { 
   }
 
-  public AiChatModelConfig modelType(@Nullable AiModelType modelType) {
+  @JsonCreator
+  public AiChatModelConfig(
+    @JsonProperty(JSON_PROPERTY_MODEL_TYPE) AiModelType modelType
+  ) {
+  this();
     this.modelType = modelType;
-    return this;
   }
 
   /**
@@ -66,10 +76,29 @@ public class AiChatModelConfig {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_MODEL_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setModelType(@Nullable AiModelType modelType) {
-    this.modelType = modelType;
+
+
+  public AiChatModelConfig provider(@Nonnull AiProvider provider) {
+    this.provider = provider;
+    return this;
+  }
+
+  /**
+   * AI Provider
+   * @return provider
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_PROVIDER, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public AiProvider getProvider() {
+    return provider;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PROVIDER, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setProvider(@Nonnull AiProvider provider) {
+    this.provider = provider;
   }
 
 
@@ -85,12 +114,13 @@ public class AiChatModelConfig {
       return false;
     }
     AiChatModelConfig aiChatModelConfig = (AiChatModelConfig) o;
-    return Objects.equals(this.modelType, aiChatModelConfig.modelType);
+    return Objects.equals(this.modelType, aiChatModelConfig.modelType) &&
+        Objects.equals(this.provider, aiChatModelConfig.provider);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelType);
+    return Objects.hash(modelType, provider);
   }
 
   @Override
@@ -98,6 +128,7 @@ public class AiChatModelConfig {
     StringBuilder sb = new StringBuilder();
     sb.append("class AiChatModelConfig {\n");
     sb.append("    modelType: ").append(toIndentedString(modelType)).append("\n");
+    sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -148,6 +179,11 @@ public class AiChatModelConfig {
     // add `modelType` to the URL query string
     if (getModelType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%smodelType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getModelType()))));
+    }
+
+    // add `provider` to the URL query string
+    if (getProvider() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sprovider%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getProvider()))));
     }
 
     return joiner.toString();

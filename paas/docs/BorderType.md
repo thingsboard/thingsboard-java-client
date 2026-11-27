@@ -12,6 +12,8 @@
 
 * `DOTTED` (value: `"dotted"`)
 
+* `DOUBLE` (value: `"double"`)
+
 
 
 ---

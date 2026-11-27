@@ -33,9 +33,8 @@
 #### AliasEntityId
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| aliasEntityType | AliasEntityType |  | [optional] |
-| entityType | EntityType |  |  |
-| id | UUID | ID of the entity, time-based UUID v1 |  |
+| entityType | String | Entity type: an EntityType value, or an AliasEntityType value resolved for the current user |  |
+| id | UUID | ID of the entity, time-based UUID v1. Required for an entity type; for CURRENT_CUSTOMER, the customer used when the current user does not belong to one | [optional] |
 
 #### EntityType (enum)
 `TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (59 values total)
@@ -49,9 +48,6 @@
 | relationType | String | Type of the relation between root entity and other entity (e.g. 'Contains' or 'Manages'). | [optional] |
 | entityTypes | List<EntityType> | Array of entity types to filter the related entities (e.g. 'DEVICE', 'ASSET'). | [optional] |
 | negate | Boolean | Negate relation type between root entity and other entity. | [optional] |
-
-#### AliasEntityType (enum)
-`CURRENT_CUSTOMER` | `CURRENT_TENANT` | `CURRENT_USER` | `CURRENT_USER_OWNER`
 
 ---
 

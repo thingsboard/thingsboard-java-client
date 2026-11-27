@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
+import org.thingsboard.client.model.AiProvider;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -64,31 +65,31 @@ import org.thingsboard.client.ApiClient;
 public class AiModelConfig {
   public static final String JSON_PROPERTY_PROVIDER = "provider";
   @Nonnull
-  private String provider;
+  private AiProvider provider;
 
   public AiModelConfig() { 
   }
 
-  public AiModelConfig provider(@Nonnull String provider) {
+  public AiModelConfig provider(@Nonnull AiProvider provider) {
     this.provider = provider;
     return this;
   }
 
   /**
-   * Get provider
+   * AI Provider
    * @return provider
    */
   @Nonnull
   @JsonProperty(value = JSON_PROPERTY_PROVIDER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public String getProvider() {
+  public AiProvider getProvider() {
     return provider;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_PROVIDER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProvider(@Nonnull String provider) {
+  public void setProvider(@Nonnull AiProvider provider) {
     this.provider = provider;
   }
 

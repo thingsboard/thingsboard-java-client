@@ -17,6 +17,7 @@ void sendAccountActivatedEmail(@Nonnull Object body) // sendAccountActivatedEmai
 void sendBillingActivationEmail(@Nonnull Object body) // sendBillingActivationEmail
 void sendPasswordWasResetEmail(@Nonnull Object body) // sendPasswordWasResetEmail
 void sendResetPasswordEmail(@Nonnull Object body) // sendResetPasswordEmail
+void sendSubscriptionRenewalReminderEmail(@Nonnull SubscriptionRenewalReminder subscriptionRenewalReminder) // sendSubscriptionRenewalReminderEmail
 Boolean tenantHasBillingRead() // tenantHasBillingRead
 Boolean tenantHasBillingWrite() // tenantHasBillingWrite
 Boolean tenantHasHiddenPlansAccess() // tenantHasHiddenPlansAccess
@@ -193,6 +194,28 @@ sendResetPasswordEmail
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **body** | **Object** |  | |
+
+### Return type
+
+null (empty response body)
+
+
+## sendSubscriptionRenewalReminderEmail
+
+```
+void sendSubscriptionRenewalReminderEmail(@Nonnull SubscriptionRenewalReminder subscriptionRenewalReminder)
+```
+
+**POST** `/api/billingEndpoint/sendSubscriptionRenewalReminder`
+
+sendSubscriptionRenewalReminderEmail
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **subscriptionRenewalReminder** | **SubscriptionRenewalReminder** |  | |
 
 ### Return type
 

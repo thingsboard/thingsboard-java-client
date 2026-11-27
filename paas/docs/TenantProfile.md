@@ -56,6 +56,7 @@ A JSON value representing the tenant profile.
 | whiteLabelingEnabled | Boolean |  | [optional] |
 | trendzEnabled | Boolean |  | [optional] |
 | edgeEnabled | Boolean |  | [optional] |
+| maxMobileApps | Long | Number of white-labeled mobile apps the tenant's subscription includes support for | [optional] |
 | transportTenantMsgRateLimit | String |  | [optional] |
 | transportTenantTelemetryMsgRateLimit | String |  | [optional] |
 | transportTenantTelemetryDataPointsRateLimit | String |  | [optional] |
@@ -83,7 +84,7 @@ A JSON value representing the tenant profile.
 | maxDPStorageDays | Long |  | [optional] |
 | maxRuleNodeExecutionsPerMessage | Integer |  | [optional] |
 | maxDebugModeDurationMinutes | Integer |  | [optional] |
-| maxEmails | Long |  | [optional] |
+| maxEmails | Long | Maximum number of emails per billing period sent via the system mail server. 0 means unlimited, -1 disables email sending. | [optional] |
 | smsEnabled | Boolean |  | [optional] |
 | maxSms | Long |  | [optional] |
 | maxCreatedAlarms | Long |  | [optional] |

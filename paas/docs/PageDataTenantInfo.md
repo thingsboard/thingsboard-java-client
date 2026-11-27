@@ -68,6 +68,7 @@
 | maxAgents | Long |  | [optional] |
 | trendzEnabled | Boolean |  | [optional] |
 | whiteLabelingEnabled | Boolean |  | [optional] |
+| maxMobileApps | Long |  | [optional] |
 | _default | Boolean |  | [optional] |
 
 #### EntityType (enum)

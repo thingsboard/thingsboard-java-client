@@ -69,7 +69,7 @@ public class GroupPermission {
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_USER_GROUP_ID = "userGroupId";
-  @Nonnull
+  @Nullable
   private EntityGroupId userGroupId;
 
   public static final String JSON_PROPERTY_ROLE_ID = "roleId";
@@ -165,7 +165,7 @@ public class GroupPermission {
 
 
 
-  public GroupPermission userGroupId(@Nonnull EntityGroupId userGroupId) {
+  public GroupPermission userGroupId(@Nullable EntityGroupId userGroupId) {
     this.userGroupId = userGroupId;
     return this;
   }
@@ -174,17 +174,17 @@ public class GroupPermission {
    * JSON object with the User Group Id. Represents the user group that will have permissions to perform operations against the corresponding entity group.
    * @return userGroupId
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_USER_GROUP_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_USER_GROUP_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityGroupId getUserGroupId() {
     return userGroupId;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_USER_GROUP_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserGroupId(@Nonnull EntityGroupId userGroupId) {
+  @JsonProperty(value = JSON_PROPERTY_USER_GROUP_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserGroupId(@Nullable EntityGroupId userGroupId) {
     this.userGroupId = userGroupId;
   }
 

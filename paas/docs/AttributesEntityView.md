@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **cs** | **List\<String\>** | List of client-side attribute keys to expose | |
-| **ss** | **List\<String\>** | List of server-side attribute keys to expose | |
-| **sh** | **List\<String\>** | List of shared attribute keys to expose | |
+| **cs** | **List\<String\>** | List of client-side attribute keys to expose | [optional] |
+| **ss** | **List\<String\>** | List of server-side attribute keys to expose | [optional] |
+| **sh** | **List\<String\>** | List of shared attribute keys to expose | [optional] |
 
 
 

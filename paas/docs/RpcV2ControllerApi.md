@@ -11,7 +11,7 @@
 ```
 void deleteRpc(@Nonnull String rpcId) // Delete persistent RPC
 Rpc getPersistedRpc(@Nonnull String rpcId) // Get persistent RPC request
-String getPersistedRpcByDevice(@Nonnull String deviceId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String rpcStatus, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get persistent RPC requests
+PageDataRpc getPersistedRpcByDevice(@Nonnull String deviceId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String rpcStatus, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get persistent RPC requests
 String handleOneWayDeviceRPCRequestV2(@Nonnull String deviceId, @Nonnull String body) // Send one-way RPC request (handleOneWayDeviceRPCRequestV2)
 String handleTwoWayDeviceRPCRequestV2(@Nonnull String deviceId, @Nonnull String body) // Send two-way RPC request (handleTwoWayDeviceRPCRequestV2)
 ```
@@ -68,7 +68,7 @@ Get information about the status of the RPC call.  Available for users with 'TEN
 ## getPersistedRpcByDevice
 
 ```
-String getPersistedRpcByDevice(@Nonnull String deviceId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String rpcStatus, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataRpc getPersistedRpcByDevice(@Nonnull String deviceId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String rpcStatus, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/rpc/persistent/device/{deviceId}`
@@ -92,7 +92,7 @@ Allows to query RPC calls for specific device using pagination.  Available for u
 
 ### Return type
 
-**String**
+**PageDataRpc**
 
 
 ## handleOneWayDeviceRPCRequestV2

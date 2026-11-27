@@ -60,6 +60,7 @@
 | extraEdgeCount | Long |  | [optional] |
 | trendzEnabled | Boolean |  | [optional] |
 | whiteLabelingAddonEnabled | Boolean |  | [optional] |
+| mobileAppCount | Long |  | [optional] |
 
 #### Discount
 | Name | Type | Description | Notes |

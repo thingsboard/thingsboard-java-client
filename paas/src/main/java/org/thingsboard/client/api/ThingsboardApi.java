@@ -85,6 +85,7 @@ import org.thingsboard.client.model.CaptchaClientParams;
 import org.thingsboard.client.model.CfReprocessingValidationResult;
 import org.thingsboard.client.model.ChangePasswordRequest;
 import org.thingsboard.client.model.ClaimRequest;
+import org.thingsboard.client.model.ClaimResult;
 import org.thingsboard.client.model.CloudDomainInfo;
 import org.thingsboard.client.model.ComponentDescriptor;
 import org.thingsboard.client.model.Converter;
@@ -185,6 +186,7 @@ import org.thingsboard.client.model.PageDataAgentInfo;
 import org.thingsboard.client.model.PageDataAgentProfile;
 import org.thingsboard.client.model.PageDataAgentProfileInfo;
 import org.thingsboard.client.model.PageDataAiModel;
+import org.thingsboard.client.model.PageDataAiModelInfo;
 import org.thingsboard.client.model.PageDataAlarmCommentInfo;
 import org.thingsboard.client.model.PageDataAlarmData;
 import org.thingsboard.client.model.PageDataAlarmInfo;
@@ -239,6 +241,7 @@ import org.thingsboard.client.model.PageDataReport;
 import org.thingsboard.client.model.PageDataReportInfo;
 import org.thingsboard.client.model.PageDataReportTemplateInfo;
 import org.thingsboard.client.model.PageDataRole;
+import org.thingsboard.client.model.PageDataRpc;
 import org.thingsboard.client.model.PageDataRuleChain;
 import org.thingsboard.client.model.PageDataScheduledReportInfo;
 import org.thingsboard.client.model.PageDataSchedulerEventInfo;
@@ -299,6 +302,7 @@ import org.thingsboard.client.model.SignUpResult;
 import org.thingsboard.client.model.SignUpSelfRegistrationParams;
 import org.thingsboard.client.model.SlackConversation;
 import org.thingsboard.client.model.SlackConversationType;
+import org.thingsboard.client.model.SolutionChatMessage;
 import org.thingsboard.client.model.SolutionData;
 import org.thingsboard.client.model.SolutionExportRequest;
 import org.thingsboard.client.model.SolutionExportResponse;
@@ -306,8 +310,11 @@ import org.thingsboard.client.model.SolutionImportResult;
 import org.thingsboard.client.model.SolutionStep;
 import org.thingsboard.client.model.SolutionValidationResult;
 import org.thingsboard.client.model.SubscriptionDetails;
+import org.thingsboard.client.model.SubscriptionRenewalReminder;
 import org.thingsboard.client.model.SubscriptionUsage;
 import org.thingsboard.client.model.SystemInfo;
+import org.thingsboard.client.model.SystemVersionInfo;
+import org.thingsboard.client.model.TbChatPrompt;
 import org.thingsboard.client.model.TbChatRequest;
 import org.thingsboard.client.model.TbChatResponse;
 import org.thingsboard.client.model.TbImageDeleteResult;
@@ -1635,6 +1642,236 @@ public class ThingsboardApi {
   }
 
   /**
+   * Activate edge instance (activateInstance)
+   * Activates edge license (V1/V2) on license portal.
+   * @param apiRequest {@link ActivateInstanceV2Args}
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public com.fasterxml.jackson.databind.JsonNode activateInstanceV2(ActivateInstanceV2Args apiRequest) throws ApiException {
+    @Nonnull
+    String licenseSecret = apiRequest.licenseSecret();
+    @Nonnull
+    String releaseDate = apiRequest.releaseDate();
+    @Nonnull
+    String clusterId = apiRequest.clusterId();
+    @Nullable
+    String protocolVersion = apiRequest.protocolVersion();
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = activateInstanceV2WithHttpInfo(licenseSecret, releaseDate, clusterId, protocolVersion, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Activate edge instance (activateInstance)
+   * Activates edge license (V1/V2) on license portal.
+   * @param apiRequest {@link ActivateInstanceV2Args}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> activateInstanceV2WithHttpInfo(ActivateInstanceV2Args apiRequest, Map<String, String> headers) throws ApiException {
+    String licenseSecret = apiRequest.licenseSecret();
+    String releaseDate = apiRequest.releaseDate();
+    String clusterId = apiRequest.clusterId();
+    String protocolVersion = apiRequest.protocolVersion();
+    return activateInstanceV2WithHttpInfo(licenseSecret, releaseDate, clusterId, protocolVersion, headers);
+  }
+
+  /**
+   * Activate edge instance (activateInstance)
+   * Activates edge license (V1/V2) on license portal.
+   * @param licenseSecret  (required)
+   * @param releaseDate  (required)
+   * @param clusterId  (required)
+   * @param protocolVersion  (optional)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #activateInstanceV2(ActivateInstanceV2Args)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public com.fasterxml.jackson.databind.JsonNode activateInstanceV2(@Nonnull String licenseSecret, @Nonnull String releaseDate, @Nonnull String clusterId, @Nullable String protocolVersion) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = activateInstanceV2WithHttpInfo(licenseSecret, releaseDate, clusterId, protocolVersion, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Activate edge instance (activateInstance)
+   * Activates edge license (V1/V2) on license portal.
+   * @param licenseSecret  (required)
+   * @param releaseDate  (required)
+   * @param clusterId  (required)
+   * @param protocolVersion  (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #activateInstanceV2(ActivateInstanceV2Args)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> activateInstanceV2WithHttpInfo(@Nonnull String licenseSecret, @Nonnull String releaseDate, @Nonnull String clusterId, @Nullable String protocolVersion, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = activateInstanceV2RequestBuilder(licenseSecret, releaseDate, clusterId, protocolVersion, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("activateInstanceV2", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder activateInstanceV2RequestBuilder(@Nonnull String licenseSecret, @Nonnull String releaseDate, @Nonnull String clusterId, @Nullable String protocolVersion, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'licenseSecret' is set
+    if (licenseSecret == null) {
+      throw new ApiException(400, "Missing the required parameter 'licenseSecret' when calling activateInstanceV2");
+    }
+    // verify the required parameter 'releaseDate' is set
+    if (releaseDate == null) {
+      throw new ApiException(400, "Missing the required parameter 'releaseDate' when calling activateInstanceV2");
+    }
+    // verify the required parameter 'clusterId' is set
+    if (clusterId == null) {
+      throw new ApiException(400, "Missing the required parameter 'clusterId' when calling activateInstanceV2");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/v2/license/activateInstance";
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "licenseSecret";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("licenseSecret", licenseSecret));
+    localVarQueryParameterBaseName = "releaseDate";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("releaseDate", releaseDate));
+    localVarQueryParameterBaseName = "clusterId";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("clusterId", clusterId));
+    localVarQueryParameterBaseName = "protocolVersion";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("protocolVersion", protocolVersion));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  public static final class ActivateInstanceV2Args {
+    @Nonnull
+    private String licenseSecret; //  (required)
+    @Nonnull
+    private String releaseDate; //  (required)
+    @Nonnull
+    private String clusterId; //  (required)
+    @Nullable
+    private String protocolVersion; //  (optional)
+    private ActivateInstanceV2Args(Builder builder) {
+      this.licenseSecret = builder.licenseSecret;
+      this.releaseDate = builder.releaseDate;
+      this.clusterId = builder.clusterId;
+      this.protocolVersion = builder.protocolVersion;
+    }
+    @Nonnull
+    public String licenseSecret() {
+      return licenseSecret;
+    }
+    @Nonnull
+    public String releaseDate() {
+      return releaseDate;
+    }
+    @Nonnull
+    public String clusterId() {
+      return clusterId;
+    }
+    @Nullable
+    public String protocolVersion() {
+      return protocolVersion;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+    public static class Builder {
+      private String licenseSecret;
+      private String releaseDate;
+      private String clusterId;
+      private String protocolVersion;
+      public Builder licenseSecret(@Nonnull String licenseSecret) {
+        this.licenseSecret = licenseSecret;
+        return this;
+      }
+      public Builder releaseDate(@Nonnull String releaseDate) {
+        this.releaseDate = releaseDate;
+        return this;
+      }
+      public Builder clusterId(@Nonnull String clusterId) {
+        this.clusterId = clusterId;
+        return this;
+      }
+      public Builder protocolVersion(@Nullable String protocolVersion) {
+        this.protocolVersion = protocolVersion;
+        return this;
+      }
+      public ActivateInstanceV2Args build() {
+        if (this.licenseSecret == null) {
+          throw new IllegalArgumentException("Required parameter 'licenseSecret' is not set for activateInstanceV2");
+        }
+        if (this.releaseDate == null) {
+          throw new IllegalArgumentException("Required parameter 'releaseDate' is not set for activateInstanceV2");
+        }
+        if (this.clusterId == null) {
+          throw new IllegalArgumentException("Required parameter 'clusterId' is not set for activateInstanceV2");
+        }
+        return new ActivateInstanceV2Args(this);
+      }
+    }
+  }
+
+  /**
    * Activate User
    * Checks the activation token and updates corresponding user password in the database. Now the user may start using his password to login. The response already contains the [JWT](https://jwt.io) activation and refresh tokens, to simplify the user activation flow and avoid asking user to input password again after activation. If token is valid, returns the object that contains [JWT](https://jwt.io/) access and refresh tokens. If token is not valid, returns &#39;400 Bad Request&#39;.
    * @param apiRequest {@link ActivateUserArgs}
@@ -2187,16 +2424,16 @@ public class ThingsboardApi {
    * Assign/Reassign Alarm (assignAlarm)
    * Assign the Alarm. Once assigned, the &#39;assign_ts&#39; field will be set to current timestamp and special rule chain event &#39;ALARM_ASSIGNED&#39; (or ALARM_REASSIGNED in case of assigning already assigned alarm) will be generated. Referencing non-existing Alarm Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param apiRequest {@link AssignAlarmArgs}
-   * @return Alarm
+   * @return AlarmInfo
    * @throws ApiException if fails to make API call
    */
   @SuppressWarnings({"deprecation", "removal"})
-  public Alarm assignAlarm(AssignAlarmArgs apiRequest) throws ApiException {
+  public AlarmInfo assignAlarm(AssignAlarmArgs apiRequest) throws ApiException {
     @Nonnull
     String alarmId = apiRequest.alarmId();
     @Nonnull
     String assigneeId = apiRequest.assigneeId();
-    ApiResponse<Alarm> localVarResponse = assignAlarmWithHttpInfo(alarmId, assigneeId, null);
+    ApiResponse<AlarmInfo> localVarResponse = assignAlarmWithHttpInfo(alarmId, assigneeId, null);
     return localVarResponse.getData();
   }
 
@@ -2205,11 +2442,11 @@ public class ThingsboardApi {
    * Assign the Alarm. Once assigned, the &#39;assign_ts&#39; field will be set to current timestamp and special rule chain event &#39;ALARM_ASSIGNED&#39; (or ALARM_REASSIGNED in case of assigning already assigned alarm) will be generated. Referencing non-existing Alarm Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param apiRequest {@link AssignAlarmArgs}
    * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;Alarm&gt;
+   * @return ApiResponse&lt;AlarmInfo&gt;
    * @throws ApiException if fails to make API call
    */
   @SuppressWarnings({"deprecation", "removal"})
-  public ApiResponse<Alarm> assignAlarmWithHttpInfo(AssignAlarmArgs apiRequest, Map<String, String> headers) throws ApiException {
+  public ApiResponse<AlarmInfo> assignAlarmWithHttpInfo(AssignAlarmArgs apiRequest, Map<String, String> headers) throws ApiException {
     String alarmId = apiRequest.alarmId();
     String assigneeId = apiRequest.assigneeId();
     return assignAlarmWithHttpInfo(alarmId, assigneeId, headers);
@@ -2220,7 +2457,7 @@ public class ThingsboardApi {
    * Assign the Alarm. Once assigned, the &#39;assign_ts&#39; field will be set to current timestamp and special rule chain event &#39;ALARM_ASSIGNED&#39; (or ALARM_REASSIGNED in case of assigning already assigned alarm) will be generated. Referencing non-existing Alarm Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param alarmId A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param assigneeId A string value representing the user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @return Alarm
+   * @return AlarmInfo
    * @throws ApiException if fails to make API call
    * @deprecated Use {@link #assignAlarm(AssignAlarmArgs)} instead.
    *     This overload passes each parameter positionally, so its signature changes whenever a
@@ -2229,8 +2466,8 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public Alarm assignAlarm(@Nonnull String alarmId, @Nonnull String assigneeId) throws ApiException {
-    ApiResponse<Alarm> localVarResponse = assignAlarmWithHttpInfo(alarmId, assigneeId, null);
+  public AlarmInfo assignAlarm(@Nonnull String alarmId, @Nonnull String assigneeId) throws ApiException {
+    ApiResponse<AlarmInfo> localVarResponse = assignAlarmWithHttpInfo(alarmId, assigneeId, null);
     return localVarResponse.getData();
   }
 
@@ -2240,7 +2477,7 @@ public class ThingsboardApi {
    * @param alarmId A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param assigneeId A string value representing the user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;Alarm&gt;
+   * @return ApiResponse&lt;AlarmInfo&gt;
    * @throws ApiException if fails to make API call
    * @deprecated Use {@link #assignAlarm(AssignAlarmArgs)} instead.
    *     This overload passes each parameter positionally, so its signature changes whenever a
@@ -2249,7 +2486,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<Alarm> assignAlarmWithHttpInfo(@Nonnull String alarmId, @Nonnull String assigneeId, Map<String, String> headers) throws ApiException {
+  public ApiResponse<AlarmInfo> assignAlarmWithHttpInfo(@Nonnull String alarmId, @Nonnull String assigneeId, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = assignAlarmRequestBuilder(alarmId, assigneeId, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -2265,11 +2502,11 @@ public class ThingsboardApi {
         }
         localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
         if (localVarResponseBody == null) {
-          return new ApiResponse<Alarm>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+          return new ApiResponse<AlarmInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
         }
         String responseBody = new String(localVarResponseBody.readAllBytes());
-        Alarm responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<Alarm>() {});
-        return new ApiResponse<Alarm>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+        AlarmInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AlarmInfo>() {});
+        return new ApiResponse<AlarmInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
       } finally {
         if (localVarResponseBody != null) {
           localVarResponseBody.close();
@@ -5166,7 +5403,9 @@ public class ThingsboardApi {
    * @param apiRequest {@link ChatArgs}
    * @return com.fasterxml.jackson.databind.JsonNode
    * @throws ApiException if fails to make API call
+   * @deprecated
    */
+  @Deprecated
   @SuppressWarnings({"deprecation", "removal"})
   public com.fasterxml.jackson.databind.JsonNode chat(ChatArgs apiRequest) throws ApiException {
     @Nonnull
@@ -5186,7 +5425,9 @@ public class ThingsboardApi {
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
    * @throws ApiException if fails to make API call
+   * @deprecated
    */
+  @Deprecated
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<com.fasterxml.jackson.databind.JsonNode> chatWithHttpInfo(ChatArgs apiRequest, Map<String, String> headers) throws ApiException {
     UUID solutionId = apiRequest.solutionId();
@@ -5662,6 +5903,157 @@ public class ThingsboardApi {
           throw new IllegalArgumentException("Required parameter 'body' is not set for checkInstance");
         }
         return new CheckInstanceArgs(this);
+      }
+    }
+  }
+
+  /**
+   * Check edge license (checkInstance)
+   * Checks license request (V1/V2) from edge service by forwarding request to license portal.
+   * @param apiRequest {@link CheckInstanceV2Args}
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public com.fasterxml.jackson.databind.JsonNode checkInstanceV2(CheckInstanceV2Args apiRequest) throws ApiException {
+    @Nullable
+    Object body = apiRequest.body();
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = checkInstanceV2WithHttpInfo(body, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Check edge license (checkInstance)
+   * Checks license request (V1/V2) from edge service by forwarding request to license portal.
+   * @param apiRequest {@link CheckInstanceV2Args}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> checkInstanceV2WithHttpInfo(CheckInstanceV2Args apiRequest, Map<String, String> headers) throws ApiException {
+    Object body = apiRequest.body();
+    return checkInstanceV2WithHttpInfo(body, headers);
+  }
+
+  /**
+   * Check edge license (checkInstance)
+   * Checks license request (V1/V2) from edge service by forwarding request to license portal.
+   * @param body  (required)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #checkInstanceV2(CheckInstanceV2Args)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public com.fasterxml.jackson.databind.JsonNode checkInstanceV2(@Nullable Object body) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = checkInstanceV2WithHttpInfo(body, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Check edge license (checkInstance)
+   * Checks license request (V1/V2) from edge service by forwarding request to license portal.
+   * @param body  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #checkInstanceV2(CheckInstanceV2Args)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> checkInstanceV2WithHttpInfo(@Nullable Object body, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = checkInstanceV2RequestBuilder(body, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("checkInstanceV2", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder checkInstanceV2RequestBuilder(@Nullable Object body, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling checkInstanceV2");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/v2/license/checkInstance";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(body);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  public static final class CheckInstanceV2Args {
+    @Nullable
+    private Object body; //  (required)
+    private CheckInstanceV2Args(Builder builder) {
+      this.body = builder.body;
+    }
+    @Nullable
+    public Object body() {
+      return body;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+    public static class Builder {
+      private Object body;
+      public Builder body(@Nullable Object body) {
+        this.body = body;
+        return this;
+      }
+      public CheckInstanceV2Args build() {
+        if (this.body == null) {
+          throw new IllegalArgumentException("Required parameter 'body' is not set for checkInstanceV2");
+        }
+        return new CheckInstanceV2Args(this);
       }
     }
   }
@@ -6585,18 +6977,18 @@ public class ThingsboardApi {
    * Claim device (claimDevice)
    * Claiming makes it possible to assign a device to the specific customer using device/server side claiming data (in the form of secret key).To make this happen you have to provide unique device name and optional claiming data (it is needed only for device-side claiming).Once device is claimed, the customer becomes its owner and customer users may access device data as well as control the device.  In order to enable claiming devices feature a system parameter security.claim.allowClaimingByDefault should be set to true, otherwise a server-side claimingAllowed attribute with the value true is obligatory for provisioned devices.  See official documentation for more details regarding claiming.  Available for users with &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;CLAIM_DEVICES&#39; permission for the entity (entities).
    * @param apiRequest {@link ClaimDeviceArgs}
-   * @return String
+   * @return ClaimResult
    * @throws ApiException if fails to make API call
    */
   @SuppressWarnings({"deprecation", "removal"})
-  public String claimDevice(ClaimDeviceArgs apiRequest) throws ApiException {
+  public ClaimResult claimDevice(ClaimDeviceArgs apiRequest) throws ApiException {
     @Nonnull
     String deviceName = apiRequest.deviceName();
     @Nullable
     String subCustomerId = apiRequest.subCustomerId();
     @Nullable
     ClaimRequest claimRequest = apiRequest.claimRequest();
-    ApiResponse<String> localVarResponse = claimDeviceWithHttpInfo(deviceName, subCustomerId, claimRequest, null);
+    ApiResponse<ClaimResult> localVarResponse = claimDeviceWithHttpInfo(deviceName, subCustomerId, claimRequest, null);
     return localVarResponse.getData();
   }
 
@@ -6605,11 +6997,11 @@ public class ThingsboardApi {
    * Claiming makes it possible to assign a device to the specific customer using device/server side claiming data (in the form of secret key).To make this happen you have to provide unique device name and optional claiming data (it is needed only for device-side claiming).Once device is claimed, the customer becomes its owner and customer users may access device data as well as control the device.  In order to enable claiming devices feature a system parameter security.claim.allowClaimingByDefault should be set to true, otherwise a server-side claimingAllowed attribute with the value true is obligatory for provisioned devices.  See official documentation for more details regarding claiming.  Available for users with &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;CLAIM_DEVICES&#39; permission for the entity (entities).
    * @param apiRequest {@link ClaimDeviceArgs}
    * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;String&gt;
+   * @return ApiResponse&lt;ClaimResult&gt;
    * @throws ApiException if fails to make API call
    */
   @SuppressWarnings({"deprecation", "removal"})
-  public ApiResponse<String> claimDeviceWithHttpInfo(ClaimDeviceArgs apiRequest, Map<String, String> headers) throws ApiException {
+  public ApiResponse<ClaimResult> claimDeviceWithHttpInfo(ClaimDeviceArgs apiRequest, Map<String, String> headers) throws ApiException {
     String deviceName = apiRequest.deviceName();
     String subCustomerId = apiRequest.subCustomerId();
     ClaimRequest claimRequest = apiRequest.claimRequest();
@@ -6622,7 +7014,7 @@ public class ThingsboardApi {
    * @param deviceName Unique name of the device which is going to be claimed (required)
    * @param subCustomerId  (optional)
    * @param claimRequest  (optional)
-   * @return String
+   * @return ClaimResult
    * @throws ApiException if fails to make API call
    * @deprecated Use {@link #claimDevice(ClaimDeviceArgs)} instead.
    *     This overload passes each parameter positionally, so its signature changes whenever a
@@ -6631,8 +7023,8 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public String claimDevice(@Nonnull String deviceName, @Nullable String subCustomerId, @Nullable ClaimRequest claimRequest) throws ApiException {
-    ApiResponse<String> localVarResponse = claimDeviceWithHttpInfo(deviceName, subCustomerId, claimRequest, null);
+  public ClaimResult claimDevice(@Nonnull String deviceName, @Nullable String subCustomerId, @Nullable ClaimRequest claimRequest) throws ApiException {
+    ApiResponse<ClaimResult> localVarResponse = claimDeviceWithHttpInfo(deviceName, subCustomerId, claimRequest, null);
     return localVarResponse.getData();
   }
 
@@ -6643,7 +7035,7 @@ public class ThingsboardApi {
    * @param subCustomerId  (optional)
    * @param claimRequest  (optional)
    * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;String&gt;
+   * @return ApiResponse&lt;ClaimResult&gt;
    * @throws ApiException if fails to make API call
    * @deprecated Use {@link #claimDevice(ClaimDeviceArgs)} instead.
    *     This overload passes each parameter positionally, so its signature changes whenever a
@@ -6652,7 +7044,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<String> claimDeviceWithHttpInfo(@Nonnull String deviceName, @Nullable String subCustomerId, @Nullable ClaimRequest claimRequest, Map<String, String> headers) throws ApiException {
+  public ApiResponse<ClaimResult> claimDeviceWithHttpInfo(@Nonnull String deviceName, @Nullable String subCustomerId, @Nullable ClaimRequest claimRequest, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = claimDeviceRequestBuilder(deviceName, subCustomerId, claimRequest, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -6668,11 +7060,11 @@ public class ThingsboardApi {
         }
         localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
         if (localVarResponseBody == null) {
-          return new ApiResponse<String>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+          return new ApiResponse<ClaimResult>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
         }
         String responseBody = new String(localVarResponseBody.readAllBytes());
-        String responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<String>() {});
-        return new ApiResponse<String>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+        ClaimResult responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<ClaimResult>() {});
+        return new ApiResponse<ClaimResult>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
       } finally {
         if (localVarResponseBody != null) {
           localVarResponseBody.close();
@@ -9994,6 +10386,146 @@ public class ThingsboardApi {
           throw new IllegalArgumentException("Required parameter 'modelUuid' is not set for deleteAiModelById");
         }
         return new DeleteAiModelByIdArgs(this);
+      }
+    }
+  }
+
+  /**
+   * deleteAiResource
+   * 
+   * @param apiRequest {@link DeleteAiResourceArgs}
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public void deleteAiResource(DeleteAiResourceArgs apiRequest) throws ApiException {
+    @Nonnull
+    UUID resourceId = apiRequest.resourceId();
+    deleteAiResourceWithHttpInfo(resourceId, null);
+  }
+
+  /**
+   * deleteAiResource
+   * 
+   * @param apiRequest {@link DeleteAiResourceArgs}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public ApiResponse<Void> deleteAiResourceWithHttpInfo(DeleteAiResourceArgs apiRequest, Map<String, String> headers) throws ApiException {
+    UUID resourceId = apiRequest.resourceId();
+    return deleteAiResourceWithHttpInfo(resourceId, headers);
+  }
+
+  /**
+   * deleteAiResource
+   * 
+   * @param resourceId  (required)
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #deleteAiResource(DeleteAiResourceArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public void deleteAiResource(@Nonnull UUID resourceId) throws ApiException {
+    deleteAiResourceWithHttpInfo(resourceId, null);
+  }
+
+  /**
+   * deleteAiResource
+   * 
+   * @param resourceId  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #deleteAiResource(DeleteAiResourceArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<Void> deleteAiResourceWithHttpInfo(@Nonnull UUID resourceId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteAiResourceRequestBuilder(resourceId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteAiResource", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteAiResourceRequestBuilder(@Nonnull UUID resourceId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'resourceId' is set
+    if (resourceId == null) {
+      throw new ApiException(400, "Missing the required parameter 'resourceId' when calling deleteAiResource");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/resources/{resourceId}"
+        .replace("{resourceId}", ApiClient.urlEncode(resourceId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  public static final class DeleteAiResourceArgs {
+    @Nonnull
+    private UUID resourceId; //  (required)
+    private DeleteAiResourceArgs(Builder builder) {
+      this.resourceId = builder.resourceId;
+    }
+    @Nonnull
+    public UUID resourceId() {
+      return resourceId;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+    public static class Builder {
+      private UUID resourceId;
+      public Builder resourceId(@Nonnull UUID resourceId) {
+        this.resourceId = resourceId;
+        return this;
+      }
+      public DeleteAiResourceArgs build() {
+        if (this.resourceId == null) {
+          throw new IllegalArgumentException("Required parameter 'resourceId' is not set for deleteAiResource");
+        }
+        return new DeleteAiResourceArgs(this);
       }
     }
   }
@@ -19819,6 +20351,152 @@ public class ThingsboardApi {
   }
 
   /**
+   * downloadAiResource
+   * 
+   * @param apiRequest {@link DownloadAiResourceArgs}
+   * @return byte[]
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public byte[] downloadAiResource(DownloadAiResourceArgs apiRequest) throws ApiException {
+    @Nonnull
+    UUID resourceId = apiRequest.resourceId();
+    ApiResponse<byte[]> localVarResponse = downloadAiResourceWithHttpInfo(resourceId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * downloadAiResource
+   * 
+   * @param apiRequest {@link DownloadAiResourceArgs}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;byte[]&gt;
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public ApiResponse<byte[]> downloadAiResourceWithHttpInfo(DownloadAiResourceArgs apiRequest, Map<String, String> headers) throws ApiException {
+    UUID resourceId = apiRequest.resourceId();
+    return downloadAiResourceWithHttpInfo(resourceId, headers);
+  }
+
+  /**
+   * downloadAiResource
+   * 
+   * @param resourceId  (required)
+   * @return byte[]
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #downloadAiResource(DownloadAiResourceArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public byte[] downloadAiResource(@Nonnull UUID resourceId) throws ApiException {
+    ApiResponse<byte[]> localVarResponse = downloadAiResourceWithHttpInfo(resourceId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * downloadAiResource
+   * 
+   * @param resourceId  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;byte[]&gt;
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #downloadAiResource(DownloadAiResourceArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<byte[]> downloadAiResourceWithHttpInfo(@Nonnull UUID resourceId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = downloadAiResourceRequestBuilder(resourceId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("downloadAiResource", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<byte[]>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        byte[] responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<byte[]>() {});
+        return new ApiResponse<byte[]>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder downloadAiResourceRequestBuilder(@Nonnull UUID resourceId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'resourceId' is set
+    if (resourceId == null) {
+      throw new ApiException(400, "Missing the required parameter 'resourceId' when calling downloadAiResource");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/resources/{resourceId}"
+        .replace("{resourceId}", ApiClient.urlEncode(resourceId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  public static final class DownloadAiResourceArgs {
+    @Nonnull
+    private UUID resourceId; //  (required)
+    private DownloadAiResourceArgs(Builder builder) {
+      this.resourceId = builder.resourceId;
+    }
+    @Nonnull
+    public UUID resourceId() {
+      return resourceId;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+    public static class Builder {
+      private UUID resourceId;
+      public Builder resourceId(@Nonnull UUID resourceId) {
+        this.resourceId = resourceId;
+        return this;
+      }
+      public DownloadAiResourceArgs build() {
+        if (this.resourceId == null) {
+          throw new IllegalArgumentException("Required parameter 'resourceId' is not set for downloadAiResource");
+        }
+        return new DownloadAiResourceArgs(this);
+      }
+    }
+  }
+
+  /**
    * Download Blob Entity By Id (downloadBlobEntity)
    * Download report file based on the provided Blob entity Id. Referencing non-existing Blob entity Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param apiRequest {@link DownloadBlobEntityArgs}
@@ -23955,14 +24633,14 @@ public class ThingsboardApi {
    * Export integration as IoT Hub package
    * Returns a ZIP containing integration.json, uplink.json, optional downlink.json, and form.json. Sensitive fields are tokenized via @TemplateField annotations on the integration&#39;s runtime POJO.
    * @param apiRequest {@link ExportIntegrationPackageArgs}
-   * @return byte[]
+   * @return File
    * @throws ApiException if fails to make API call
    */
   @SuppressWarnings({"deprecation", "removal"})
-  public byte[] exportIntegrationPackage(ExportIntegrationPackageArgs apiRequest) throws ApiException {
+  public File exportIntegrationPackage(ExportIntegrationPackageArgs apiRequest) throws ApiException {
     @Nonnull
     String integrationId = apiRequest.integrationId();
-    ApiResponse<byte[]> localVarResponse = exportIntegrationPackageWithHttpInfo(integrationId, null);
+    ApiResponse<File> localVarResponse = exportIntegrationPackageWithHttpInfo(integrationId, null);
     return localVarResponse.getData();
   }
 
@@ -23971,11 +24649,11 @@ public class ThingsboardApi {
    * Returns a ZIP containing integration.json, uplink.json, optional downlink.json, and form.json. Sensitive fields are tokenized via @TemplateField annotations on the integration&#39;s runtime POJO.
    * @param apiRequest {@link ExportIntegrationPackageArgs}
    * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;byte[]&gt;
+   * @return ApiResponse&lt;File&gt;
    * @throws ApiException if fails to make API call
    */
   @SuppressWarnings({"deprecation", "removal"})
-  public ApiResponse<byte[]> exportIntegrationPackageWithHttpInfo(ExportIntegrationPackageArgs apiRequest, Map<String, String> headers) throws ApiException {
+  public ApiResponse<File> exportIntegrationPackageWithHttpInfo(ExportIntegrationPackageArgs apiRequest, Map<String, String> headers) throws ApiException {
     String integrationId = apiRequest.integrationId();
     return exportIntegrationPackageWithHttpInfo(integrationId, headers);
   }
@@ -23984,7 +24662,7 @@ public class ThingsboardApi {
    * Export integration as IoT Hub package
    * Returns a ZIP containing integration.json, uplink.json, optional downlink.json, and form.json. Sensitive fields are tokenized via @TemplateField annotations on the integration&#39;s runtime POJO.
    * @param integrationId  (required)
-   * @return byte[]
+   * @return File
    * @throws ApiException if fails to make API call
    * @deprecated Use {@link #exportIntegrationPackage(ExportIntegrationPackageArgs)} instead.
    *     This overload passes each parameter positionally, so its signature changes whenever a
@@ -23993,8 +24671,8 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public byte[] exportIntegrationPackage(@Nonnull String integrationId) throws ApiException {
-    ApiResponse<byte[]> localVarResponse = exportIntegrationPackageWithHttpInfo(integrationId, null);
+  public File exportIntegrationPackage(@Nonnull String integrationId) throws ApiException {
+    ApiResponse<File> localVarResponse = exportIntegrationPackageWithHttpInfo(integrationId, null);
     return localVarResponse.getData();
   }
 
@@ -24003,7 +24681,7 @@ public class ThingsboardApi {
    * Returns a ZIP containing integration.json, uplink.json, optional downlink.json, and form.json. Sensitive fields are tokenized via @TemplateField annotations on the integration&#39;s runtime POJO.
    * @param integrationId  (required)
    * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;byte[]&gt;
+   * @return ApiResponse&lt;File&gt;
    * @throws ApiException if fails to make API call
    * @deprecated Use {@link #exportIntegrationPackage(ExportIntegrationPackageArgs)} instead.
    *     This overload passes each parameter positionally, so its signature changes whenever a
@@ -24012,7 +24690,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<byte[]> exportIntegrationPackageWithHttpInfo(@Nonnull String integrationId, Map<String, String> headers) throws ApiException {
+  public ApiResponse<File> exportIntegrationPackageWithHttpInfo(@Nonnull String integrationId, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = exportIntegrationPackageRequestBuilder(integrationId, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -24028,11 +24706,10 @@ public class ThingsboardApi {
         }
         localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
         if (localVarResponseBody == null) {
-          return new ApiResponse<byte[]>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+          return new ApiResponse<File>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
         }
-        String responseBody = new String(localVarResponseBody.readAllBytes());
-        byte[] responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<byte[]>() {});
-        return new ApiResponse<byte[]>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+        File responseValue = downloadFileFromResponse(localVarResponse, localVarResponseBody);
+        return new ApiResponse<File>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
       } finally {
         if (localVarResponseBody != null) {
           localVarResponseBody.close();
@@ -24056,7 +24733,7 @@ public class ThingsboardApi {
     String localVarPath = "/api/integration/{integrationId}/export-package"
         .replace("{integrationId}", ApiClient.urlEncode(integrationId.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Accept", "application/zip, application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
@@ -29240,7 +29917,7 @@ public class ThingsboardApi {
    * Get the Administration Settings object using key (getAdminSettings)
    * Get the Administration Settings object using specified string key. Referencing non-existing key will cause an error.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.  Security check is performed to verify that the user has &#39;READ&#39; permission for the &#39;ADMIN_SETTINGS&#39; (for &#39;SYS_ADMIN&#39; authority) or &#39;WHITE_LABELING&#39; (for &#39;TENANT_ADMIN&#39; authority) resource.
    * @param key A string value of the key (e.g. &#39;general&#39; or &#39;mail&#39;). (required)
-   * @param systemByDefault Use system settings if settings are not defined on tenant level. (optional, default to false)
+   * @param systemByDefault Deprecated, not used. (optional, default to false)
    * @return AdminSettings
    * @throws ApiException if fails to make API call
    * @deprecated Use {@link #getAdminSettings(GetAdminSettingsArgs)} instead.
@@ -29259,7 +29936,7 @@ public class ThingsboardApi {
    * Get the Administration Settings object using key (getAdminSettings)
    * Get the Administration Settings object using specified string key. Referencing non-existing key will cause an error.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.  Security check is performed to verify that the user has &#39;READ&#39; permission for the &#39;ADMIN_SETTINGS&#39; (for &#39;SYS_ADMIN&#39; authority) or &#39;WHITE_LABELING&#39; (for &#39;TENANT_ADMIN&#39; authority) resource.
    * @param key A string value of the key (e.g. &#39;general&#39; or &#39;mail&#39;). (required)
-   * @param systemByDefault Use system settings if settings are not defined on tenant level. (optional, default to false)
+   * @param systemByDefault Deprecated, not used. (optional, default to false)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;AdminSettings&gt;
    * @throws ApiException if fails to make API call
@@ -29345,7 +30022,7 @@ public class ThingsboardApi {
     @Nonnull
     private String key; // A string value of the key (e.g. &#39;general&#39; or &#39;mail&#39;). (required)
     @Nullable
-    private Boolean systemByDefault; // Use system settings if settings are not defined on tenant level. (optional, default to false)
+    private Boolean systemByDefault; // Deprecated, not used. (optional, default to false)
     private GetAdminSettingsArgs(Builder builder) {
       this.key = builder.key;
       this.systemByDefault = builder.systemByDefault;
@@ -34950,6 +35627,248 @@ public class ThingsboardApi {
   }
 
   /**
+   * Get AI model infos (getAiModelInfos)
+   * Returns a page of AI model infos: AI models with the provider credentials removed, so &#39;configuration.providerConfig&#39; is always null. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param apiRequest {@link GetAiModelInfosArgs}
+   * @return PageDataAiModelInfo
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public PageDataAiModelInfo getAiModelInfos(GetAiModelInfosArgs apiRequest) throws ApiException {
+    @Nonnull
+    Integer pageSize = apiRequest.pageSize();
+    @Nonnull
+    Integer page = apiRequest.page();
+    @Nullable
+    String textSearch = apiRequest.textSearch();
+    @Nullable
+    String sortProperty = apiRequest.sortProperty();
+    @Nullable
+    String sortOrder = apiRequest.sortOrder();
+    ApiResponse<PageDataAiModelInfo> localVarResponse = getAiModelInfosWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get AI model infos (getAiModelInfos)
+   * Returns a page of AI model infos: AI models with the provider credentials removed, so &#39;configuration.providerConfig&#39; is always null. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param apiRequest {@link GetAiModelInfosArgs}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAiModelInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public ApiResponse<PageDataAiModelInfo> getAiModelInfosWithHttpInfo(GetAiModelInfosArgs apiRequest, Map<String, String> headers) throws ApiException {
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
+    String textSearch = apiRequest.textSearch();
+    String sortProperty = apiRequest.sortProperty();
+    String sortOrder = apiRequest.sortOrder();
+    return getAiModelInfosWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, headers);
+  }
+
+  /**
+   * Get AI model infos (getAiModelInfos)
+   * Returns a page of AI model infos: AI models with the provider credentials removed, so &#39;configuration.providerConfig&#39; is always null. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch The case insensitive &#39;substring&#39; filter based on the AI model name, provider and model ID. (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataAiModelInfo
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #getAiModelInfos(GetAiModelInfosArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataAiModelInfo getAiModelInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataAiModelInfo> localVarResponse = getAiModelInfosWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get AI model infos (getAiModelInfos)
+   * Returns a page of AI model infos: AI models with the provider credentials removed, so &#39;configuration.providerConfig&#39; is always null. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch The case insensitive &#39;substring&#39; filter based on the AI model name, provider and model ID. (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAiModelInfo&gt;
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #getAiModelInfos(GetAiModelInfosArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataAiModelInfo> getAiModelInfosWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAiModelInfosRequestBuilder(pageSize, page, textSearch, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAiModelInfos", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAiModelInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAiModelInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAiModelInfo>() {});
+        return new ApiResponse<PageDataAiModelInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAiModelInfosRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getAiModelInfos");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getAiModelInfos");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/model/infos";
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  public static final class GetAiModelInfosArgs {
+    @Nonnull
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
+    @Nonnull
+    private Integer page; // Sequence number of page starting from 0 (required)
+    @Nullable
+    private String textSearch; // The case insensitive &#39;substring&#39; filter based on the AI model name, provider and model ID. (optional)
+    @Nullable
+    private String sortProperty; // Property of entity to sort by (optional)
+    @Nullable
+    private String sortOrder; // Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+    private GetAiModelInfosArgs(Builder builder) {
+      this.pageSize = builder.pageSize;
+      this.page = builder.page;
+      this.textSearch = builder.textSearch;
+      this.sortProperty = builder.sortProperty;
+      this.sortOrder = builder.sortOrder;
+    }
+    @Nonnull
+    public Integer pageSize() {
+      return pageSize;
+    }
+    @Nonnull
+    public Integer page() {
+      return page;
+    }
+    @Nullable
+    public String textSearch() {
+      return textSearch;
+    }
+    @Nullable
+    public String sortProperty() {
+      return sortProperty;
+    }
+    @Nullable
+    public String sortOrder() {
+      return sortOrder;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+    public static class Builder {
+      private Integer pageSize;
+      private Integer page;
+      private String textSearch;
+      private String sortProperty;
+      private String sortOrder;
+      public Builder pageSize(@Nonnull Integer pageSize) {
+        this.pageSize = pageSize;
+        return this;
+      }
+      public Builder page(@Nonnull Integer page) {
+        this.page = page;
+        return this;
+      }
+      public Builder textSearch(@Nullable String textSearch) {
+        this.textSearch = textSearch;
+        return this;
+      }
+      public Builder sortProperty(@Nullable String sortProperty) {
+        this.sortProperty = sortProperty;
+        return this;
+      }
+      public Builder sortOrder(@Nullable String sortOrder) {
+        this.sortOrder = sortOrder;
+        return this;
+      }
+      public GetAiModelInfosArgs build() {
+        if (this.pageSize == null) {
+          throw new IllegalArgumentException("Required parameter 'pageSize' is not set for getAiModelInfos");
+        }
+        if (this.page == null) {
+          throw new IllegalArgumentException("Required parameter 'page' is not set for getAiModelInfos");
+        }
+        return new GetAiModelInfosArgs(this);
+      }
+    }
+  }
+
+  /**
    * Get AI models (getAiModels)
    * Returns a page of AI models. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @param apiRequest {@link GetAiModelsArgs}
@@ -35189,6 +36108,76 @@ public class ThingsboardApi {
         return new GetAiModelsArgs(this);
       }
     }
+  }
+
+  /**
+   * getAiResourcesConfig
+   * 
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  public com.fasterxml.jackson.databind.JsonNode getAiResourcesConfig() throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = getAiResourcesConfigWithHttpInfo(null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * getAiResourcesConfig
+   * 
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> getAiResourcesConfigWithHttpInfo(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAiResourcesConfigRequestBuilder(headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAiResourcesConfig", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAiResourcesConfigRequestBuilder(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/resources/config";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
   }
 
   /**
@@ -43654,9 +44643,9 @@ public class ThingsboardApi {
     @Nonnull
     String entityGroupId = apiRequest.entityGroupId();
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String textSearch = apiRequest.textSearch();
     @Nullable
@@ -43678,8 +44667,8 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataAsset> getAssetsByEntityGroupIdWithHttpInfo(GetAssetsByEntityGroupIdArgs apiRequest, Map<String, String> headers) throws ApiException {
     String entityGroupId = apiRequest.entityGroupId();
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
     String sortOrder = apiRequest.sortOrder();
@@ -43704,9 +44693,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataAsset getAssetsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataAsset getAssetsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataAsset> localVarResponse = getAssetsByEntityGroupIdWithHttpInfo(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get assets by Entity Group Id (getAssetsByEntityGroupId)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getAssetsByEntityGroupId(GetAssetsByEntityGroupIdArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataAsset getAssetsByEntityGroupId(String entityGroupId, String pageSize, String page, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getAssetsByEntityGroupId(entityGroupId, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get assets by Entity Group Id (getAssetsByEntityGroupId)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getAssetsByEntityGroupIdWithHttpInfo(GetAssetsByEntityGroupIdArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataAsset> getAssetsByEntityGroupIdWithHttpInfo(String entityGroupId, String pageSize, String page, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getAssetsByEntityGroupIdWithHttpInfo(entityGroupId, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -43728,7 +44737,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataAsset> getAssetsByEntityGroupIdWithHttpInfo(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataAsset> getAssetsByEntityGroupIdWithHttpInfo(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getAssetsByEntityGroupIdRequestBuilder(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -43763,7 +44772,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getAssetsByEntityGroupIdRequestBuilder(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getAssetsByEntityGroupIdRequestBuilder(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'entityGroupId' is set
     if (entityGroupId == null) {
       throw new ApiException(400, "Missing the required parameter 'entityGroupId' when calling getAssetsByEntityGroupId");
@@ -43819,9 +44828,9 @@ public class ThingsboardApi {
     @Nonnull
     private String entityGroupId; // A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String textSearch; // The case insensitive &#39;substring&#39; filter based on the asset name. (optional)
     @Nullable
@@ -43841,11 +44850,11 @@ public class ThingsboardApi {
       return entityGroupId;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -43865,8 +44874,8 @@ public class ThingsboardApi {
     }
     public static class Builder {
       private String entityGroupId;
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
@@ -43874,13 +44883,29 @@ public class ThingsboardApi {
         this.entityGroupId = entityGroupId;
         return this;
       }
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder textSearch(@Nullable String textSearch) {
         this.textSearch = textSearch;
@@ -50225,9 +51250,9 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public PageDataConverter getConverters(GetConvertersArgs apiRequest) throws ApiException {
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     Boolean isEdgeTemplate = apiRequest.isEdgeTemplate();
     @Nullable
@@ -50252,8 +51277,8 @@ public class ThingsboardApi {
    */
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataConverter> getConvertersWithHttpInfo(GetConvertersArgs apiRequest, Map<String, String> headers) throws ApiException {
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     Boolean isEdgeTemplate = apiRequest.isEdgeTemplate();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
@@ -50281,9 +51306,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataConverter getConverters(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable IntegrationType integrationType) throws ApiException {
+  public PageDataConverter getConverters(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable IntegrationType integrationType) throws ApiException {
     ApiResponse<PageDataConverter> localVarResponse = getConvertersWithHttpInfo(pageSize, page, isEdgeTemplate, textSearch, sortProperty, sortOrder, integrationType, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Converters (getConverters)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getConverters(GetConvertersArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataConverter getConverters(String pageSize, String page, Boolean isEdgeTemplate, String textSearch, String sortProperty, String sortOrder, IntegrationType integrationType) throws ApiException {
+    return getConverters(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), isEdgeTemplate, textSearch, sortProperty, sortOrder, integrationType);
+  }
+
+  /**
+   * Get Converters (getConverters)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getConvertersWithHttpInfo(GetConvertersArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataConverter> getConvertersWithHttpInfo(String pageSize, String page, Boolean isEdgeTemplate, String textSearch, String sortProperty, String sortOrder, IntegrationType integrationType, Map<String, String> headers) throws ApiException {
+    return getConvertersWithHttpInfo(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), isEdgeTemplate, textSearch, sortProperty, sortOrder, integrationType, headers);
   }
 
   /**
@@ -50306,7 +51351,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataConverter> getConvertersWithHttpInfo(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable IntegrationType integrationType, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataConverter> getConvertersWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable IntegrationType integrationType, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getConvertersRequestBuilder(pageSize, page, isEdgeTemplate, textSearch, sortProperty, sortOrder, integrationType, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -50341,7 +51386,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getConvertersRequestBuilder(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable IntegrationType integrationType, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getConvertersRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable IntegrationType integrationType, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'pageSize' is set
     if (pageSize == null) {
       throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getConverters");
@@ -50394,9 +51439,9 @@ public class ThingsboardApi {
 
   public static final class GetConvertersArgs {
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private Boolean isEdgeTemplate; // Fetch edge template converters (optional, default to false)
     @Nullable
@@ -50417,11 +51462,11 @@ public class ThingsboardApi {
       this.integrationType = builder.integrationType;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -50448,20 +51493,36 @@ public class ThingsboardApi {
       return new Builder();
     }
     public static class Builder {
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private Boolean isEdgeTemplate;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
       private IntegrationType integrationType;
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder isEdgeTemplate(@Nullable Boolean isEdgeTemplate) {
         this.isEdgeTemplate = isEdgeTemplate;
@@ -56767,9 +57828,9 @@ public class ThingsboardApi {
     @Nonnull
     String entityGroupId = apiRequest.entityGroupId();
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String textSearch = apiRequest.textSearch();
     @Nullable
@@ -56791,8 +57852,8 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataCustomer> getCustomersByEntityGroupIdWithHttpInfo(GetCustomersByEntityGroupIdArgs apiRequest, Map<String, String> headers) throws ApiException {
     String entityGroupId = apiRequest.entityGroupId();
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
     String sortOrder = apiRequest.sortOrder();
@@ -56817,9 +57878,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataCustomer getCustomersByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataCustomer getCustomersByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataCustomer> localVarResponse = getCustomersByEntityGroupIdWithHttpInfo(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get customers by Entity Group Id (getCustomersByEntityGroupId)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getCustomersByEntityGroupId(GetCustomersByEntityGroupIdArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataCustomer getCustomersByEntityGroupId(String entityGroupId, String pageSize, String page, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getCustomersByEntityGroupId(entityGroupId, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get customers by Entity Group Id (getCustomersByEntityGroupId)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getCustomersByEntityGroupIdWithHttpInfo(GetCustomersByEntityGroupIdArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataCustomer> getCustomersByEntityGroupIdWithHttpInfo(String entityGroupId, String pageSize, String page, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getCustomersByEntityGroupIdWithHttpInfo(entityGroupId, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -56841,7 +57922,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataCustomer> getCustomersByEntityGroupIdWithHttpInfo(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataCustomer> getCustomersByEntityGroupIdWithHttpInfo(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getCustomersByEntityGroupIdRequestBuilder(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -56876,7 +57957,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getCustomersByEntityGroupIdRequestBuilder(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getCustomersByEntityGroupIdRequestBuilder(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'entityGroupId' is set
     if (entityGroupId == null) {
       throw new ApiException(400, "Missing the required parameter 'entityGroupId' when calling getCustomersByEntityGroupId");
@@ -56932,9 +58013,9 @@ public class ThingsboardApi {
     @Nonnull
     private String entityGroupId; // A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String textSearch; // The case insensitive &#39;substring&#39; filter based on the customer title. (optional)
     @Nullable
@@ -56954,11 +58035,11 @@ public class ThingsboardApi {
       return entityGroupId;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -56978,8 +58059,8 @@ public class ThingsboardApi {
     }
     public static class Builder {
       private String entityGroupId;
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
@@ -56987,13 +58068,29 @@ public class ThingsboardApi {
         this.entityGroupId = entityGroupId;
         return this;
       }
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder textSearch(@Nullable String textSearch) {
         this.textSearch = textSearch;
@@ -60189,9 +61286,9 @@ public class ThingsboardApi {
     @Nonnull
     String entityGroupId = apiRequest.entityGroupId();
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String textSearch = apiRequest.textSearch();
     @Nullable
@@ -60213,8 +61310,8 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataDevice> getDevicesByEntityGroupIdWithHttpInfo(GetDevicesByEntityGroupIdArgs apiRequest, Map<String, String> headers) throws ApiException {
     String entityGroupId = apiRequest.entityGroupId();
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
     String sortOrder = apiRequest.sortOrder();
@@ -60239,9 +61336,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataDevice getDevicesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataDevice getDevicesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataDevice> localVarResponse = getDevicesByEntityGroupIdWithHttpInfo(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get devices by Entity Group Id (getDevicesByEntityGroupId)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getDevicesByEntityGroupId(GetDevicesByEntityGroupIdArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataDevice getDevicesByEntityGroupId(String entityGroupId, String pageSize, String page, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getDevicesByEntityGroupId(entityGroupId, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get devices by Entity Group Id (getDevicesByEntityGroupId)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getDevicesByEntityGroupIdWithHttpInfo(GetDevicesByEntityGroupIdArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataDevice> getDevicesByEntityGroupIdWithHttpInfo(String entityGroupId, String pageSize, String page, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getDevicesByEntityGroupIdWithHttpInfo(entityGroupId, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -60263,7 +61380,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataDevice> getDevicesByEntityGroupIdWithHttpInfo(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataDevice> getDevicesByEntityGroupIdWithHttpInfo(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getDevicesByEntityGroupIdRequestBuilder(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -60298,7 +61415,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getDevicesByEntityGroupIdRequestBuilder(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getDevicesByEntityGroupIdRequestBuilder(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'entityGroupId' is set
     if (entityGroupId == null) {
       throw new ApiException(400, "Missing the required parameter 'entityGroupId' when calling getDevicesByEntityGroupId");
@@ -60354,9 +61471,9 @@ public class ThingsboardApi {
     @Nonnull
     private String entityGroupId; // A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String textSearch; // The case insensitive &#39;substring&#39; filter based on the device name. (optional)
     @Nullable
@@ -60376,11 +61493,11 @@ public class ThingsboardApi {
       return entityGroupId;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -60400,8 +61517,8 @@ public class ThingsboardApi {
     }
     public static class Builder {
       private String entityGroupId;
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
@@ -60409,13 +61526,29 @@ public class ThingsboardApi {
         this.entityGroupId = entityGroupId;
         return this;
       }
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder textSearch(@Nullable String textSearch) {
         this.textSearch = textSearch;
@@ -61760,9 +62893,9 @@ public class ThingsboardApi {
     @Nonnull
     String groupType = apiRequest.groupType();
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String textSearch = apiRequest.textSearch();
     @Nullable
@@ -61785,8 +62918,8 @@ public class ThingsboardApi {
   public ApiResponse<PageDataEntityGroupInfo> getEdgeEntityGroupsWithHttpInfo(GetEdgeEntityGroupsArgs apiRequest, Map<String, String> headers) throws ApiException {
     String edgeId = apiRequest.edgeId();
     String groupType = apiRequest.groupType();
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
     String sortOrder = apiRequest.sortOrder();
@@ -61812,9 +62945,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataEntityGroupInfo getEdgeEntityGroups(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataEntityGroupInfo getEdgeEntityGroups(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataEntityGroupInfo> localVarResponse = getEdgeEntityGroupsWithHttpInfo(edgeId, groupType, pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Edge Entity Groups by entity type (getEdgeEntityGroups)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEdgeEntityGroups(GetEdgeEntityGroupsArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataEntityGroupInfo getEdgeEntityGroups(String edgeId, String groupType, String pageSize, String page, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getEdgeEntityGroups(edgeId, groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Edge Entity Groups by entity type (getEdgeEntityGroups)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEdgeEntityGroupsWithHttpInfo(GetEdgeEntityGroupsArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataEntityGroupInfo> getEdgeEntityGroupsWithHttpInfo(String edgeId, String groupType, String pageSize, String page, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getEdgeEntityGroupsWithHttpInfo(edgeId, groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -61837,7 +62990,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataEntityGroupInfo> getEdgeEntityGroupsWithHttpInfo(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataEntityGroupInfo> getEdgeEntityGroupsWithHttpInfo(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getEdgeEntityGroupsRequestBuilder(edgeId, groupType, pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -61872,7 +63025,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getEdgeEntityGroupsRequestBuilder(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getEdgeEntityGroupsRequestBuilder(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'edgeId' is set
     if (edgeId == null) {
       throw new ApiException(400, "Missing the required parameter 'edgeId' when calling getEdgeEntityGroups");
@@ -61935,9 +63088,9 @@ public class ThingsboardApi {
     @Nonnull
     private String groupType; // EntityGroup type (required)
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String textSearch; // The case insensitive &#39;startsWith&#39; filter based on the entity group name. (optional)
     @Nullable
@@ -61962,11 +63115,11 @@ public class ThingsboardApi {
       return groupType;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -61987,8 +63140,8 @@ public class ThingsboardApi {
     public static class Builder {
       private String edgeId;
       private String groupType;
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
@@ -62000,13 +63153,29 @@ public class ThingsboardApi {
         this.groupType = groupType;
         return this;
       }
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder textSearch(@Nullable String textSearch) {
         this.textSearch = textSearch;
@@ -63632,9 +64801,9 @@ public class ThingsboardApi {
     @Nonnull
     String edgeId = apiRequest.edgeId();
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String textSearch = apiRequest.textSearch();
     @Nullable
@@ -63656,8 +64825,8 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataSchedulerEventInfo> getEdgeSchedulerEventsWithHttpInfo(GetEdgeSchedulerEventsArgs apiRequest, Map<String, String> headers) throws ApiException {
     String edgeId = apiRequest.edgeId();
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
     String sortOrder = apiRequest.sortOrder();
@@ -63682,9 +64851,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataSchedulerEventInfo getEdgeSchedulerEvents(@Nonnull String edgeId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataSchedulerEventInfo getEdgeSchedulerEvents(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataSchedulerEventInfo> localVarResponse = getEdgeSchedulerEventsWithHttpInfo(edgeId, pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Edge Scheduler Events (getEdgeSchedulerEvents)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEdgeSchedulerEvents(GetEdgeSchedulerEventsArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataSchedulerEventInfo getEdgeSchedulerEvents(String edgeId, String pageSize, String page, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getEdgeSchedulerEvents(edgeId, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Edge Scheduler Events (getEdgeSchedulerEvents)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEdgeSchedulerEventsWithHttpInfo(GetEdgeSchedulerEventsArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataSchedulerEventInfo> getEdgeSchedulerEventsWithHttpInfo(String edgeId, String pageSize, String page, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getEdgeSchedulerEventsWithHttpInfo(edgeId, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -63706,7 +64895,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataSchedulerEventInfo> getEdgeSchedulerEventsWithHttpInfo(@Nonnull String edgeId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataSchedulerEventInfo> getEdgeSchedulerEventsWithHttpInfo(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getEdgeSchedulerEventsRequestBuilder(edgeId, pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -63741,7 +64930,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getEdgeSchedulerEventsRequestBuilder(@Nonnull String edgeId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getEdgeSchedulerEventsRequestBuilder(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'edgeId' is set
     if (edgeId == null) {
       throw new ApiException(400, "Missing the required parameter 'edgeId' when calling getEdgeSchedulerEvents");
@@ -63797,9 +64986,9 @@ public class ThingsboardApi {
     @Nonnull
     private String edgeId; // A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String textSearch; // The case insensitive &#39;startsWith&#39; filter based on the scheduler event name. (optional)
     @Nullable
@@ -63819,11 +65008,11 @@ public class ThingsboardApi {
       return edgeId;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -63843,8 +65032,8 @@ public class ThingsboardApi {
     }
     public static class Builder {
       private String edgeId;
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
@@ -63852,13 +65041,29 @@ public class ThingsboardApi {
         this.edgeId = edgeId;
         return this;
       }
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder textSearch(@Nullable String textSearch) {
         this.textSearch = textSearch;
@@ -64382,9 +65587,9 @@ public class ThingsboardApi {
     @Nonnull
     String entityGroupId = apiRequest.entityGroupId();
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String textSearch = apiRequest.textSearch();
     @Nullable
@@ -64406,8 +65611,8 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataEdge> getEdgesByEntityGroupIdWithHttpInfo(GetEdgesByEntityGroupIdArgs apiRequest, Map<String, String> headers) throws ApiException {
     String entityGroupId = apiRequest.entityGroupId();
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
     String sortOrder = apiRequest.sortOrder();
@@ -64432,9 +65637,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataEdge getEdgesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataEdge getEdgesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataEdge> localVarResponse = getEdgesByEntityGroupIdWithHttpInfo(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get edges by Entity Group Id (getEdgesByEntityGroupId)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEdgesByEntityGroupId(GetEdgesByEntityGroupIdArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataEdge getEdgesByEntityGroupId(String entityGroupId, String pageSize, String page, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getEdgesByEntityGroupId(entityGroupId, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get edges by Entity Group Id (getEdgesByEntityGroupId)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEdgesByEntityGroupIdWithHttpInfo(GetEdgesByEntityGroupIdArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataEdge> getEdgesByEntityGroupIdWithHttpInfo(String entityGroupId, String pageSize, String page, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getEdgesByEntityGroupIdWithHttpInfo(entityGroupId, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -64456,7 +65681,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataEdge> getEdgesByEntityGroupIdWithHttpInfo(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataEdge> getEdgesByEntityGroupIdWithHttpInfo(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getEdgesByEntityGroupIdRequestBuilder(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -64491,7 +65716,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getEdgesByEntityGroupIdRequestBuilder(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getEdgesByEntityGroupIdRequestBuilder(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'entityGroupId' is set
     if (entityGroupId == null) {
       throw new ApiException(400, "Missing the required parameter 'entityGroupId' when calling getEdgesByEntityGroupId");
@@ -64547,9 +65772,9 @@ public class ThingsboardApi {
     @Nonnull
     private String entityGroupId; // A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String textSearch; // The case insensitive &#39;substring&#39; filter based on the edge name. (optional)
     @Nullable
@@ -64569,11 +65794,11 @@ public class ThingsboardApi {
       return entityGroupId;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -64593,8 +65818,8 @@ public class ThingsboardApi {
     }
     public static class Builder {
       private String entityGroupId;
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
@@ -64602,13 +65827,29 @@ public class ThingsboardApi {
         this.entityGroupId = entityGroupId;
         return this;
       }
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder textSearch(@Nullable String textSearch) {
         this.textSearch = textSearch;
@@ -64719,9 +65960,9 @@ public class ThingsboardApi {
     @Nonnull
     String entityGroupId = apiRequest.entityGroupId();
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String textSearch = apiRequest.textSearch();
     @Nullable
@@ -64743,8 +65984,8 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataShortEntityView> getEntitiesWithHttpInfo(GetEntitiesArgs apiRequest, Map<String, String> headers) throws ApiException {
     String entityGroupId = apiRequest.entityGroupId();
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
     String sortOrder = apiRequest.sortOrder();
@@ -64769,9 +66010,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataShortEntityView getEntities(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataShortEntityView getEntities(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataShortEntityView> localVarResponse = getEntitiesWithHttpInfo(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Group Entities (getEntities)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEntities(GetEntitiesArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataShortEntityView getEntities(String entityGroupId, String pageSize, String page, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getEntities(entityGroupId, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Group Entities (getEntities)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEntitiesWithHttpInfo(GetEntitiesArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataShortEntityView> getEntitiesWithHttpInfo(String entityGroupId, String pageSize, String page, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getEntitiesWithHttpInfo(entityGroupId, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -64793,7 +66054,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataShortEntityView> getEntitiesWithHttpInfo(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataShortEntityView> getEntitiesWithHttpInfo(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getEntitiesRequestBuilder(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -64828,7 +66089,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getEntitiesRequestBuilder(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getEntitiesRequestBuilder(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'entityGroupId' is set
     if (entityGroupId == null) {
       throw new ApiException(400, "Missing the required parameter 'entityGroupId' when calling getEntities");
@@ -64884,9 +66145,9 @@ public class ThingsboardApi {
     @Nonnull
     private String entityGroupId; // A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String textSearch; // The case insensitive &#39;startsWith&#39; filter based on the entity group name. (optional)
     @Nullable
@@ -64906,11 +66167,11 @@ public class ThingsboardApi {
       return entityGroupId;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -64930,8 +66191,8 @@ public class ThingsboardApi {
     }
     public static class Builder {
       private String entityGroupId;
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
@@ -64939,13 +66200,29 @@ public class ThingsboardApi {
         this.entityGroupId = entityGroupId;
         return this;
       }
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder textSearch(@Nullable String textSearch) {
         this.textSearch = textSearch;
@@ -66085,9 +67362,9 @@ public class ThingsboardApi {
     @Nonnull
     String groupType = apiRequest.groupType();
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String textSearch = apiRequest.textSearch();
     @Nullable
@@ -66111,8 +67388,8 @@ public class ThingsboardApi {
     String ownerType = apiRequest.ownerType();
     String ownerId = apiRequest.ownerId();
     String groupType = apiRequest.groupType();
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
     String sortOrder = apiRequest.sortOrder();
@@ -66139,9 +67416,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataEntityInfo getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataEntityInfo getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataEntityInfo> localVarResponse = getEntityGroupEntityInfosByOwnerAndTypeAndPageLinkWithHttpInfo(ownerType, ownerId, groupType, pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Entity Group Entity Infos by owner and entity type and page link (getEntityGroupEntityInfosByOwnerAndTypeAndPageLink)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(GetEntityGroupEntityInfosByOwnerAndTypeAndPageLinkArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataEntityInfo getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(String ownerType, String ownerId, String groupType, String pageSize, String page, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(ownerType, ownerId, groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Entity Group Entity Infos by owner and entity type and page link (getEntityGroupEntityInfosByOwnerAndTypeAndPageLink)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEntityGroupEntityInfosByOwnerAndTypeAndPageLinkWithHttpInfo(GetEntityGroupEntityInfosByOwnerAndTypeAndPageLinkArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataEntityInfo> getEntityGroupEntityInfosByOwnerAndTypeAndPageLinkWithHttpInfo(String ownerType, String ownerId, String groupType, String pageSize, String page, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getEntityGroupEntityInfosByOwnerAndTypeAndPageLinkWithHttpInfo(ownerType, ownerId, groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -66165,7 +67462,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataEntityInfo> getEntityGroupEntityInfosByOwnerAndTypeAndPageLinkWithHttpInfo(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataEntityInfo> getEntityGroupEntityInfosByOwnerAndTypeAndPageLinkWithHttpInfo(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getEntityGroupEntityInfosByOwnerAndTypeAndPageLinkRequestBuilder(ownerType, ownerId, groupType, pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -66200,7 +67497,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getEntityGroupEntityInfosByOwnerAndTypeAndPageLinkRequestBuilder(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getEntityGroupEntityInfosByOwnerAndTypeAndPageLinkRequestBuilder(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'ownerType' is set
     if (ownerType == null) {
       throw new ApiException(400, "Missing the required parameter 'ownerType' when calling getEntityGroupEntityInfosByOwnerAndTypeAndPageLink");
@@ -66270,9 +67567,9 @@ public class ThingsboardApi {
     @Nonnull
     private String groupType; // Entity Group type (required)
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String textSearch; // The case insensitive &#39;startsWith&#39; filter based on the entity group name. (optional)
     @Nullable
@@ -66302,11 +67599,11 @@ public class ThingsboardApi {
       return groupType;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -66328,8 +67625,8 @@ public class ThingsboardApi {
       private String ownerType;
       private String ownerId;
       private String groupType;
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
@@ -66345,13 +67642,29 @@ public class ThingsboardApi {
         this.groupType = groupType;
         return this;
       }
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder textSearch(@Nullable String textSearch) {
         this.textSearch = textSearch;
@@ -66398,9 +67711,9 @@ public class ThingsboardApi {
     @Nonnull
     String groupType = apiRequest.groupType();
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     Boolean includeShared = apiRequest.includeShared();
     @Nullable
@@ -66424,8 +67737,8 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataEntityInfo> getEntityGroupEntityInfosByTypeAndPageLinkWithHttpInfo(GetEntityGroupEntityInfosByTypeAndPageLinkArgs apiRequest, Map<String, String> headers) throws ApiException {
     String groupType = apiRequest.groupType();
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     Boolean includeShared = apiRequest.includeShared();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
@@ -66452,9 +67765,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataEntityInfo getEntityGroupEntityInfosByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataEntityInfo getEntityGroupEntityInfosByTypeAndPageLink(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataEntityInfo> localVarResponse = getEntityGroupEntityInfosByTypeAndPageLinkWithHttpInfo(groupType, pageSize, page, includeShared, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Entity Group Entity Infos by entity type and page link (getEntityGroupEntityInfosByTypeAndPageLink)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEntityGroupEntityInfosByTypeAndPageLink(GetEntityGroupEntityInfosByTypeAndPageLinkArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataEntityInfo getEntityGroupEntityInfosByTypeAndPageLink(String groupType, String pageSize, String page, Boolean includeShared, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getEntityGroupEntityInfosByTypeAndPageLink(groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), includeShared, textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Entity Group Entity Infos by entity type and page link (getEntityGroupEntityInfosByTypeAndPageLink)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEntityGroupEntityInfosByTypeAndPageLinkWithHttpInfo(GetEntityGroupEntityInfosByTypeAndPageLinkArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataEntityInfo> getEntityGroupEntityInfosByTypeAndPageLinkWithHttpInfo(String groupType, String pageSize, String page, Boolean includeShared, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getEntityGroupEntityInfosByTypeAndPageLinkWithHttpInfo(groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), includeShared, textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -66477,7 +67810,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataEntityInfo> getEntityGroupEntityInfosByTypeAndPageLinkWithHttpInfo(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataEntityInfo> getEntityGroupEntityInfosByTypeAndPageLinkWithHttpInfo(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getEntityGroupEntityInfosByTypeAndPageLinkRequestBuilder(groupType, pageSize, page, includeShared, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -66512,7 +67845,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getEntityGroupEntityInfosByTypeAndPageLinkRequestBuilder(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getEntityGroupEntityInfosByTypeAndPageLinkRequestBuilder(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'groupType' is set
     if (groupType == null) {
       throw new ApiException(400, "Missing the required parameter 'groupType' when calling getEntityGroupEntityInfosByTypeAndPageLink");
@@ -66570,9 +67903,9 @@ public class ThingsboardApi {
     @Nonnull
     private String groupType; // Entity Group type (required)
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private Boolean includeShared; // Whether to include shared entity groups. (optional)
     @Nullable
@@ -66595,11 +67928,11 @@ public class ThingsboardApi {
       return groupType;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -66623,8 +67956,8 @@ public class ThingsboardApi {
     }
     public static class Builder {
       private String groupType;
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private Boolean includeShared;
       private String textSearch;
       private String sortProperty;
@@ -66633,13 +67966,29 @@ public class ThingsboardApi {
         this.groupType = groupType;
         return this;
       }
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder includeShared(@Nullable Boolean includeShared) {
         this.includeShared = includeShared;
@@ -66688,9 +68037,9 @@ public class ThingsboardApi {
     @Nonnull
     String groupType = apiRequest.groupType();
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String textSearch = apiRequest.textSearch();
     @Nullable
@@ -66714,8 +68063,8 @@ public class ThingsboardApi {
     String ownerType = apiRequest.ownerType();
     String ownerId = apiRequest.ownerId();
     String groupType = apiRequest.groupType();
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
     String sortOrder = apiRequest.sortOrder();
@@ -66742,9 +68091,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataEntityInfo getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataEntityInfo getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataEntityInfo> localVarResponse = getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLinkWithHttpInfo(ownerType, ownerId, groupType, pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Entity Group Entity Infos for all owners starting from specified than ending with owner of current user (getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink(GetEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLinkArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataEntityInfo getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink(String ownerType, String ownerId, String groupType, String pageSize, String page, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink(ownerType, ownerId, groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Entity Group Entity Infos for all owners starting from specified than ending with owner of current user (getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLinkWithHttpInfo(GetEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLinkArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataEntityInfo> getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLinkWithHttpInfo(String ownerType, String ownerId, String groupType, String pageSize, String page, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLinkWithHttpInfo(ownerType, ownerId, groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -66768,7 +68137,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataEntityInfo> getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLinkWithHttpInfo(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataEntityInfo> getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLinkWithHttpInfo(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLinkRequestBuilder(ownerType, ownerId, groupType, pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -66803,7 +68172,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLinkRequestBuilder(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLinkRequestBuilder(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'ownerType' is set
     if (ownerType == null) {
       throw new ApiException(400, "Missing the required parameter 'ownerType' when calling getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink");
@@ -66873,9 +68242,9 @@ public class ThingsboardApi {
     @Nonnull
     private String groupType; // Entity Group type (required)
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String textSearch; // The case insensitive &#39;startsWith&#39; filter based on the entity group name. (optional)
     @Nullable
@@ -66905,11 +68274,11 @@ public class ThingsboardApi {
       return groupType;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -66931,8 +68300,8 @@ public class ThingsboardApi {
       private String ownerType;
       private String ownerId;
       private String groupType;
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
@@ -66948,13 +68317,29 @@ public class ThingsboardApi {
         this.groupType = groupType;
         return this;
       }
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder textSearch(@Nullable String textSearch) {
         this.textSearch = textSearch;
@@ -67310,9 +68695,9 @@ public class ThingsboardApi {
     @Nonnull
     String groupType = apiRequest.groupType();
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String textSearch = apiRequest.textSearch();
     @Nullable
@@ -67336,8 +68721,8 @@ public class ThingsboardApi {
     String ownerType = apiRequest.ownerType();
     String ownerId = apiRequest.ownerId();
     String groupType = apiRequest.groupType();
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
     String sortOrder = apiRequest.sortOrder();
@@ -67364,9 +68749,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataEntityGroupInfo getEntityGroupsByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataEntityGroupInfo getEntityGroupsByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataEntityGroupInfo> localVarResponse = getEntityGroupsByOwnerAndTypeAndPageLinkWithHttpInfo(ownerType, ownerId, groupType, pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Entity Groups by owner and entity type and page link (getEntityGroupsByOwnerAndTypeAndPageLink)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEntityGroupsByOwnerAndTypeAndPageLink(GetEntityGroupsByOwnerAndTypeAndPageLinkArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataEntityGroupInfo getEntityGroupsByOwnerAndTypeAndPageLink(String ownerType, String ownerId, String groupType, String pageSize, String page, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getEntityGroupsByOwnerAndTypeAndPageLink(ownerType, ownerId, groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Entity Groups by owner and entity type and page link (getEntityGroupsByOwnerAndTypeAndPageLink)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEntityGroupsByOwnerAndTypeAndPageLinkWithHttpInfo(GetEntityGroupsByOwnerAndTypeAndPageLinkArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataEntityGroupInfo> getEntityGroupsByOwnerAndTypeAndPageLinkWithHttpInfo(String ownerType, String ownerId, String groupType, String pageSize, String page, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getEntityGroupsByOwnerAndTypeAndPageLinkWithHttpInfo(ownerType, ownerId, groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -67390,7 +68795,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataEntityGroupInfo> getEntityGroupsByOwnerAndTypeAndPageLinkWithHttpInfo(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataEntityGroupInfo> getEntityGroupsByOwnerAndTypeAndPageLinkWithHttpInfo(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getEntityGroupsByOwnerAndTypeAndPageLinkRequestBuilder(ownerType, ownerId, groupType, pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -67425,7 +68830,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getEntityGroupsByOwnerAndTypeAndPageLinkRequestBuilder(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getEntityGroupsByOwnerAndTypeAndPageLinkRequestBuilder(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'ownerType' is set
     if (ownerType == null) {
       throw new ApiException(400, "Missing the required parameter 'ownerType' when calling getEntityGroupsByOwnerAndTypeAndPageLink");
@@ -67495,9 +68900,9 @@ public class ThingsboardApi {
     @Nonnull
     private String groupType; // Entity Group type (required)
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String textSearch; // The case insensitive &#39;startsWith&#39; filter based on the entity group name. (optional)
     @Nullable
@@ -67527,11 +68932,11 @@ public class ThingsboardApi {
       return groupType;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -67553,8 +68958,8 @@ public class ThingsboardApi {
       private String ownerType;
       private String ownerId;
       private String groupType;
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
@@ -67570,13 +68975,29 @@ public class ThingsboardApi {
         this.groupType = groupType;
         return this;
       }
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder textSearch(@Nullable String textSearch) {
         this.textSearch = textSearch;
@@ -67623,9 +69044,9 @@ public class ThingsboardApi {
     @Nonnull
     String groupType = apiRequest.groupType();
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     Boolean includeShared = apiRequest.includeShared();
     @Nullable
@@ -67649,8 +69070,8 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataEntityGroupInfo> getEntityGroupsByTypeAndPageLinkWithHttpInfo(GetEntityGroupsByTypeAndPageLinkArgs apiRequest, Map<String, String> headers) throws ApiException {
     String groupType = apiRequest.groupType();
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     Boolean includeShared = apiRequest.includeShared();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
@@ -67677,9 +69098,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataEntityGroupInfo getEntityGroupsByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataEntityGroupInfo getEntityGroupsByTypeAndPageLink(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataEntityGroupInfo> localVarResponse = getEntityGroupsByTypeAndPageLinkWithHttpInfo(groupType, pageSize, page, includeShared, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Entity Groups by entity type and page link (getEntityGroupsByTypeAndPageLink)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEntityGroupsByTypeAndPageLink(GetEntityGroupsByTypeAndPageLinkArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataEntityGroupInfo getEntityGroupsByTypeAndPageLink(String groupType, String pageSize, String page, Boolean includeShared, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getEntityGroupsByTypeAndPageLink(groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), includeShared, textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Entity Groups by entity type and page link (getEntityGroupsByTypeAndPageLink)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEntityGroupsByTypeAndPageLinkWithHttpInfo(GetEntityGroupsByTypeAndPageLinkArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataEntityGroupInfo> getEntityGroupsByTypeAndPageLinkWithHttpInfo(String groupType, String pageSize, String page, Boolean includeShared, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getEntityGroupsByTypeAndPageLinkWithHttpInfo(groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), includeShared, textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -67702,7 +69143,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataEntityGroupInfo> getEntityGroupsByTypeAndPageLinkWithHttpInfo(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataEntityGroupInfo> getEntityGroupsByTypeAndPageLinkWithHttpInfo(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getEntityGroupsByTypeAndPageLinkRequestBuilder(groupType, pageSize, page, includeShared, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -67737,7 +69178,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getEntityGroupsByTypeAndPageLinkRequestBuilder(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getEntityGroupsByTypeAndPageLinkRequestBuilder(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'groupType' is set
     if (groupType == null) {
       throw new ApiException(400, "Missing the required parameter 'groupType' when calling getEntityGroupsByTypeAndPageLink");
@@ -67795,9 +69236,9 @@ public class ThingsboardApi {
     @Nonnull
     private String groupType; // Entity Group type (required)
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private Boolean includeShared; // Whether to include shared entity groups. (optional)
     @Nullable
@@ -67820,11 +69261,11 @@ public class ThingsboardApi {
       return groupType;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -67848,8 +69289,8 @@ public class ThingsboardApi {
     }
     public static class Builder {
       private String groupType;
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private Boolean includeShared;
       private String textSearch;
       private String sortProperty;
@@ -67858,13 +69299,29 @@ public class ThingsboardApi {
         this.groupType = groupType;
         return this;
       }
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder includeShared(@Nullable Boolean includeShared) {
         this.includeShared = includeShared;
@@ -68084,9 +69541,9 @@ public class ThingsboardApi {
     @Nonnull
     String groupType = apiRequest.groupType();
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String textSearch = apiRequest.textSearch();
     @Nullable
@@ -68110,8 +69567,8 @@ public class ThingsboardApi {
     String ownerType = apiRequest.ownerType();
     String ownerId = apiRequest.ownerId();
     String groupType = apiRequest.groupType();
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
     String sortOrder = apiRequest.sortOrder();
@@ -68138,9 +69595,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataEntityGroupInfo getEntityGroupsHierarchyByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataEntityGroupInfo getEntityGroupsHierarchyByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataEntityGroupInfo> localVarResponse = getEntityGroupsHierarchyByOwnerAndTypeAndPageLinkWithHttpInfo(ownerType, ownerId, groupType, pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Entity Groups for all owners starting from specified than ending with owner of current user (getEntityGroupsHierarchyByOwnerAndTypeAndPageLink)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEntityGroupsHierarchyByOwnerAndTypeAndPageLink(GetEntityGroupsHierarchyByOwnerAndTypeAndPageLinkArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataEntityGroupInfo getEntityGroupsHierarchyByOwnerAndTypeAndPageLink(String ownerType, String ownerId, String groupType, String pageSize, String page, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getEntityGroupsHierarchyByOwnerAndTypeAndPageLink(ownerType, ownerId, groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Entity Groups for all owners starting from specified than ending with owner of current user (getEntityGroupsHierarchyByOwnerAndTypeAndPageLink)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEntityGroupsHierarchyByOwnerAndTypeAndPageLinkWithHttpInfo(GetEntityGroupsHierarchyByOwnerAndTypeAndPageLinkArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataEntityGroupInfo> getEntityGroupsHierarchyByOwnerAndTypeAndPageLinkWithHttpInfo(String ownerType, String ownerId, String groupType, String pageSize, String page, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getEntityGroupsHierarchyByOwnerAndTypeAndPageLinkWithHttpInfo(ownerType, ownerId, groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -68164,7 +69641,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataEntityGroupInfo> getEntityGroupsHierarchyByOwnerAndTypeAndPageLinkWithHttpInfo(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataEntityGroupInfo> getEntityGroupsHierarchyByOwnerAndTypeAndPageLinkWithHttpInfo(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getEntityGroupsHierarchyByOwnerAndTypeAndPageLinkRequestBuilder(ownerType, ownerId, groupType, pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -68199,7 +69676,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getEntityGroupsHierarchyByOwnerAndTypeAndPageLinkRequestBuilder(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getEntityGroupsHierarchyByOwnerAndTypeAndPageLinkRequestBuilder(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'ownerType' is set
     if (ownerType == null) {
       throw new ApiException(400, "Missing the required parameter 'ownerType' when calling getEntityGroupsHierarchyByOwnerAndTypeAndPageLink");
@@ -68269,9 +69746,9 @@ public class ThingsboardApi {
     @Nonnull
     private String groupType; // Entity Group type (required)
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String textSearch; // The case insensitive &#39;startsWith&#39; filter based on the entity group name. (optional)
     @Nullable
@@ -68301,11 +69778,11 @@ public class ThingsboardApi {
       return groupType;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -68327,8 +69804,8 @@ public class ThingsboardApi {
       private String ownerType;
       private String ownerId;
       private String groupType;
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
@@ -68344,13 +69821,29 @@ public class ThingsboardApi {
         this.groupType = groupType;
         return this;
       }
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder textSearch(@Nullable String textSearch) {
         this.textSearch = textSearch;
@@ -68759,9 +70252,9 @@ public class ThingsboardApi {
     @Nonnull
     String entityGroupId = apiRequest.entityGroupId();
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String textSearch = apiRequest.textSearch();
     @Nullable
@@ -68783,8 +70276,8 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataEntityView> getEntityViewsByEntityGroupIdWithHttpInfo(GetEntityViewsByEntityGroupIdArgs apiRequest, Map<String, String> headers) throws ApiException {
     String entityGroupId = apiRequest.entityGroupId();
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
     String sortOrder = apiRequest.sortOrder();
@@ -68809,9 +70302,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataEntityView getEntityViewsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataEntityView getEntityViewsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataEntityView> localVarResponse = getEntityViewsByEntityGroupIdWithHttpInfo(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get entity views by Entity Group Id (getEntityViewsByEntityGroupId)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEntityViewsByEntityGroupId(GetEntityViewsByEntityGroupIdArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataEntityView getEntityViewsByEntityGroupId(String entityGroupId, String pageSize, String page, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getEntityViewsByEntityGroupId(entityGroupId, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get entity views by Entity Group Id (getEntityViewsByEntityGroupId)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getEntityViewsByEntityGroupIdWithHttpInfo(GetEntityViewsByEntityGroupIdArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataEntityView> getEntityViewsByEntityGroupIdWithHttpInfo(String entityGroupId, String pageSize, String page, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getEntityViewsByEntityGroupIdWithHttpInfo(entityGroupId, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -68833,7 +70346,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataEntityView> getEntityViewsByEntityGroupIdWithHttpInfo(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataEntityView> getEntityViewsByEntityGroupIdWithHttpInfo(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getEntityViewsByEntityGroupIdRequestBuilder(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -68868,7 +70381,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getEntityViewsByEntityGroupIdRequestBuilder(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getEntityViewsByEntityGroupIdRequestBuilder(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'entityGroupId' is set
     if (entityGroupId == null) {
       throw new ApiException(400, "Missing the required parameter 'entityGroupId' when calling getEntityViewsByEntityGroupId");
@@ -68924,9 +70437,9 @@ public class ThingsboardApi {
     @Nonnull
     private String entityGroupId; // A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String textSearch; // The case insensitive &#39;substring&#39; filter based on the entity view name. (optional)
     @Nullable
@@ -68946,11 +70459,11 @@ public class ThingsboardApi {
       return entityGroupId;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -68970,8 +70483,8 @@ public class ThingsboardApi {
     }
     public static class Builder {
       private String entityGroupId;
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
@@ -68979,13 +70492,29 @@ public class ThingsboardApi {
         this.entityGroupId = entityGroupId;
         return this;
       }
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder textSearch(@Nullable String textSearch) {
         this.textSearch = textSearch;
@@ -72504,9 +74033,9 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public PageDataIntegrationInfo getIntegrationInfos(GetIntegrationInfosArgs apiRequest) throws ApiException {
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     Boolean isEdgeTemplate = apiRequest.isEdgeTemplate();
     @Nullable
@@ -72529,8 +74058,8 @@ public class ThingsboardApi {
    */
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataIntegrationInfo> getIntegrationInfosWithHttpInfo(GetIntegrationInfosArgs apiRequest, Map<String, String> headers) throws ApiException {
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     Boolean isEdgeTemplate = apiRequest.isEdgeTemplate();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
@@ -72556,9 +74085,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataIntegrationInfo getIntegrationInfos(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataIntegrationInfo getIntegrationInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataIntegrationInfo> localVarResponse = getIntegrationInfosWithHttpInfo(pageSize, page, isEdgeTemplate, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Integration Infos (getIntegrationInfos)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getIntegrationInfos(GetIntegrationInfosArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataIntegrationInfo getIntegrationInfos(String pageSize, String page, Boolean isEdgeTemplate, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getIntegrationInfos(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), isEdgeTemplate, textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Integration Infos (getIntegrationInfos)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getIntegrationInfosWithHttpInfo(GetIntegrationInfosArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataIntegrationInfo> getIntegrationInfosWithHttpInfo(String pageSize, String page, Boolean isEdgeTemplate, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getIntegrationInfosWithHttpInfo(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), isEdgeTemplate, textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -72580,7 +74129,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataIntegrationInfo> getIntegrationInfosWithHttpInfo(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataIntegrationInfo> getIntegrationInfosWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getIntegrationInfosRequestBuilder(pageSize, page, isEdgeTemplate, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -72615,7 +74164,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getIntegrationInfosRequestBuilder(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getIntegrationInfosRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'pageSize' is set
     if (pageSize == null) {
       throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getIntegrationInfos");
@@ -72666,9 +74215,9 @@ public class ThingsboardApi {
 
   public static final class GetIntegrationInfosArgs {
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private Boolean isEdgeTemplate; // Fetch edge template integrations (optional, default to false)
     @Nullable
@@ -72686,11 +74235,11 @@ public class ThingsboardApi {
       this.sortOrder = builder.sortOrder;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -72713,19 +74262,35 @@ public class ThingsboardApi {
       return new Builder();
     }
     public static class Builder {
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private Boolean isEdgeTemplate;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder isEdgeTemplate(@Nullable Boolean isEdgeTemplate) {
         this.isEdgeTemplate = isEdgeTemplate;
@@ -72765,9 +74330,9 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public PageDataIntegration getIntegrations(GetIntegrationsArgs apiRequest) throws ApiException {
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     Boolean isEdgeTemplate = apiRequest.isEdgeTemplate();
     @Nullable
@@ -72790,8 +74355,8 @@ public class ThingsboardApi {
    */
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataIntegration> getIntegrationsWithHttpInfo(GetIntegrationsArgs apiRequest, Map<String, String> headers) throws ApiException {
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     Boolean isEdgeTemplate = apiRequest.isEdgeTemplate();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
@@ -72817,9 +74382,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataIntegration getIntegrations(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataIntegration getIntegrations(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataIntegration> localVarResponse = getIntegrationsWithHttpInfo(pageSize, page, isEdgeTemplate, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Integrations (getIntegrations)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getIntegrations(GetIntegrationsArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataIntegration getIntegrations(String pageSize, String page, Boolean isEdgeTemplate, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getIntegrations(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), isEdgeTemplate, textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Integrations (getIntegrations)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getIntegrationsWithHttpInfo(GetIntegrationsArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataIntegration> getIntegrationsWithHttpInfo(String pageSize, String page, Boolean isEdgeTemplate, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getIntegrationsWithHttpInfo(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), isEdgeTemplate, textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -72841,7 +74426,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataIntegration> getIntegrationsWithHttpInfo(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataIntegration> getIntegrationsWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getIntegrationsRequestBuilder(pageSize, page, isEdgeTemplate, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -72876,7 +74461,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getIntegrationsRequestBuilder(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getIntegrationsRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'pageSize' is set
     if (pageSize == null) {
       throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getIntegrations");
@@ -72927,9 +74512,9 @@ public class ThingsboardApi {
 
   public static final class GetIntegrationsArgs {
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private Boolean isEdgeTemplate; // Fetch edge template integrations (optional, default to false)
     @Nullable
@@ -72947,11 +74532,11 @@ public class ThingsboardApi {
       this.sortOrder = builder.sortOrder;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -72974,19 +74559,35 @@ public class ThingsboardApi {
       return new Builder();
     }
     public static class Builder {
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private Boolean isEdgeTemplate;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder isEdgeTemplate(@Nullable Boolean isEdgeTemplate) {
         this.isEdgeTemplate = isEdgeTemplate;
@@ -81670,9 +83271,9 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public PageDataEntityInfo getOwnerInfos(GetOwnerInfosArgs apiRequest) throws ApiException {
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String textSearch = apiRequest.textSearch();
     @Nullable
@@ -81693,8 +83294,8 @@ public class ThingsboardApi {
    */
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataEntityInfo> getOwnerInfosWithHttpInfo(GetOwnerInfosArgs apiRequest, Map<String, String> headers) throws ApiException {
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
     String sortOrder = apiRequest.sortOrder();
@@ -81718,9 +83319,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataEntityInfo getOwnerInfos(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataEntityInfo getOwnerInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataEntityInfo> localVarResponse = getOwnerInfosWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Owner Infos (getOwnerInfos)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getOwnerInfos(GetOwnerInfosArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataEntityInfo getOwnerInfos(String pageSize, String page, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getOwnerInfos(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Owner Infos (getOwnerInfos)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getOwnerInfosWithHttpInfo(GetOwnerInfosArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataEntityInfo> getOwnerInfosWithHttpInfo(String pageSize, String page, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getOwnerInfosWithHttpInfo(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -81741,7 +83362,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataEntityInfo> getOwnerInfosWithHttpInfo(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataEntityInfo> getOwnerInfosWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getOwnerInfosRequestBuilder(pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -81776,7 +83397,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getOwnerInfosRequestBuilder(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getOwnerInfosRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'pageSize' is set
     if (pageSize == null) {
       throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getOwnerInfos");
@@ -81825,9 +83446,9 @@ public class ThingsboardApi {
 
   public static final class GetOwnerInfosArgs {
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String textSearch; // The case insensitive &#39;startsWith&#39; filter based on the entity group name. (optional)
     @Nullable
@@ -81842,11 +83463,11 @@ public class ThingsboardApi {
       this.sortOrder = builder.sortOrder;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -81865,18 +83486,34 @@ public class ThingsboardApi {
       return new Builder();
     }
     public static class Builder {
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder textSearch(@Nullable String textSearch) {
         this.textSearch = textSearch;
@@ -81912,9 +83549,9 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public PageDataContactBasedObject getOwners(GetOwnersArgs apiRequest) throws ApiException {
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String textSearch = apiRequest.textSearch();
     @Nullable
@@ -81935,8 +83572,8 @@ public class ThingsboardApi {
    */
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataContactBasedObject> getOwnersWithHttpInfo(GetOwnersArgs apiRequest, Map<String, String> headers) throws ApiException {
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
     String sortOrder = apiRequest.sortOrder();
@@ -81960,9 +83597,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataContactBasedObject getOwners(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataContactBasedObject getOwners(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataContactBasedObject> localVarResponse = getOwnersWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Owners (getOwners)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getOwners(GetOwnersArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataContactBasedObject getOwners(String pageSize, String page, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getOwners(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Owners (getOwners)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getOwnersWithHttpInfo(GetOwnersArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataContactBasedObject> getOwnersWithHttpInfo(String pageSize, String page, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getOwnersWithHttpInfo(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -81983,7 +83640,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataContactBasedObject> getOwnersWithHttpInfo(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataContactBasedObject> getOwnersWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getOwnersRequestBuilder(pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -82018,7 +83675,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getOwnersRequestBuilder(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getOwnersRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'pageSize' is set
     if (pageSize == null) {
       throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getOwners");
@@ -82067,9 +83724,9 @@ public class ThingsboardApi {
 
   public static final class GetOwnersArgs {
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String textSearch; // The case insensitive &#39;startsWith&#39; filter based on the entity group name. (optional)
     @Nullable
@@ -82084,11 +83741,11 @@ public class ThingsboardApi {
       this.sortOrder = builder.sortOrder;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -82107,18 +83764,34 @@ public class ThingsboardApi {
       return new Builder();
     }
     public static class Builder {
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder textSearch(@Nullable String textSearch) {
         this.textSearch = textSearch;
@@ -82294,11 +83967,11 @@ public class ThingsboardApi {
    * Get persistent RPC requests
    * Allows to query RPC calls for specific device using pagination.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param apiRequest {@link GetPersistedRpcByDeviceArgs}
-   * @return String
+   * @return PageDataRpc
    * @throws ApiException if fails to make API call
    */
   @SuppressWarnings({"deprecation", "removal"})
-  public String getPersistedRpcByDevice(GetPersistedRpcByDeviceArgs apiRequest) throws ApiException {
+  public PageDataRpc getPersistedRpcByDevice(GetPersistedRpcByDeviceArgs apiRequest) throws ApiException {
     @Nonnull
     String deviceId = apiRequest.deviceId();
     @Nonnull
@@ -82313,7 +83986,7 @@ public class ThingsboardApi {
     String sortProperty = apiRequest.sortProperty();
     @Nullable
     String sortOrder = apiRequest.sortOrder();
-    ApiResponse<String> localVarResponse = getPersistedRpcByDeviceWithHttpInfo(deviceId, pageSize, page, rpcStatus, textSearch, sortProperty, sortOrder, null);
+    ApiResponse<PageDataRpc> localVarResponse = getPersistedRpcByDeviceWithHttpInfo(deviceId, pageSize, page, rpcStatus, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
   }
 
@@ -82322,11 +83995,11 @@ public class ThingsboardApi {
    * Allows to query RPC calls for specific device using pagination.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param apiRequest {@link GetPersistedRpcByDeviceArgs}
    * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;String&gt;
+   * @return ApiResponse&lt;PageDataRpc&gt;
    * @throws ApiException if fails to make API call
    */
   @SuppressWarnings({"deprecation", "removal"})
-  public ApiResponse<String> getPersistedRpcByDeviceWithHttpInfo(GetPersistedRpcByDeviceArgs apiRequest, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataRpc> getPersistedRpcByDeviceWithHttpInfo(GetPersistedRpcByDeviceArgs apiRequest, Map<String, String> headers) throws ApiException {
     String deviceId = apiRequest.deviceId();
     Integer pageSize = apiRequest.pageSize();
     Integer page = apiRequest.page();
@@ -82347,7 +84020,7 @@ public class ThingsboardApi {
    * @param textSearch Not implemented. Leave empty. (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
-   * @return String
+   * @return PageDataRpc
    * @throws ApiException if fails to make API call
    * @deprecated Use {@link #getPersistedRpcByDevice(GetPersistedRpcByDeviceArgs)} instead.
    *     This overload passes each parameter positionally, so its signature changes whenever a
@@ -82356,8 +84029,8 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public String getPersistedRpcByDevice(@Nonnull String deviceId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String rpcStatus, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
-    ApiResponse<String> localVarResponse = getPersistedRpcByDeviceWithHttpInfo(deviceId, pageSize, page, rpcStatus, textSearch, sortProperty, sortOrder, null);
+  public PageDataRpc getPersistedRpcByDevice(@Nonnull String deviceId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String rpcStatus, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataRpc> localVarResponse = getPersistedRpcByDeviceWithHttpInfo(deviceId, pageSize, page, rpcStatus, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
   }
 
@@ -82372,7 +84045,7 @@ public class ThingsboardApi {
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
    * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;String&gt;
+   * @return ApiResponse&lt;PageDataRpc&gt;
    * @throws ApiException if fails to make API call
    * @deprecated Use {@link #getPersistedRpcByDevice(GetPersistedRpcByDeviceArgs)} instead.
    *     This overload passes each parameter positionally, so its signature changes whenever a
@@ -82381,7 +84054,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<String> getPersistedRpcByDeviceWithHttpInfo(@Nonnull String deviceId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String rpcStatus, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataRpc> getPersistedRpcByDeviceWithHttpInfo(@Nonnull String deviceId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String rpcStatus, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getPersistedRpcByDeviceRequestBuilder(deviceId, pageSize, page, rpcStatus, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -82397,11 +84070,11 @@ public class ThingsboardApi {
         }
         localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
         if (localVarResponseBody == null) {
-          return new ApiResponse<String>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+          return new ApiResponse<PageDataRpc>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
         }
         String responseBody = new String(localVarResponseBody.readAllBytes());
-        String responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<String>() {});
-        return new ApiResponse<String>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+        PageDataRpc responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataRpc>() {});
+        return new ApiResponse<PageDataRpc>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
       } finally {
         if (localVarResponseBody != null) {
           localVarResponseBody.close();
@@ -85908,7 +87581,7 @@ public class ThingsboardApi {
 
   /**
    * Get resource info (getResourceInfo)
-   * Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
    * @param apiRequest {@link GetResourceInfoArgs}
    * @return TbResourceInfo
    * @throws ApiException if fails to make API call
@@ -85927,7 +87600,7 @@ public class ThingsboardApi {
 
   /**
    * Get resource info (getResourceInfo)
-   * Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
    * @param apiRequest {@link GetResourceInfoArgs}
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;TbResourceInfo&gt;
@@ -85943,7 +87616,7 @@ public class ThingsboardApi {
 
   /**
    * Get resource info (getResourceInfo)
-   * Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
    * @param resourceType Type of the resource (required)
    * @param scope Scope of the resource (required)
    * @param key Key of the resource, e.g. &#39;extension.js&#39; (required)
@@ -85963,7 +87636,7 @@ public class ThingsboardApi {
 
   /**
    * Get resource info (getResourceInfo)
-   * Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
    * @param resourceType Type of the resource (required)
    * @param scope Scope of the resource (required)
    * @param key Key of the resource, e.g. &#39;extension.js&#39; (required)
@@ -86250,7 +87923,7 @@ public class ThingsboardApi {
 
   /**
    * Get Resource Infos (getResources)
-   * Returns a page of Resource Info objects owned by tenant or sysadmin. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Returns a page of Resource Info objects owned by tenant or sysadmin. Customer users may request only &#39;JS_MODULE&#39; resources, so the &#39;resourceType&#39; parameter is mandatory for them. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
    * @param apiRequest {@link GetResourcesArgs}
    * @return PageDataTbResourceInfo
    * @throws ApiException if fails to make API call
@@ -86277,7 +87950,7 @@ public class ThingsboardApi {
 
   /**
    * Get Resource Infos (getResources)
-   * Returns a page of Resource Info objects owned by tenant or sysadmin. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Returns a page of Resource Info objects owned by tenant or sysadmin. Customer users may request only &#39;JS_MODULE&#39; resources, so the &#39;resourceType&#39; parameter is mandatory for them. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
    * @param apiRequest {@link GetResourcesArgs}
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;PageDataTbResourceInfo&gt;
@@ -86297,7 +87970,7 @@ public class ThingsboardApi {
 
   /**
    * Get Resource Infos (getResources)
-   * Returns a page of Resource Info objects owned by tenant or sysadmin. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Returns a page of Resource Info objects owned by tenant or sysadmin. Customer users may request only &#39;JS_MODULE&#39; resources, so the &#39;resourceType&#39; parameter is mandatory for them. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
    * @param resourceType A list of resource types, separated by comma &#39;,&#39;. (optional)
@@ -86321,7 +87994,7 @@ public class ThingsboardApi {
 
   /**
    * Get Resource Infos (getResources)
-   * Returns a page of Resource Info objects owned by tenant or sysadmin. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Returns a page of Resource Info objects owned by tenant or sysadmin. Customer users may request only &#39;JS_MODULE&#39; resources, so the &#39;resourceType&#39; parameter is mandatory for them. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
    * @param resourceType A list of resource types, separated by comma &#39;,&#39;. (optional)
@@ -86684,9 +88357,9 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public PageDataRole getRoles(GetRolesArgs apiRequest) throws ApiException {
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String type = apiRequest.type();
     @Nullable
@@ -86709,8 +88382,8 @@ public class ThingsboardApi {
    */
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataRole> getRolesWithHttpInfo(GetRolesArgs apiRequest, Map<String, String> headers) throws ApiException {
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String type = apiRequest.type();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
@@ -86736,9 +88409,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataRole getRoles(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataRole getRoles(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataRole> localVarResponse = getRolesWithHttpInfo(pageSize, page, type, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Roles (getRoles)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getRoles(GetRolesArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataRole getRoles(String pageSize, String page, String type, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getRoles(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), type, textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Roles (getRoles)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getRolesWithHttpInfo(GetRolesArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataRole> getRolesWithHttpInfo(String pageSize, String page, String type, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getRolesWithHttpInfo(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), type, textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -86760,7 +88453,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataRole> getRolesWithHttpInfo(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataRole> getRolesWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getRolesRequestBuilder(pageSize, page, type, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -86795,7 +88488,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getRolesRequestBuilder(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getRolesRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'pageSize' is set
     if (pageSize == null) {
       throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getRoles");
@@ -86846,9 +88539,9 @@ public class ThingsboardApi {
 
   public static final class GetRolesArgs {
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String type; // Type of the role (optional)
     @Nullable
@@ -86866,11 +88559,11 @@ public class ThingsboardApi {
       this.sortOrder = builder.sortOrder;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -86893,19 +88586,35 @@ public class ThingsboardApi {
       return new Builder();
     }
     public static class Builder {
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String type;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder type(@Nullable String type) {
         this.type = type;
@@ -88108,9 +89817,9 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public PageDataScheduledReportInfo getScheduledReportEvents(GetScheduledReportEventsArgs apiRequest) throws ApiException {
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     UUID reportTemplateId = apiRequest.reportTemplateId();
     @Nullable
@@ -88137,8 +89846,8 @@ public class ThingsboardApi {
    */
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataScheduledReportInfo> getScheduledReportEventsWithHttpInfo(GetScheduledReportEventsArgs apiRequest, Map<String, String> headers) throws ApiException {
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     UUID reportTemplateId = apiRequest.reportTemplateId();
     UUID userId = apiRequest.userId();
     Boolean includeCustomers = apiRequest.includeCustomers();
@@ -88168,9 +89877,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataScheduledReportInfo getScheduledReportEvents(@Nonnull String pageSize, @Nonnull String page, @Nullable UUID reportTemplateId, @Nullable UUID userId, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataScheduledReportInfo getScheduledReportEvents(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable UUID reportTemplateId, @Nullable UUID userId, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataScheduledReportInfo> localVarResponse = getScheduledReportEventsWithHttpInfo(pageSize, page, reportTemplateId, userId, includeCustomers, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Scheduled Report Events (getScheduledReportEvents)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getScheduledReportEvents(GetScheduledReportEventsArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataScheduledReportInfo getScheduledReportEvents(String pageSize, String page, UUID reportTemplateId, UUID userId, Boolean includeCustomers, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getScheduledReportEvents(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), reportTemplateId, userId, includeCustomers, textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Scheduled Report Events (getScheduledReportEvents)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getScheduledReportEventsWithHttpInfo(GetScheduledReportEventsArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataScheduledReportInfo> getScheduledReportEventsWithHttpInfo(String pageSize, String page, UUID reportTemplateId, UUID userId, Boolean includeCustomers, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getScheduledReportEventsWithHttpInfo(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), reportTemplateId, userId, includeCustomers, textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -88194,7 +89923,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataScheduledReportInfo> getScheduledReportEventsWithHttpInfo(@Nonnull String pageSize, @Nonnull String page, @Nullable UUID reportTemplateId, @Nullable UUID userId, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataScheduledReportInfo> getScheduledReportEventsWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable UUID reportTemplateId, @Nullable UUID userId, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getScheduledReportEventsRequestBuilder(pageSize, page, reportTemplateId, userId, includeCustomers, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -88229,7 +89958,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getScheduledReportEventsRequestBuilder(@Nonnull String pageSize, @Nonnull String page, @Nullable UUID reportTemplateId, @Nullable UUID userId, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getScheduledReportEventsRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable UUID reportTemplateId, @Nullable UUID userId, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'pageSize' is set
     if (pageSize == null) {
       throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getScheduledReportEvents");
@@ -88284,9 +90013,9 @@ public class ThingsboardApi {
 
   public static final class GetScheduledReportEventsArgs {
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private UUID reportTemplateId; // Report template id (optional)
     @Nullable
@@ -88310,11 +90039,11 @@ public class ThingsboardApi {
       this.sortOrder = builder.sortOrder;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -88345,21 +90074,37 @@ public class ThingsboardApi {
       return new Builder();
     }
     public static class Builder {
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private UUID reportTemplateId;
       private UUID userId;
       private Boolean includeCustomers;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder reportTemplateId(@Nullable UUID reportTemplateId) {
         this.reportTemplateId = reportTemplateId;
@@ -90137,9 +91882,9 @@ public class ThingsboardApi {
     @Nonnull
     String groupType = apiRequest.groupType();
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String textSearch = apiRequest.textSearch();
     @Nullable
@@ -90161,8 +91906,8 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataEntityInfo> getSharedEntityGroupEntityInfosByTypeAndPageLinkWithHttpInfo(GetSharedEntityGroupEntityInfosByTypeAndPageLinkArgs apiRequest, Map<String, String> headers) throws ApiException {
     String groupType = apiRequest.groupType();
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
     String sortOrder = apiRequest.sortOrder();
@@ -90187,9 +91932,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataEntityInfo getSharedEntityGroupEntityInfosByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataEntityInfo getSharedEntityGroupEntityInfosByTypeAndPageLink(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataEntityInfo> localVarResponse = getSharedEntityGroupEntityInfosByTypeAndPageLinkWithHttpInfo(groupType, pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Shared Entity Group Entity Infos by entity type and page link (getSharedEntityGroupEntityInfosByTypeAndPageLink)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getSharedEntityGroupEntityInfosByTypeAndPageLink(GetSharedEntityGroupEntityInfosByTypeAndPageLinkArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataEntityInfo getSharedEntityGroupEntityInfosByTypeAndPageLink(String groupType, String pageSize, String page, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getSharedEntityGroupEntityInfosByTypeAndPageLink(groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Shared Entity Group Entity Infos by entity type and page link (getSharedEntityGroupEntityInfosByTypeAndPageLink)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getSharedEntityGroupEntityInfosByTypeAndPageLinkWithHttpInfo(GetSharedEntityGroupEntityInfosByTypeAndPageLinkArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataEntityInfo> getSharedEntityGroupEntityInfosByTypeAndPageLinkWithHttpInfo(String groupType, String pageSize, String page, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getSharedEntityGroupEntityInfosByTypeAndPageLinkWithHttpInfo(groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -90211,7 +91976,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataEntityInfo> getSharedEntityGroupEntityInfosByTypeAndPageLinkWithHttpInfo(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataEntityInfo> getSharedEntityGroupEntityInfosByTypeAndPageLinkWithHttpInfo(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getSharedEntityGroupEntityInfosByTypeAndPageLinkRequestBuilder(groupType, pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -90246,7 +92011,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getSharedEntityGroupEntityInfosByTypeAndPageLinkRequestBuilder(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getSharedEntityGroupEntityInfosByTypeAndPageLinkRequestBuilder(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'groupType' is set
     if (groupType == null) {
       throw new ApiException(400, "Missing the required parameter 'groupType' when calling getSharedEntityGroupEntityInfosByTypeAndPageLink");
@@ -90302,9 +92067,9 @@ public class ThingsboardApi {
     @Nonnull
     private String groupType; // Entity Group type (required)
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String textSearch; // The case insensitive &#39;startsWith&#39; filter based on the entity group name. (optional)
     @Nullable
@@ -90324,11 +92089,11 @@ public class ThingsboardApi {
       return groupType;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -90348,8 +92113,8 @@ public class ThingsboardApi {
     }
     public static class Builder {
       private String groupType;
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
@@ -90357,13 +92122,29 @@ public class ThingsboardApi {
         this.groupType = groupType;
         return this;
       }
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder textSearch(@Nullable String textSearch) {
         this.textSearch = textSearch;
@@ -90404,9 +92185,9 @@ public class ThingsboardApi {
     @Nonnull
     String groupType = apiRequest.groupType();
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String textSearch = apiRequest.textSearch();
     @Nullable
@@ -90428,8 +92209,8 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataEntityGroupInfo> getSharedEntityGroupsByTypeAndPageLinkWithHttpInfo(GetSharedEntityGroupsByTypeAndPageLinkArgs apiRequest, Map<String, String> headers) throws ApiException {
     String groupType = apiRequest.groupType();
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
     String sortOrder = apiRequest.sortOrder();
@@ -90454,9 +92235,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataEntityGroupInfo getSharedEntityGroupsByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataEntityGroupInfo getSharedEntityGroupsByTypeAndPageLink(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataEntityGroupInfo> localVarResponse = getSharedEntityGroupsByTypeAndPageLinkWithHttpInfo(groupType, pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Shared Entity Groups by entity type and page link (getSharedEntityGroupsByTypeAndPageLink)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getSharedEntityGroupsByTypeAndPageLink(GetSharedEntityGroupsByTypeAndPageLinkArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataEntityGroupInfo getSharedEntityGroupsByTypeAndPageLink(String groupType, String pageSize, String page, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getSharedEntityGroupsByTypeAndPageLink(groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Shared Entity Groups by entity type and page link (getSharedEntityGroupsByTypeAndPageLink)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getSharedEntityGroupsByTypeAndPageLinkWithHttpInfo(GetSharedEntityGroupsByTypeAndPageLinkArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataEntityGroupInfo> getSharedEntityGroupsByTypeAndPageLinkWithHttpInfo(String groupType, String pageSize, String page, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getSharedEntityGroupsByTypeAndPageLinkWithHttpInfo(groupType, pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -90478,7 +92279,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataEntityGroupInfo> getSharedEntityGroupsByTypeAndPageLinkWithHttpInfo(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataEntityGroupInfo> getSharedEntityGroupsByTypeAndPageLinkWithHttpInfo(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getSharedEntityGroupsByTypeAndPageLinkRequestBuilder(groupType, pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -90513,7 +92314,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getSharedEntityGroupsByTypeAndPageLinkRequestBuilder(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getSharedEntityGroupsByTypeAndPageLinkRequestBuilder(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'groupType' is set
     if (groupType == null) {
       throw new ApiException(400, "Missing the required parameter 'groupType' when calling getSharedEntityGroupsByTypeAndPageLink");
@@ -90569,9 +92370,9 @@ public class ThingsboardApi {
     @Nonnull
     private String groupType; // Entity Group type (required)
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String textSearch; // The case insensitive &#39;startsWith&#39; filter based on the entity group name. (optional)
     @Nullable
@@ -90591,11 +92392,11 @@ public class ThingsboardApi {
       return groupType;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -90615,8 +92416,8 @@ public class ThingsboardApi {
     }
     public static class Builder {
       private String groupType;
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
@@ -90624,13 +92425,29 @@ public class ThingsboardApi {
         this.groupType = groupType;
         return this;
       }
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder textSearch(@Nullable String textSearch) {
         this.textSearch = textSearch;
@@ -91419,6 +93236,76 @@ public class ThingsboardApi {
         return new GetSystemOrTenantResourcesByIdsArgs(this);
       }
     }
+  }
+
+  /**
+   * Get platform version (getSystemVersionInfo)
+   * Returns the version and edition of the platform build.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * @return SystemVersionInfo
+   * @throws ApiException if fails to make API call
+   */
+  public SystemVersionInfo getSystemVersionInfo() throws ApiException {
+    ApiResponse<SystemVersionInfo> localVarResponse = getSystemVersionInfoWithHttpInfo(null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get platform version (getSystemVersionInfo)
+   * Returns the version and edition of the platform build.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;SystemVersionInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<SystemVersionInfo> getSystemVersionInfoWithHttpInfo(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getSystemVersionInfoRequestBuilder(headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getSystemVersionInfo", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<SystemVersionInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        SystemVersionInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<SystemVersionInfo>() {});
+        return new ApiResponse<SystemVersionInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getSystemVersionInfoRequestBuilder(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/system/info";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
   }
 
   /**
@@ -99214,7 +101101,7 @@ public class ThingsboardApi {
     @Nullable
     String timeZone = apiRequest.timeZone();
     @Nullable
-    String limit = apiRequest.limit();
+    Integer limit = apiRequest.limit();
     @Nullable
     String agg = apiRequest.agg();
     @Nullable
@@ -99245,7 +101132,7 @@ public class ThingsboardApi {
     String intervalType = apiRequest.intervalType();
     Long interval = apiRequest.interval();
     String timeZone = apiRequest.timeZone();
-    String limit = apiRequest.limit();
+    Integer limit = apiRequest.limit();
     String agg = apiRequest.agg();
     String orderBy = apiRequest.orderBy();
     Boolean useStrictDataTypes = apiRequest.useStrictDataTypes();
@@ -99278,7 +101165,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public Map<String, List<TsData>> getTimeseriesHistory(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Long startTs, @Nonnull Long endTs, @Nullable String keys, @Nullable String intervalType, @Nullable Long interval, @Nullable String timeZone, @Nullable String limit, @Nullable String agg, @Nullable String orderBy, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key) throws ApiException {
+  public Map<String, List<TsData>> getTimeseriesHistory(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Long startTs, @Nonnull Long endTs, @Nullable String keys, @Nullable String intervalType, @Nullable Long interval, @Nullable String timeZone, @Nullable Integer limit, @Nullable String agg, @Nullable String orderBy, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key) throws ApiException {
     ApiResponse<Map<String, List<TsData>>> localVarResponse = getTimeseriesHistoryWithHttpInfo(entityType, entityId, startTs, endTs, keys, intervalType, interval, timeZone, limit, agg, orderBy, useStrictDataTypes, key, null);
     return localVarResponse.getData();
   }
@@ -99309,7 +101196,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<Map<String, List<TsData>>> getTimeseriesHistoryWithHttpInfo(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Long startTs, @Nonnull Long endTs, @Nullable String keys, @Nullable String intervalType, @Nullable Long interval, @Nullable String timeZone, @Nullable String limit, @Nullable String agg, @Nullable String orderBy, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key, Map<String, String> headers) throws ApiException {
+  public ApiResponse<Map<String, List<TsData>>> getTimeseriesHistoryWithHttpInfo(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Long startTs, @Nonnull Long endTs, @Nullable String keys, @Nullable String intervalType, @Nullable Long interval, @Nullable String timeZone, @Nullable Integer limit, @Nullable String agg, @Nullable String orderBy, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getTimeseriesHistoryRequestBuilder(entityType, entityId, startTs, endTs, keys, intervalType, interval, timeZone, limit, agg, orderBy, useStrictDataTypes, key, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -99344,7 +101231,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getTimeseriesHistoryRequestBuilder(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Long startTs, @Nonnull Long endTs, @Nullable String keys, @Nullable String intervalType, @Nullable Long interval, @Nullable String timeZone, @Nullable String limit, @Nullable String agg, @Nullable String orderBy, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getTimeseriesHistoryRequestBuilder(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Long startTs, @Nonnull Long endTs, @Nullable String keys, @Nullable String intervalType, @Nullable Long interval, @Nullable String timeZone, @Nullable Integer limit, @Nullable String agg, @Nullable String orderBy, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'entityType' is set
     if (entityType == null) {
       throw new ApiException(400, "Missing the required parameter 'entityType' when calling getTimeseriesHistory");
@@ -99431,7 +101318,7 @@ public class ThingsboardApi {
     @Nullable
     private String timeZone; // A string value representing the timezone that will be used to calculate exact timestamps for &#39;WEEK&#39;, &#39;WEEK_ISO&#39;, &#39;MONTH&#39; and &#39;QUARTER&#39; interval types. (optional)
     @Nullable
-    private String limit; // An integer value that represents a max number of time series data points to fetch. This parameter is used only in the case if &#39;agg&#39; parameter is set to &#39;NONE&#39;. (optional)
+    private Integer limit; // An integer value that represents a max number of time series data points to fetch. This parameter is used only in the case if &#39;agg&#39; parameter is set to &#39;NONE&#39;. (optional)
     @Nullable
     private String agg; // A string value representing the aggregation function. If the interval is not specified, &#39;agg&#39; parameter will use &#39;NONE&#39; value. (optional)
     @Nullable
@@ -99488,7 +101375,7 @@ public class ThingsboardApi {
       return timeZone;
     }
     @Nullable
-    public String limit() {
+    public Integer limit() {
       return limit;
     }
     @Nullable
@@ -99519,7 +101406,7 @@ public class ThingsboardApi {
       private String intervalType;
       private Long interval;
       private String timeZone;
-      private String limit;
+      private Integer limit;
       private String agg;
       private String orderBy;
       private Boolean useStrictDataTypes;
@@ -99556,7 +101443,7 @@ public class ThingsboardApi {
         this.timeZone = timeZone;
         return this;
       }
-      public Builder limit(@Nullable String limit) {
+      public Builder limit(@Nullable Integer limit) {
         this.limit = limit;
         return this;
       }
@@ -101757,9 +103644,9 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public PageDataAsset getUserAssets(GetUserAssetsArgs apiRequest) throws ApiException {
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String type = apiRequest.type();
     @Nullable
@@ -101784,8 +103671,8 @@ public class ThingsboardApi {
    */
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataAsset> getUserAssetsWithHttpInfo(GetUserAssetsArgs apiRequest, Map<String, String> headers) throws ApiException {
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String type = apiRequest.type();
     String assetProfileId = apiRequest.assetProfileId();
     String textSearch = apiRequest.textSearch();
@@ -101813,9 +103700,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataAsset getUserAssets(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataAsset getUserAssets(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataAsset> localVarResponse = getUserAssetsWithHttpInfo(pageSize, page, type, assetProfileId, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Assets (getUserAssets)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getUserAssets(GetUserAssetsArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataAsset getUserAssets(String pageSize, String page, String type, String assetProfileId, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getUserAssets(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), type, assetProfileId, textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Assets (getUserAssets)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getUserAssetsWithHttpInfo(GetUserAssetsArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataAsset> getUserAssetsWithHttpInfo(String pageSize, String page, String type, String assetProfileId, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getUserAssetsWithHttpInfo(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), type, assetProfileId, textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -101838,7 +103745,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataAsset> getUserAssetsWithHttpInfo(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataAsset> getUserAssetsWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getUserAssetsRequestBuilder(pageSize, page, type, assetProfileId, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -101873,7 +103780,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getUserAssetsRequestBuilder(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getUserAssetsRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'pageSize' is set
     if (pageSize == null) {
       throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getUserAssets");
@@ -101926,9 +103833,9 @@ public class ThingsboardApi {
 
   public static final class GetUserAssetsArgs {
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String type; // Asset type (optional)
     @Nullable
@@ -101949,11 +103856,11 @@ public class ThingsboardApi {
       this.sortOrder = builder.sortOrder;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -101980,20 +103887,36 @@ public class ThingsboardApi {
       return new Builder();
     }
     public static class Builder {
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String type;
       private String assetProfileId;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder type(@Nullable String type) {
         this.type = type;
@@ -102183,9 +104106,9 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public PageDataCustomer getUserCustomers(GetUserCustomersArgs apiRequest) throws ApiException {
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String textSearch = apiRequest.textSearch();
     @Nullable
@@ -102206,8 +104129,8 @@ public class ThingsboardApi {
    */
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataCustomer> getUserCustomersWithHttpInfo(GetUserCustomersArgs apiRequest, Map<String, String> headers) throws ApiException {
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
     String sortOrder = apiRequest.sortOrder();
@@ -102231,9 +104154,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataCustomer getUserCustomers(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataCustomer getUserCustomers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataCustomer> localVarResponse = getUserCustomersWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Customers (getUserCustomers)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getUserCustomers(GetUserCustomersArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataCustomer getUserCustomers(String pageSize, String page, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getUserCustomers(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Customers (getUserCustomers)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getUserCustomersWithHttpInfo(GetUserCustomersArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataCustomer> getUserCustomersWithHttpInfo(String pageSize, String page, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getUserCustomersWithHttpInfo(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -102254,7 +104197,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataCustomer> getUserCustomersWithHttpInfo(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataCustomer> getUserCustomersWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getUserCustomersRequestBuilder(pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -102289,7 +104232,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getUserCustomersRequestBuilder(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getUserCustomersRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'pageSize' is set
     if (pageSize == null) {
       throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getUserCustomers");
@@ -102338,9 +104281,9 @@ public class ThingsboardApi {
 
   public static final class GetUserCustomersArgs {
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String textSearch; // The case insensitive &#39;substring&#39; filter based on the customer title. (optional)
     @Nullable
@@ -102355,11 +104298,11 @@ public class ThingsboardApi {
       this.sortOrder = builder.sortOrder;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -102378,18 +104321,34 @@ public class ThingsboardApi {
       return new Builder();
     }
     public static class Builder {
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder textSearch(@Nullable String textSearch) {
         this.textSearch = textSearch;
@@ -102724,9 +104683,9 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public PageDataDevice getUserDevices(GetUserDevicesArgs apiRequest) throws ApiException {
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String type = apiRequest.type();
     @Nullable
@@ -102749,8 +104708,8 @@ public class ThingsboardApi {
    */
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataDevice> getUserDevicesWithHttpInfo(GetUserDevicesArgs apiRequest, Map<String, String> headers) throws ApiException {
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String type = apiRequest.type();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
@@ -102776,9 +104735,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataDevice getUserDevices(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataDevice getUserDevices(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataDevice> localVarResponse = getUserDevicesWithHttpInfo(pageSize, page, type, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Devices (getUserDevices)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getUserDevices(GetUserDevicesArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataDevice getUserDevices(String pageSize, String page, String type, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getUserDevices(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), type, textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Devices (getUserDevices)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getUserDevicesWithHttpInfo(GetUserDevicesArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataDevice> getUserDevicesWithHttpInfo(String pageSize, String page, String type, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getUserDevicesWithHttpInfo(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), type, textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -102800,7 +104779,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataDevice> getUserDevicesWithHttpInfo(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataDevice> getUserDevicesWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getUserDevicesRequestBuilder(pageSize, page, type, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -102835,7 +104814,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getUserDevicesRequestBuilder(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getUserDevicesRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'pageSize' is set
     if (pageSize == null) {
       throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getUserDevices");
@@ -102886,9 +104865,9 @@ public class ThingsboardApi {
 
   public static final class GetUserDevicesArgs {
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String type; // Device type as the name of the device profile (optional)
     @Nullable
@@ -102906,11 +104885,11 @@ public class ThingsboardApi {
       this.sortOrder = builder.sortOrder;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -102933,19 +104912,35 @@ public class ThingsboardApi {
       return new Builder();
     }
     public static class Builder {
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String type;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder type(@Nullable String type) {
         this.type = type;
@@ -102985,9 +104980,9 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public PageDataEdge getUserEdges(GetUserEdgesArgs apiRequest) throws ApiException {
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String type = apiRequest.type();
     @Nullable
@@ -103010,8 +105005,8 @@ public class ThingsboardApi {
    */
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataEdge> getUserEdgesWithHttpInfo(GetUserEdgesArgs apiRequest, Map<String, String> headers) throws ApiException {
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String type = apiRequest.type();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
@@ -103037,9 +105032,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataEdge getUserEdges(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataEdge getUserEdges(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataEdge> localVarResponse = getUserEdgesWithHttpInfo(pageSize, page, type, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Edges (getUserEdges)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getUserEdges(GetUserEdgesArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataEdge getUserEdges(String pageSize, String page, String type, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getUserEdges(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), type, textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Edges (getUserEdges)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getUserEdgesWithHttpInfo(GetUserEdgesArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataEdge> getUserEdgesWithHttpInfo(String pageSize, String page, String type, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getUserEdgesWithHttpInfo(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), type, textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -103061,7 +105076,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataEdge> getUserEdgesWithHttpInfo(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataEdge> getUserEdgesWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getUserEdgesRequestBuilder(pageSize, page, type, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -103096,7 +105111,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getUserEdgesRequestBuilder(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getUserEdgesRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'pageSize' is set
     if (pageSize == null) {
       throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getUserEdges");
@@ -103147,9 +105162,9 @@ public class ThingsboardApi {
 
   public static final class GetUserEdgesArgs {
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String type; // A string value representing the edge type. For example, &#39;default&#39; (optional)
     @Nullable
@@ -103167,11 +105182,11 @@ public class ThingsboardApi {
       this.sortOrder = builder.sortOrder;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -103194,19 +105209,35 @@ public class ThingsboardApi {
       return new Builder();
     }
     public static class Builder {
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String type;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder type(@Nullable String type) {
         this.type = type;
@@ -103246,9 +105277,9 @@ public class ThingsboardApi {
   @SuppressWarnings({"deprecation", "removal"})
   public PageDataEntityView getUserEntityViews(GetUserEntityViewsArgs apiRequest) throws ApiException {
     @Nonnull
-    String pageSize = apiRequest.pageSize();
+    Integer pageSize = apiRequest.pageSize();
     @Nonnull
-    String page = apiRequest.page();
+    Integer page = apiRequest.page();
     @Nullable
     String type = apiRequest.type();
     @Nullable
@@ -103271,8 +105302,8 @@ public class ThingsboardApi {
    */
   @SuppressWarnings({"deprecation", "removal"})
   public ApiResponse<PageDataEntityView> getUserEntityViewsWithHttpInfo(GetUserEntityViewsArgs apiRequest, Map<String, String> headers) throws ApiException {
-    String pageSize = apiRequest.pageSize();
-    String page = apiRequest.page();
+    Integer pageSize = apiRequest.pageSize();
+    Integer page = apiRequest.page();
     String type = apiRequest.type();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
@@ -103298,9 +105329,29 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataEntityView getUserEntityViews(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataEntityView getUserEntityViews(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataEntityView> localVarResponse = getUserEntityViewsWithHttpInfo(pageSize, page, type, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
+  }
+
+  /**
+   * Get Entity Views (getUserEntityViews)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getUserEntityViews(GetUserEntityViewsArgs)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public PageDataEntityView getUserEntityViews(String pageSize, String page, String type, String textSearch, String sortProperty, String sortOrder) throws ApiException {
+    return getUserEntityViews(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), type, textSearch, sortProperty, sortOrder);
+  }
+
+  /**
+   * Get Entity Views (getUserEntityViews)
+   * @deprecated Earlier client versions took {@code pageSize} {@code page} as {@code String};
+   *     they are integers. Use {@link #getUserEntityViewsWithHttpInfo(GetUserEntityViewsArgs, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<PageDataEntityView> getUserEntityViewsWithHttpInfo(String pageSize, String page, String type, String textSearch, String sortProperty, String sortOrder, Map<String, String> headers) throws ApiException {
+    return getUserEntityViewsWithHttpInfo(pageSize == null ? null : Integer.valueOf(pageSize), page == null ? null : Integer.valueOf(page), type, textSearch, sortProperty, sortOrder, headers);
   }
 
   /**
@@ -103322,7 +105373,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataEntityView> getUserEntityViewsWithHttpInfo(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataEntityView> getUserEntityViewsWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getUserEntityViewsRequestBuilder(pageSize, page, type, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -103357,7 +105408,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getUserEntityViewsRequestBuilder(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getUserEntityViewsRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'pageSize' is set
     if (pageSize == null) {
       throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getUserEntityViews");
@@ -103408,9 +105459,9 @@ public class ThingsboardApi {
 
   public static final class GetUserEntityViewsArgs {
     @Nonnull
-    private String pageSize; // Maximum amount of entities in a one page (required)
+    private Integer pageSize; // Maximum amount of entities in a one page (required)
     @Nonnull
-    private String page; // Sequence number of page starting from 0 (required)
+    private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
     private String type; //   ## Entity View Filter  Allows to filter entity views based on their type and the **&#39;starts with&#39;** expression over their name. For example, this entity filter selects all &#39;Concrete Mixer&#39; entity views which name starts with &#39;CAT&#39;:  &#x60;&#x60;&#x60;json {   \&quot;type\&quot;: \&quot;entityViewType\&quot;,   \&quot;entityViewType\&quot;: \&quot;Concrete Mixer\&quot;,   \&quot;entityViewNameFilter\&quot;: \&quot;CAT\&quot; } &#x60;&#x60;&#x60; (optional)
     @Nullable
@@ -103428,11 +105479,11 @@ public class ThingsboardApi {
       this.sortOrder = builder.sortOrder;
     }
     @Nonnull
-    public String pageSize() {
+    public Integer pageSize() {
       return pageSize;
     }
     @Nonnull
-    public String page() {
+    public Integer page() {
       return page;
     }
     @Nullable
@@ -103455,19 +105506,35 @@ public class ThingsboardApi {
       return new Builder();
     }
     public static class Builder {
-      private String pageSize;
-      private String page;
+      private Integer pageSize;
+      private Integer page;
       private String type;
       private String textSearch;
       private String sortProperty;
       private String sortOrder;
-      public Builder pageSize(@Nonnull String pageSize) {
+      public Builder pageSize(@Nonnull Integer pageSize) {
         this.pageSize = pageSize;
         return this;
       }
-      public Builder page(@Nonnull String page) {
+      /**
+       * @deprecated Earlier client versions took {@code pageSize} as {@code String}; it is an integer.
+       *     Use {@link #pageSize(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder pageSize(String pageSize) {
+        return pageSize(pageSize == null ? null : Integer.valueOf(pageSize));
+      }
+      public Builder page(@Nonnull Integer page) {
         this.page = page;
         return this;
+      }
+      /**
+       * @deprecated Earlier client versions took {@code page} as {@code String}; it is an integer.
+       *     Use {@link #page(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder page(String page) {
+        return page(page == null ? null : Integer.valueOf(page));
       }
       public Builder type(@Nullable String type) {
         this.type = type;
@@ -119248,7 +121315,7 @@ public class ThingsboardApi {
 
   /**
    * Resend Activation Email (resendEmailActivation)
-   * Request to resend the activation email for the user. Checks that user was not activated yet.
+   * Request to resend the activation email for a user who signed up through this domain or mobile application and has not verified the email yet.
    * @param apiRequest {@link ResendEmailActivationArgs}
    * @throws ApiException if fails to make API call
    */
@@ -119265,7 +121332,7 @@ public class ThingsboardApi {
 
   /**
    * Resend Activation Email (resendEmailActivation)
-   * Request to resend the activation email for the user. Checks that user was not activated yet.
+   * Request to resend the activation email for a user who signed up through this domain or mobile application and has not verified the email yet.
    * @param apiRequest {@link ResendEmailActivationArgs}
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;Void&gt;
@@ -119281,7 +121348,7 @@ public class ThingsboardApi {
 
   /**
    * Resend Activation Email (resendEmailActivation)
-   * Request to resend the activation email for the user. Checks that user was not activated yet.
+   * Request to resend the activation email for a user who signed up through this domain or mobile application and has not verified the email yet.
    * @param email Email of the user. (required)
    * @param pkgName Optional package name of the mobile application. (optional)
    * @param platform Platform type (optional)
@@ -119299,7 +121366,7 @@ public class ThingsboardApi {
 
   /**
    * Resend Activation Email (resendEmailActivation)
-   * Request to resend the activation email for the user. Checks that user was not activated yet.
+   * Request to resend the activation email for a user who signed up through this domain or mobile application and has not verified the email yet.
    * @param email Email of the user. (required)
    * @param pkgName Optional package name of the mobile application. (optional)
    * @param platform Platform type (optional)
@@ -119729,6 +121796,199 @@ public class ThingsboardApi {
           throw new IllegalArgumentException("Required parameter 'body' is not set for resolveToolApproval");
         }
         return new ResolveToolApprovalArgs(this);
+      }
+    }
+  }
+
+  /**
+   * resumeChat
+   * 
+   * @param apiRequest {@link ResumeChatArgs}
+   * @return List&lt;Object&gt;
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public List<Object> resumeChat(ResumeChatArgs apiRequest) throws ApiException {
+    @Nonnull
+    UUID chatId = apiRequest.chatId();
+    @Nonnull
+    String xAuthorization = apiRequest.xAuthorization();
+    @Nullable
+    String acceptLanguage = apiRequest.acceptLanguage();
+    ApiResponse<List<Object>> localVarResponse = resumeChatWithHttpInfo(chatId, xAuthorization, acceptLanguage, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * resumeChat
+   * 
+   * @param apiRequest {@link ResumeChatArgs}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;List&lt;Object&gt;&gt;
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public ApiResponse<List<Object>> resumeChatWithHttpInfo(ResumeChatArgs apiRequest, Map<String, String> headers) throws ApiException {
+    UUID chatId = apiRequest.chatId();
+    String xAuthorization = apiRequest.xAuthorization();
+    String acceptLanguage = apiRequest.acceptLanguage();
+    return resumeChatWithHttpInfo(chatId, xAuthorization, acceptLanguage, headers);
+  }
+
+  /**
+   * resumeChat
+   * 
+   * @param chatId  (required)
+   * @param xAuthorization  (required)
+   * @param acceptLanguage  (optional)
+   * @return List&lt;Object&gt;
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #resumeChat(ResumeChatArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public List<Object> resumeChat(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nullable String acceptLanguage) throws ApiException {
+    ApiResponse<List<Object>> localVarResponse = resumeChatWithHttpInfo(chatId, xAuthorization, acceptLanguage, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * resumeChat
+   * 
+   * @param chatId  (required)
+   * @param xAuthorization  (required)
+   * @param acceptLanguage  (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;List&lt;Object&gt;&gt;
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #resumeChat(ResumeChatArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<List<Object>> resumeChatWithHttpInfo(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nullable String acceptLanguage, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = resumeChatRequestBuilder(chatId, xAuthorization, acceptLanguage, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("resumeChat", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<List<Object>>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        List<Object> responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<List<Object>>() {});
+        return new ApiResponse<List<Object>>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder resumeChatRequestBuilder(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nullable String acceptLanguage, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'chatId' is set
+    if (chatId == null) {
+      throw new ApiException(400, "Missing the required parameter 'chatId' when calling resumeChat");
+    }
+    // verify the required parameter 'xAuthorization' is set
+    if (xAuthorization == null) {
+      throw new ApiException(400, "Missing the required parameter 'xAuthorization' when calling resumeChat");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/chats/{chatId}/resume"
+        .replace("{chatId}", ApiClient.urlEncode(chatId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    if (xAuthorization != null) {
+      localVarRequestBuilder.header("X-Authorization", xAuthorization.toString());
+    }
+    if (acceptLanguage != null) {
+      localVarRequestBuilder.header("Accept-Language", acceptLanguage.toString());
+    }
+    localVarRequestBuilder.header("Accept", "text/event-stream, application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  public static final class ResumeChatArgs {
+    @Nonnull
+    private UUID chatId; //  (required)
+    @Nonnull
+    private String xAuthorization; //  (required)
+    @Nullable
+    private String acceptLanguage; //  (optional)
+    private ResumeChatArgs(Builder builder) {
+      this.chatId = builder.chatId;
+      this.xAuthorization = builder.xAuthorization;
+      this.acceptLanguage = builder.acceptLanguage;
+    }
+    @Nonnull
+    public UUID chatId() {
+      return chatId;
+    }
+    @Nonnull
+    public String xAuthorization() {
+      return xAuthorization;
+    }
+    @Nullable
+    public String acceptLanguage() {
+      return acceptLanguage;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+    public static class Builder {
+      private UUID chatId;
+      private String xAuthorization;
+      private String acceptLanguage;
+      public Builder chatId(@Nonnull UUID chatId) {
+        this.chatId = chatId;
+        return this;
+      }
+      public Builder xAuthorization(@Nonnull String xAuthorization) {
+        this.xAuthorization = xAuthorization;
+        return this;
+      }
+      public Builder acceptLanguage(@Nullable String acceptLanguage) {
+        this.acceptLanguage = acceptLanguage;
+        return this;
+      }
+      public ResumeChatArgs build() {
+        if (this.chatId == null) {
+          throw new IllegalArgumentException("Required parameter 'chatId' is not set for resumeChat");
+        }
+        if (this.xAuthorization == null) {
+          throw new IllegalArgumentException("Required parameter 'xAuthorization' is not set for resumeChat");
+        }
+        return new ResumeChatArgs(this);
       }
     }
   }
@@ -133160,6 +135420,182 @@ public class ThingsboardApi {
   }
 
   /**
+   * Send request to a saved AI chat model (sendChatRequestToAiModel)
+   * Submits a single prompt - made up of an optional system message and a required user message - to the AI chat model with the specified &#x60;id&#x60;, using its saved configuration, and returns either the generated answer or an error envelope. The user must have the &#39;INVOKE&#39; permission for AI models, and customer users additionally require the model to have customer access enabled. Roles that grant all operations, such as the default &#39;Customer Administrator&#39; role, include &#39;INVOKE&#39;, so enabling customer access makes the model callable by every customer user with such a role.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * @param apiRequest {@link SendChatRequestToAiModelArgs}
+   * @return TbChatResponse
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public TbChatResponse sendChatRequestToAiModel(SendChatRequestToAiModelArgs apiRequest) throws ApiException {
+    @Nonnull
+    UUID modelUuid = apiRequest.modelUuid();
+    @Nonnull
+    TbChatPrompt tbChatPrompt = apiRequest.tbChatPrompt();
+    ApiResponse<TbChatResponse> localVarResponse = sendChatRequestToAiModelWithHttpInfo(modelUuid, tbChatPrompt, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Send request to a saved AI chat model (sendChatRequestToAiModel)
+   * Submits a single prompt - made up of an optional system message and a required user message - to the AI chat model with the specified &#x60;id&#x60;, using its saved configuration, and returns either the generated answer or an error envelope. The user must have the &#39;INVOKE&#39; permission for AI models, and customer users additionally require the model to have customer access enabled. Roles that grant all operations, such as the default &#39;Customer Administrator&#39; role, include &#39;INVOKE&#39;, so enabling customer access makes the model callable by every customer user with such a role.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * @param apiRequest {@link SendChatRequestToAiModelArgs}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;TbChatResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public ApiResponse<TbChatResponse> sendChatRequestToAiModelWithHttpInfo(SendChatRequestToAiModelArgs apiRequest, Map<String, String> headers) throws ApiException {
+    UUID modelUuid = apiRequest.modelUuid();
+    TbChatPrompt tbChatPrompt = apiRequest.tbChatPrompt();
+    return sendChatRequestToAiModelWithHttpInfo(modelUuid, tbChatPrompt, headers);
+  }
+
+  /**
+   * Send request to a saved AI chat model (sendChatRequestToAiModel)
+   * Submits a single prompt - made up of an optional system message and a required user message - to the AI chat model with the specified &#x60;id&#x60;, using its saved configuration, and returns either the generated answer or an error envelope. The user must have the &#39;INVOKE&#39; permission for AI models, and customer users additionally require the model to have customer access enabled. Roles that grant all operations, such as the default &#39;Customer Administrator&#39; role, include &#39;INVOKE&#39;, so enabling customer access makes the model callable by every customer user with such a role.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * @param modelUuid ID of the AI model record (required)
+   * @param tbChatPrompt  (required)
+   * @return TbChatResponse
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #sendChatRequestToAiModel(SendChatRequestToAiModelArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public TbChatResponse sendChatRequestToAiModel(@Nonnull UUID modelUuid, @Nonnull TbChatPrompt tbChatPrompt) throws ApiException {
+    ApiResponse<TbChatResponse> localVarResponse = sendChatRequestToAiModelWithHttpInfo(modelUuid, tbChatPrompt, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Send request to a saved AI chat model (sendChatRequestToAiModel)
+   * Submits a single prompt - made up of an optional system message and a required user message - to the AI chat model with the specified &#x60;id&#x60;, using its saved configuration, and returns either the generated answer or an error envelope. The user must have the &#39;INVOKE&#39; permission for AI models, and customer users additionally require the model to have customer access enabled. Roles that grant all operations, such as the default &#39;Customer Administrator&#39; role, include &#39;INVOKE&#39;, so enabling customer access makes the model callable by every customer user with such a role.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * @param modelUuid ID of the AI model record (required)
+   * @param tbChatPrompt  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;TbChatResponse&gt;
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #sendChatRequestToAiModel(SendChatRequestToAiModelArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<TbChatResponse> sendChatRequestToAiModelWithHttpInfo(@Nonnull UUID modelUuid, @Nonnull TbChatPrompt tbChatPrompt, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = sendChatRequestToAiModelRequestBuilder(modelUuid, tbChatPrompt, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("sendChatRequestToAiModel", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<TbChatResponse>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        TbChatResponse responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<TbChatResponse>() {});
+        return new ApiResponse<TbChatResponse>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder sendChatRequestToAiModelRequestBuilder(@Nonnull UUID modelUuid, @Nonnull TbChatPrompt tbChatPrompt, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'modelUuid' is set
+    if (modelUuid == null) {
+      throw new ApiException(400, "Missing the required parameter 'modelUuid' when calling sendChatRequestToAiModel");
+    }
+    // verify the required parameter 'tbChatPrompt' is set
+    if (tbChatPrompt == null) {
+      throw new ApiException(400, "Missing the required parameter 'tbChatPrompt' when calling sendChatRequestToAiModel");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/model/{modelUuid}/chat"
+        .replace("{modelUuid}", ApiClient.urlEncode(modelUuid.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(tbChatPrompt);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  public static final class SendChatRequestToAiModelArgs {
+    @Nonnull
+    private UUID modelUuid; // ID of the AI model record (required)
+    @Nonnull
+    private TbChatPrompt tbChatPrompt; //  (required)
+    private SendChatRequestToAiModelArgs(Builder builder) {
+      this.modelUuid = builder.modelUuid;
+      this.tbChatPrompt = builder.tbChatPrompt;
+    }
+    @Nonnull
+    public UUID modelUuid() {
+      return modelUuid;
+    }
+    @Nonnull
+    public TbChatPrompt tbChatPrompt() {
+      return tbChatPrompt;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+    public static class Builder {
+      private UUID modelUuid;
+      private TbChatPrompt tbChatPrompt;
+      public Builder modelUuid(@Nonnull UUID modelUuid) {
+        this.modelUuid = modelUuid;
+        return this;
+      }
+      public Builder tbChatPrompt(@Nonnull TbChatPrompt tbChatPrompt) {
+        this.tbChatPrompt = tbChatPrompt;
+        return this;
+      }
+      public SendChatRequestToAiModelArgs build() {
+        if (this.modelUuid == null) {
+          throw new IllegalArgumentException("Required parameter 'modelUuid' is not set for sendChatRequestToAiModel");
+        }
+        if (this.tbChatPrompt == null) {
+          throw new IllegalArgumentException("Required parameter 'tbChatPrompt' is not set for sendChatRequestToAiModel");
+        }
+        return new SendChatRequestToAiModelArgs(this);
+      }
+    }
+  }
+
+  /**
    * Send entity limit increase request notification to System/Tenant administrators (sendEntitiesLimitIncreaseRequest)
    * Send entity limit increase request notification by Tenant Administrator or Customer User to System/Tenant administrators.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param apiRequest {@link SendEntitiesLimitIncreaseRequestArgs}
@@ -133295,6 +135731,207 @@ public class ThingsboardApi {
           throw new IllegalArgumentException("Required parameter 'entityType' is not set for sendEntitiesLimitIncreaseRequest");
         }
         return new SendEntitiesLimitIncreaseRequestArgs(this);
+      }
+    }
+  }
+
+  /**
+   * sendMessage
+   * 
+   * @param apiRequest {@link SendMessageArgs}
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public com.fasterxml.jackson.databind.JsonNode sendMessage(SendMessageArgs apiRequest) throws ApiException {
+    @Nonnull
+    UUID solutionId = apiRequest.solutionId();
+    @Nonnull
+    SolutionStep step = apiRequest.step();
+    @Nonnull
+    SolutionChatMessage solutionChatMessage = apiRequest.solutionChatMessage();
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = sendMessageWithHttpInfo(solutionId, step, solutionChatMessage, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * sendMessage
+   * 
+   * @param apiRequest {@link SendMessageArgs}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> sendMessageWithHttpInfo(SendMessageArgs apiRequest, Map<String, String> headers) throws ApiException {
+    UUID solutionId = apiRequest.solutionId();
+    SolutionStep step = apiRequest.step();
+    SolutionChatMessage solutionChatMessage = apiRequest.solutionChatMessage();
+    return sendMessageWithHttpInfo(solutionId, step, solutionChatMessage, headers);
+  }
+
+  /**
+   * sendMessage
+   * 
+   * @param solutionId  (required)
+   * @param step  (required)
+   * @param solutionChatMessage  (required)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #sendMessage(SendMessageArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public com.fasterxml.jackson.databind.JsonNode sendMessage(@Nonnull UUID solutionId, @Nonnull SolutionStep step, @Nonnull SolutionChatMessage solutionChatMessage) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = sendMessageWithHttpInfo(solutionId, step, solutionChatMessage, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * sendMessage
+   * 
+   * @param solutionId  (required)
+   * @param step  (required)
+   * @param solutionChatMessage  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #sendMessage(SendMessageArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> sendMessageWithHttpInfo(@Nonnull UUID solutionId, @Nonnull SolutionStep step, @Nonnull SolutionChatMessage solutionChatMessage, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = sendMessageRequestBuilder(solutionId, step, solutionChatMessage, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("sendMessage", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder sendMessageRequestBuilder(@Nonnull UUID solutionId, @Nonnull SolutionStep step, @Nonnull SolutionChatMessage solutionChatMessage, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'solutionId' is set
+    if (solutionId == null) {
+      throw new ApiException(400, "Missing the required parameter 'solutionId' when calling sendMessage");
+    }
+    // verify the required parameter 'step' is set
+    if (step == null) {
+      throw new ApiException(400, "Missing the required parameter 'step' when calling sendMessage");
+    }
+    // verify the required parameter 'solutionChatMessage' is set
+    if (solutionChatMessage == null) {
+      throw new ApiException(400, "Missing the required parameter 'solutionChatMessage' when calling sendMessage");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/solution/{solutionId}/{step}/messages"
+        .replace("{solutionId}", ApiClient.urlEncode(solutionId.toString()))
+        .replace("{step}", ApiClient.urlEncode(step.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(solutionChatMessage);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  public static final class SendMessageArgs {
+    @Nonnull
+    private UUID solutionId; //  (required)
+    @Nonnull
+    private SolutionStep step; //  (required)
+    @Nonnull
+    private SolutionChatMessage solutionChatMessage; //  (required)
+    private SendMessageArgs(Builder builder) {
+      this.solutionId = builder.solutionId;
+      this.step = builder.step;
+      this.solutionChatMessage = builder.solutionChatMessage;
+    }
+    @Nonnull
+    public UUID solutionId() {
+      return solutionId;
+    }
+    @Nonnull
+    public SolutionStep step() {
+      return step;
+    }
+    @Nonnull
+    public SolutionChatMessage solutionChatMessage() {
+      return solutionChatMessage;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+    public static class Builder {
+      private UUID solutionId;
+      private SolutionStep step;
+      private SolutionChatMessage solutionChatMessage;
+      public Builder solutionId(@Nonnull UUID solutionId) {
+        this.solutionId = solutionId;
+        return this;
+      }
+      public Builder step(@Nonnull SolutionStep step) {
+        this.step = step;
+        return this;
+      }
+      public Builder solutionChatMessage(@Nonnull SolutionChatMessage solutionChatMessage) {
+        this.solutionChatMessage = solutionChatMessage;
+        return this;
+      }
+      public SendMessageArgs build() {
+        if (this.solutionId == null) {
+          throw new IllegalArgumentException("Required parameter 'solutionId' is not set for sendMessage");
+        }
+        if (this.step == null) {
+          throw new IllegalArgumentException("Required parameter 'step' is not set for sendMessage");
+        }
+        if (this.solutionChatMessage == null) {
+          throw new IllegalArgumentException("Required parameter 'solutionChatMessage' is not set for sendMessage");
+        }
+        return new SendMessageArgs(this);
       }
     }
   }
@@ -133725,6 +136362,151 @@ public class ThingsboardApi {
           throw new IllegalArgumentException("Required parameter 'body' is not set for sendResetPasswordEmail");
         }
         return new SendResetPasswordEmailArgs(this);
+      }
+    }
+  }
+
+  /**
+   * sendSubscriptionRenewalReminderEmail
+   * 
+   * @param apiRequest {@link SendSubscriptionRenewalReminderEmailArgs}
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public void sendSubscriptionRenewalReminderEmail(SendSubscriptionRenewalReminderEmailArgs apiRequest) throws ApiException {
+    @Nonnull
+    SubscriptionRenewalReminder subscriptionRenewalReminder = apiRequest.subscriptionRenewalReminder();
+    sendSubscriptionRenewalReminderEmailWithHttpInfo(subscriptionRenewalReminder, null);
+  }
+
+  /**
+   * sendSubscriptionRenewalReminderEmail
+   * 
+   * @param apiRequest {@link SendSubscriptionRenewalReminderEmailArgs}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public ApiResponse<Void> sendSubscriptionRenewalReminderEmailWithHttpInfo(SendSubscriptionRenewalReminderEmailArgs apiRequest, Map<String, String> headers) throws ApiException {
+    SubscriptionRenewalReminder subscriptionRenewalReminder = apiRequest.subscriptionRenewalReminder();
+    return sendSubscriptionRenewalReminderEmailWithHttpInfo(subscriptionRenewalReminder, headers);
+  }
+
+  /**
+   * sendSubscriptionRenewalReminderEmail
+   * 
+   * @param subscriptionRenewalReminder  (required)
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #sendSubscriptionRenewalReminderEmail(SendSubscriptionRenewalReminderEmailArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public void sendSubscriptionRenewalReminderEmail(@Nonnull SubscriptionRenewalReminder subscriptionRenewalReminder) throws ApiException {
+    sendSubscriptionRenewalReminderEmailWithHttpInfo(subscriptionRenewalReminder, null);
+  }
+
+  /**
+   * sendSubscriptionRenewalReminderEmail
+   * 
+   * @param subscriptionRenewalReminder  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #sendSubscriptionRenewalReminderEmail(SendSubscriptionRenewalReminderEmailArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<Void> sendSubscriptionRenewalReminderEmailWithHttpInfo(@Nonnull SubscriptionRenewalReminder subscriptionRenewalReminder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = sendSubscriptionRenewalReminderEmailRequestBuilder(subscriptionRenewalReminder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("sendSubscriptionRenewalReminderEmail", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder sendSubscriptionRenewalReminderEmailRequestBuilder(@Nonnull SubscriptionRenewalReminder subscriptionRenewalReminder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'subscriptionRenewalReminder' is set
+    if (subscriptionRenewalReminder == null) {
+      throw new ApiException(400, "Missing the required parameter 'subscriptionRenewalReminder' when calling sendSubscriptionRenewalReminderEmail");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/billingEndpoint/sendSubscriptionRenewalReminder";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(subscriptionRenewalReminder);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  public static final class SendSubscriptionRenewalReminderEmailArgs {
+    @Nonnull
+    private SubscriptionRenewalReminder subscriptionRenewalReminder; //  (required)
+    private SendSubscriptionRenewalReminderEmailArgs(Builder builder) {
+      this.subscriptionRenewalReminder = builder.subscriptionRenewalReminder;
+    }
+    @Nonnull
+    public SubscriptionRenewalReminder subscriptionRenewalReminder() {
+      return subscriptionRenewalReminder;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+    public static class Builder {
+      private SubscriptionRenewalReminder subscriptionRenewalReminder;
+      public Builder subscriptionRenewalReminder(@Nonnull SubscriptionRenewalReminder subscriptionRenewalReminder) {
+        this.subscriptionRenewalReminder = subscriptionRenewalReminder;
+        return this;
+      }
+      public SendSubscriptionRenewalReminderEmailArgs build() {
+        if (this.subscriptionRenewalReminder == null) {
+          throw new IllegalArgumentException("Required parameter 'subscriptionRenewalReminder' is not set for sendSubscriptionRenewalReminderEmail");
+        }
+        return new SendSubscriptionRenewalReminderEmailArgs(this);
       }
     }
   }
@@ -136095,7 +138877,7 @@ public class ThingsboardApi {
 
   /**
    * Share the Entity Group (shareEntityGroup)
-   * Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
+   * Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature. Each role in &#39;roleIds&#39; must be a group role readable by the current user, and each of its operations must be granted to the current user for the entity group or its entities.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
    * @param apiRequest {@link ShareEntityGroupArgs}
    * @throws ApiException if fails to make API call
    */
@@ -136110,7 +138892,7 @@ public class ThingsboardApi {
 
   /**
    * Share the Entity Group (shareEntityGroup)
-   * Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
+   * Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature. Each role in &#39;roleIds&#39; must be a group role readable by the current user, and each of its operations must be granted to the current user for the entity group or its entities.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
    * @param apiRequest {@link ShareEntityGroupArgs}
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;Void&gt;
@@ -136125,7 +138907,7 @@ public class ThingsboardApi {
 
   /**
    * Share the Entity Group (shareEntityGroup)
-   * Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
+   * Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature. Each role in &#39;roleIds&#39; must be a group role readable by the current user, and each of its operations must be granted to the current user for the entity group or its entities.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
    * @param entityGroupId A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param shareGroupRequest  (required)
    * @throws ApiException if fails to make API call
@@ -136142,7 +138924,7 @@ public class ThingsboardApi {
 
   /**
    * Share the Entity Group (shareEntityGroup)
-   * Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
+   * Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature. Each role in &#39;roleIds&#39; must be a group role readable by the current user, and each of its operations must be granted to the current user for the entity group or its entities.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
    * @param entityGroupId A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param shareGroupRequest  (required)
    * @param headers Optional headers to include in the request
@@ -138693,14 +141475,14 @@ public class ThingsboardApi {
    * Unassign Alarm (unassignAlarm)
    * Unassign the Alarm. Once unassigned, the &#39;assign_ts&#39; field will be set to current timestamp and special rule chain event &#39;ALARM_UNASSIGNED&#39; will be generated. Referencing non-existing Alarm Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param apiRequest {@link UnassignAlarmArgs}
-   * @return Alarm
+   * @return AlarmInfo
    * @throws ApiException if fails to make API call
    */
   @SuppressWarnings({"deprecation", "removal"})
-  public Alarm unassignAlarm(UnassignAlarmArgs apiRequest) throws ApiException {
+  public AlarmInfo unassignAlarm(UnassignAlarmArgs apiRequest) throws ApiException {
     @Nonnull
     String alarmId = apiRequest.alarmId();
-    ApiResponse<Alarm> localVarResponse = unassignAlarmWithHttpInfo(alarmId, null);
+    ApiResponse<AlarmInfo> localVarResponse = unassignAlarmWithHttpInfo(alarmId, null);
     return localVarResponse.getData();
   }
 
@@ -138709,11 +141491,11 @@ public class ThingsboardApi {
    * Unassign the Alarm. Once unassigned, the &#39;assign_ts&#39; field will be set to current timestamp and special rule chain event &#39;ALARM_UNASSIGNED&#39; will be generated. Referencing non-existing Alarm Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param apiRequest {@link UnassignAlarmArgs}
    * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;Alarm&gt;
+   * @return ApiResponse&lt;AlarmInfo&gt;
    * @throws ApiException if fails to make API call
    */
   @SuppressWarnings({"deprecation", "removal"})
-  public ApiResponse<Alarm> unassignAlarmWithHttpInfo(UnassignAlarmArgs apiRequest, Map<String, String> headers) throws ApiException {
+  public ApiResponse<AlarmInfo> unassignAlarmWithHttpInfo(UnassignAlarmArgs apiRequest, Map<String, String> headers) throws ApiException {
     String alarmId = apiRequest.alarmId();
     return unassignAlarmWithHttpInfo(alarmId, headers);
   }
@@ -138722,7 +141504,7 @@ public class ThingsboardApi {
    * Unassign Alarm (unassignAlarm)
    * Unassign the Alarm. Once unassigned, the &#39;assign_ts&#39; field will be set to current timestamp and special rule chain event &#39;ALARM_UNASSIGNED&#39; will be generated. Referencing non-existing Alarm Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param alarmId A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @return Alarm
+   * @return AlarmInfo
    * @throws ApiException if fails to make API call
    * @deprecated Use {@link #unassignAlarm(UnassignAlarmArgs)} instead.
    *     This overload passes each parameter positionally, so its signature changes whenever a
@@ -138731,8 +141513,8 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public Alarm unassignAlarm(@Nonnull String alarmId) throws ApiException {
-    ApiResponse<Alarm> localVarResponse = unassignAlarmWithHttpInfo(alarmId, null);
+  public AlarmInfo unassignAlarm(@Nonnull String alarmId) throws ApiException {
+    ApiResponse<AlarmInfo> localVarResponse = unassignAlarmWithHttpInfo(alarmId, null);
     return localVarResponse.getData();
   }
 
@@ -138741,7 +141523,7 @@ public class ThingsboardApi {
    * Unassign the Alarm. Once unassigned, the &#39;assign_ts&#39; field will be set to current timestamp and special rule chain event &#39;ALARM_UNASSIGNED&#39; will be generated. Referencing non-existing Alarm Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param alarmId A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;Alarm&gt;
+   * @return ApiResponse&lt;AlarmInfo&gt;
    * @throws ApiException if fails to make API call
    * @deprecated Use {@link #unassignAlarm(UnassignAlarmArgs)} instead.
    *     This overload passes each parameter positionally, so its signature changes whenever a
@@ -138750,7 +141532,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<Alarm> unassignAlarmWithHttpInfo(@Nonnull String alarmId, Map<String, String> headers) throws ApiException {
+  public ApiResponse<AlarmInfo> unassignAlarmWithHttpInfo(@Nonnull String alarmId, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = unassignAlarmRequestBuilder(alarmId, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -138766,11 +141548,11 @@ public class ThingsboardApi {
         }
         localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
         if (localVarResponseBody == null) {
-          return new ApiResponse<Alarm>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+          return new ApiResponse<AlarmInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
         }
         String responseBody = new String(localVarResponseBody.readAllBytes());
-        Alarm responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<Alarm>() {});
-        return new ApiResponse<Alarm>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+        AlarmInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AlarmInfo>() {});
+        return new ApiResponse<AlarmInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
       } finally {
         if (localVarResponseBody != null) {
           localVarResponseBody.close();
@@ -144300,6 +147082,185 @@ public class ThingsboardApi {
           throw new IllegalArgumentException("Required parameter 'agentUpgradeRequest' is not set for upgradeAgent");
         }
         return new UpgradeAgentArgs(this);
+      }
+    }
+  }
+
+  /**
+   * uploadAiResource
+   * 
+   * @param apiRequest {@link UploadAiResourceArgs}
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public com.fasterxml.jackson.databind.JsonNode uploadAiResource(UploadAiResourceArgs apiRequest) throws ApiException {
+    @Nonnull
+    File _file = apiRequest._file();
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = uploadAiResourceWithHttpInfo(_file, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * uploadAiResource
+   * 
+   * @param apiRequest {@link UploadAiResourceArgs}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> uploadAiResourceWithHttpInfo(UploadAiResourceArgs apiRequest, Map<String, String> headers) throws ApiException {
+    File _file = apiRequest._file();
+    return uploadAiResourceWithHttpInfo(_file, headers);
+  }
+
+  /**
+   * uploadAiResource
+   * 
+   * @param _file  (required)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #uploadAiResource(UploadAiResourceArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public com.fasterxml.jackson.databind.JsonNode uploadAiResource(@Nonnull File _file) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = uploadAiResourceWithHttpInfo(_file, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * uploadAiResource
+   * 
+   * @param _file  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #uploadAiResource(UploadAiResourceArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> uploadAiResourceWithHttpInfo(@Nonnull File _file, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = uploadAiResourceRequestBuilder(_file, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("uploadAiResource", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder uploadAiResourceRequestBuilder(@Nonnull File _file, Map<String, String> headers) throws ApiException {
+    // verify the required parameter '_file' is set
+    if (_file == null) {
+      throw new ApiException(400, "Missing the required parameter '_file' when calling uploadAiResource");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/resources";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    MultipartEntityBuilder multiPartBuilder = MultipartEntityBuilder.create();
+    boolean hasFiles = false;
+    multiPartBuilder.addBinaryBody("file", _file);
+    hasFiles = true;
+    HttpEntity entity = multiPartBuilder.build();
+    HttpRequest.BodyPublisher formDataPublisher;
+    if (hasFiles) {
+        Pipe pipe;
+        try {
+            pipe = Pipe.open();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        new Thread(() -> {
+            try (OutputStream outputStream = Channels.newOutputStream(pipe.sink())) {
+                entity.writeTo(outputStream);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+        formDataPublisher = HttpRequest.BodyPublishers.ofInputStream(() -> Channels.newInputStream(pipe.source()));
+    } else {
+        ByteArrayOutputStream formOutputStream = new ByteArrayOutputStream();
+        try {
+            entity.writeTo(formOutputStream);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        byte[] formBytes = formOutputStream.toByteArray();
+        formDataPublisher = HttpRequest.BodyPublishers
+            .ofInputStream(() -> new ByteArrayInputStream(formBytes));
+    }
+    localVarRequestBuilder
+        .header("Content-Type", entity.getContentType().getValue())
+        .method("POST", formDataPublisher);
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  public static final class UploadAiResourceArgs {
+    @Nonnull
+    private File _file; //  (required)
+    private UploadAiResourceArgs(Builder builder) {
+      this._file = builder._file;
+    }
+    @Nonnull
+    public File _file() {
+      return _file;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+    public static class Builder {
+      private File _file;
+      public Builder _file(@Nonnull File _file) {
+        this._file = _file;
+        return this;
+      }
+      public UploadAiResourceArgs build() {
+        if (this._file == null) {
+          throw new IllegalArgumentException("Required parameter '_file' is not set for uploadAiResource");
+        }
+        return new UploadAiResourceArgs(this);
       }
     }
   }

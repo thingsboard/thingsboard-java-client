@@ -257,10 +257,10 @@ Solution export response containing the exported solution data and any dependenc
 |------|------|-------------|-------|
 | ruleChainId | RuleChainId | JSON object with Rule Chain Id. | [readonly] |
 | version | Long | Version of the Rule Chain | [optional] |
-| firstNodeIndex | Integer | Index of the first rule node in the 'nodes' list |  |
+| firstNodeIndex | Integer | Index of the first rule node in the 'nodes' list | [optional] |
 | nodes | List<RuleNode> | List of rule node JSON objects |  |
-| connections | List<NodeConnectionInfo> | List of JSON objects that represent connections between rule nodes |  |
-| ruleChainConnections | List<RuleChainConnectionInfo> | List of JSON objects that represent connections between rule nodes and other rule chains. |  |
+| connections | List<NodeConnectionInfo> | List of JSON objects that represent connections between rule nodes | [optional] |
+| ruleChainConnections | List<RuleChainConnectionInfo> | List of JSON objects that represent connections between rule nodes and other rule chains. | [optional] |
 | notes | List<RuleChainNote> | List of sticky notes placed on the rule chain canvas | [optional] |
 
 #### GroupPermission
@@ -269,7 +269,7 @@ Solution export response containing the exported solution data and any dependenc
 | id | GroupPermissionId | JSON object with the Group Permission Id. Specify this field to update the Group Permission. Referencing non-existing Group Permission Id will cause error. Omit this field to create new Group Permission. | [optional] |
 | createdTime | Long | Timestamp of the group permission creation, in milliseconds | [optional] [readonly] |
 | tenantId | TenantId | JSON object with the Tenant Id. | [optional] [readonly] |
-| userGroupId | EntityGroupId | JSON object with the User Group Id. Represents the user group that will have permissions to perform operations against the corresponding entity group. |  |
+| userGroupId | EntityGroupId | JSON object with the User Group Id. Represents the user group that will have permissions to perform operations against the corresponding entity group. | [optional] |
 | roleId | RoleId | JSON object with the Role Id. Represents the set of permissions. The role type (GENERIC or GROUP) determines whether 'entityGroupId' is required. |  |
 | entityGroupId | EntityGroupId | JSON object with the Entity Group Id. Required when using a GROUP role — specifies the entity group to which the permissions apply. Must be null or omitted when using a GENERIC role. | [optional] |
 | entityGroupType | EntityType | Type of the entities in the group: DEVICE, ASSET, CUSTOMER, etc. Auto-populated from the referenced entity group. Null for generic permissions. | [optional] [readonly] |

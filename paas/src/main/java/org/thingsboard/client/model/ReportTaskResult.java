@@ -102,12 +102,6 @@ public class ReportTaskResult extends TaskResult {
     return this;
   }
 
-  @Override
-  public ReportTaskResult error(@Nullable String error) {
-    this.setError(error);
-    return this;
-  }
-
   /**
    * Return true if this ReportTaskResult object is equal to o.
    */
